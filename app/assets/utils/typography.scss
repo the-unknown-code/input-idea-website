@@ -1,0 +1,102 @@
+@use "sass:math";
+@use "sass:meta";
+
+// Viewport defaults
+$min-vw-default: get("typography.minVW");
+$base-vw-default: get("typography.baseVW");
+$max-vw-default: get("typography.maxVW");
+
+// Strip unit helper
+@function _strip-unit($value) {
+  @if meta.type-of($value) == "number" and not math.is-unitless($value) {
+    @return math.div($value, ($value * 0 + 1));
+  }
+  @return $value;
+}
+
+/**
+ * fluid-font-3point()
+ * Broken-slope fluid type with an exact lock at $base-vw (1440px)
+ *
+ * @param $min-size  - Size at min viewport
+ * @param $base-size - Size at base viewport (exact)
+ * @param $max-size  - Size at max viewport
+ */
+@function fluid-font(
+  $min-size,
+  $base-size,
+  $max-size,
+  $min-vw: $min-vw-default,
+  $base-vw: $base-vw-default,
+  $max-vw: $max-vw-default
+) {
+  $min: _strip-unit($min-size);
+  $base: _strip-unit($base-size);
+  $max: _strip-unit($max-size);
+
+  $minVW: _strip-unit($min-vw);
+  $baseVW: _strip-unit($base-vw);
+  $maxVW: _strip-unit($max-vw);
+
+  // Slopes
+  $slope1: math.div(($base - $min), ($baseVW - $minVW)) * 100;
+  $slope2: math.div(($max - $base), ($maxVW - $baseVW)) * 100;
+
+  // Intercepts
+  $intercept1: $min - (math.div($slope1, 100) * $minVW);
+  $intercept2: $base - (math.div($slope2, 100) * $baseVW);
+
+  @return clamp(
+    #{$min-size},
+    max(
+      calc(#{$intercept1}px + #{$slope1}vw),
+      min(
+        calc(#{$intercept2}px + #{$slope2}vw),
+        #{$max-size}
+      )
+    ),
+    #{$max-size}
+  );
+}
+
+
+@mixin type($family, $base-size, $min-size, $max-size, $weight, $line, $spacing: 0) {
+
+    font-family: $family;
+    font-size: fluid-font($min-size, $base-size, $max-size);
+    font-weight: $weight;
+    font-style: normal;
+    line-height: $line;
+    letter-spacing: $spacing;
+}
+  
+
+// ------ H1 -------
+@mixin h1 {
+    font-family: 'Regesto Grotesk';
+    font-size: 82px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: .98;
+    letter-spacing: -0.82px;
+}
+
+h1, .h1 {
+    @include h1;
+}
+
+
+// ------ MONO LARGE -------
+@mixin mono-large {
+    font-family: 'Geist Mono';
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1.18;
+    letter-spacing: 1.04px;
+    text-transform: uppercase;
+}
+
+.mono-large {
+    @include mono-large;
+}

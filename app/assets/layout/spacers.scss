@@ -1,0 +1,13 @@
+@use "sass:list";
+@use "sass:map";
+@use "../utils/functions.scss" as *;
+
+$grid-base: 8px;
+$spacers: get("spacers");
+
+:root {
+    @for $i from 1 through list.length($spacers) {
+        $spacer: list.nth($spacers, $i);
+        --spacer-#{$spacer}: #{$spacer * 1px};
+    }
+}

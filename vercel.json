@@ -1,0 +1,15 @@
+{
+	"buildCommand": "pnpm run build",
+	"devCommand": "pnpm dev",
+	"installCommand": "pnpm install",
+	"rewrites": [
+		{
+			"source": "/storybook",
+			"destination": "/storybook/index.html"
+		},
+		{
+			"source": "/storybook/",
+			"destination": "/storybook/index.html"
+		}
+	]
+}

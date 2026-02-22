@@ -1,0 +1,47 @@
+@use 'sass:map';
+
+$breakpoints: (
+  mobile: 800,
+  wide: 1720
+);
+
+$mobile-breakpoint: map.get($breakpoints, mobile);
+$wide-breakpoint: map.get($breakpoints, wide);
+
+@mixin mobile {
+  @media (max-width: #{ $mobile-breakpoint * 1px - 1px }) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{ $mobile-breakpoint * 1px }) {
+    @content;
+  }
+}
+
+@mixin fill($position: absolute) {
+    position: #{$position};
+    bottom: 0;
+    right: 0;
+    left: 0;
+    top: 0;
+}
+
+@mixin reduced-motion {
+    @media (prefers-reduced-motion: reduce) {
+        @content;
+    }
+}
+
+@mixin line-clamp($lines: 3, $mobile-lines: $lines) {
+    display: -webkit-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $lines;
+
+    @include mobile {
+        -webkit-line-clamp: $mobile-lines;
+    }
+}
