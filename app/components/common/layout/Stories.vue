@@ -85,10 +85,10 @@ const initialize = () => {
       y: 0,
       ease: GSAPEase.SLOW_IN_OUT,
       scrollTrigger: {
-        trigger: $stories.value,
+        trigger: item,
         start: 'top 95%',
         end: 'bottom 75%',
-        scrub: 3,
+        scrub: 2.5,
       }
     })
   });
@@ -119,6 +119,7 @@ tryOnBeforeUnmount(() => {
   }
 
   &:deep(.a-div) {
+    position: relative;
     width: 100%;
     display: block;
     opacity: 0;
@@ -143,11 +144,13 @@ tryOnBeforeUnmount(() => {
     z-index: 10;
 
     p {
+      position: relative;
       max-width: 420px;
     }
   }
 
   .item {
+    position: relative;
     grid-column: -1 / 1;
     position: relative;
     overflow: hidden;

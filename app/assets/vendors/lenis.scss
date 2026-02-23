@@ -1,37 +1,37 @@
 html {
-    overscroll-behavior-y: contain;
-    overflow-x: hidden;
+	overscroll-behavior-y: none;
+	overflow-x: hidden;
 
-    &:not(.dev) {
-        &,
-        * {
-            scrollbar-width: none !important;
-            -ms-overflow-style: none !important;
+	&:not(.dev) {
+		&,
+		* {
+			scrollbar-width: none !important;
+			-ms-overflow-style: none !important;
 
-            &::-webkit-scrollbar {
-                width: 0 !important;
-                height: 0 !important;
-            }
-        }
-    }
+			&::-webkit-scrollbar {
+				width: 0 !important;
+				height: 0 !important;
+			}
+		}
+	}
 }
 
 html.lenis {
-    height: auto;
+	height: auto;
 }
 
 .lenis.lenis-smooth {
-    scroll-behavior: auto;
+	scroll-behavior: auto;
 }
 
 .lenis.lenis-smooth [data-lenis-prevent] {
-    overscroll-behavior: contain;
+	overscroll-behavior: contain;
 }
 
 .lenis.lenis-stopped {
-    overflow: hidden;
+	overflow: hidden;
 }
 
 .lenis.lenis-scrolling iframe {
-    pointer-events: none;
+	pointer-events: none;
 }

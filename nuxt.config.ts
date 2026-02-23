@@ -36,8 +36,10 @@ export const scssFunctions = {
 	'getThemes()': () => toSass(config.themes),
 };
 
-const shouldEnableGtm =
+let shouldEnableGtm =
 	process.env.NODE_ENV === 'production' || process.env.SHOW_DEBUG === 'true';
+
+shouldEnableGtm = false;
 
 export default defineNuxtConfig({
 	compatibilityDate: '2025-07-15',
@@ -96,6 +98,12 @@ export default defineNuxtConfig({
 		app: {
 			rootId: `${toKebabCase(app.title)}-development`,
 			head: {
+				meta: [
+					{
+						name: 'theme-color',
+						content: '#2F2C2C',
+					},
+				],
 				link: [
 					{
 						rel: 'preconnect',
@@ -123,6 +131,12 @@ export default defineNuxtConfig({
 		app: {
 			rootId: `${toKebabCase(app.title)}`,
 			head: {
+				meta: [
+					{
+						name: 'theme-color',
+						content: '#2F2C2C',
+					},
+				],
 				link: [
 					{
 						rel: 'preconnect',

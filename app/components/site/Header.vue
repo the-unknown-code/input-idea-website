@@ -6,7 +6,8 @@
 				<ui-arrow />
 			</div>
 			<div class="logo">
-				<img src="/svgs/logo-input-idea.svg"
+				<img ref="$logo"
+					src="/svgs/logo-input-idea.svg"
 					alt="Input Idea" />
 			</div>
 			<div>
@@ -17,15 +18,43 @@
 </template>
 
 <script setup lang="ts">
+import gsap from 'gsap/all';
+import { GSAPDuration, GSAPEase } from '~/libs/constants/gsap';
+
+const $logo = ref<HTMLImageElement | null>(null);
 const $header = ref<HTMLElement | null>(null);
 const { height } = useElementBounding($header);
+const timeline = gsap.timeline({ paused: true });
+const scope = effectScope();
 
-watch(height, (v) => {
-	if (import.meta.client) {
-		document.documentElement.style.setProperty('--header-height', `${v}px`);
-	}
-}, { immediate: true });
 
+
+const initialize = () => {
+	timeline.to($logo.value, {
+		opacity: 1,
+		y: '-100%',
+		duration: GSAPDuration.FAST,
+		ease: GSAPEase.SLOW_IN_OUT,
+	});
+};
+
+
+scope.run(async () => {
+	watch(height, (v) => {
+		if (import.meta.client) {
+			document.documentElement.style.setProperty('--header-height', `${v}px`);
+		}
+	}, { immediate: true });
+
+	useLenis(({ scroll }): void => {
+		timeline[scroll > 10 ? 'play' : 'reverse']();
+	});
+})
+
+
+tryOnMounted(() => {
+	initialize();
+});
 </script>
 
 <style scoped lang="scss">
@@ -64,9 +93,11 @@ watch(height, (v) => {
 	}
 
 	.logo {
+		position: relative;
 		display: flex;
 		width: 120px;
 		flex: 0 0 120px;
+		overflow: hidden;
 
 		@include desktop {
 			width: 210px;
