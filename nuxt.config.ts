@@ -36,8 +36,10 @@ export const scssFunctions = {
 	'getThemes()': () => toSass(config.themes),
 };
 
-const shouldEnableGtm =
+let shouldEnableGtm =
 	process.env.NODE_ENV === 'production' || process.env.SHOW_DEBUG === 'true';
+
+shouldEnableGtm = false;
 
 export default defineNuxtConfig({
 	compatibilityDate: '2025-07-15',
@@ -95,7 +97,29 @@ export default defineNuxtConfig({
 		devtools: { enabled: true },
 		app: {
 			rootId: `${toKebabCase(app.title)}-development`,
-			head: {},
+			head: {
+				meta: [
+					{
+						name: 'theme-color',
+						content: '#2F2C2C',
+					},
+				],
+				link: [
+					{
+						rel: 'preconnect',
+						href: 'https://fonts.googleapis.com',
+					},
+					{
+						rel: 'preconnect',
+						href: 'https://fonts.gstatic.com',
+						crossorigin: '',
+					},
+					{
+						rel: 'stylesheet',
+						href: 'https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@1..1000&family=Zalando+Sans:wght@300..700&display=swap',
+					},
+				],
+			},
 		},
 		sitemap: {
 			xsl: false,
@@ -106,7 +130,29 @@ export default defineNuxtConfig({
 	$production: {
 		app: {
 			rootId: `${toKebabCase(app.title)}`,
-			head: {},
+			head: {
+				meta: [
+					{
+						name: 'theme-color',
+						content: '#2F2C2C',
+					},
+				],
+				link: [
+					{
+						rel: 'preconnect',
+						href: 'https://fonts.googleapis.com',
+					},
+					{
+						rel: 'preconnect',
+						href: 'https://fonts.gstatic.com',
+						crossorigin: '',
+					},
+					{
+						rel: 'stylesheet',
+						href: 'https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@1..1000&family=Zalando+Sans:wght@300..700&display=swap',
+					},
+				],
+			},
 		},
 		sitemap: {
 			xsl: false,

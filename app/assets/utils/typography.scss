@@ -1,5 +1,6 @@
 @use 'sass:math';
 @use 'sass:meta';
+@use './functions.scss' as *;
 
 // Viewport defaults
 $min-vw-default: get('typography.minVW');
@@ -73,15 +74,95 @@ $max-vw-default: get('typography.maxVW');
 	letter-spacing: $spacing;
 }
 
-$display: 'Wooow';
+$display: 'Sofia Sans Extra Condensed', sans-serif;
 $sans: 'Zalando Sans';
 
 // ------ H1 -------
 @mixin h1 {
-	@include type($display, 82px, 48px, 182px, 300, 0.98, -0.82px);
+	text-transform: uppercase;
+	font-optical-sizing: auto;
+	@include type($display, 88px, 78px, 108px, 120, 1.15cap, 3%);
+
+	@include desktop {
+		@include type($display, 128px, 102px, 212px, 120, 1.15cap, 3%);
+	}
 }
 
 h1,
 .h1 {
+	&.heavy {
+		letter-spacing: 2%;
+		font-variation-settings: 'wght' 1000;
+	}
+
+	b,
+	strong {
+		font-variation-settings: 'wght' 1000;
+	}
+
 	@include h1;
+}
+
+// ------ DISPLAY -------
+@mixin display {
+	text-transform: uppercase;
+	font-optical-sizing: auto;
+	@include type($display, 88px, 78px, 108px, 120, 1.15cap, 3%);
+
+	@include desktop {
+		@include type($display, 86px, 64px, 112px, 120, 1.15cap, 3%);
+	}
+}
+
+.display {
+	&.heavy {
+		letter-spacing: 2%;
+		font-variation-settings: 'wght' 1000;
+	}
+
+	b,
+	strong {
+		font-variation-settings: 'wght' 1000;
+	}
+
+	@include display;
+}
+
+// --- P ---
+@mixin p {
+	@include type($sans, 16px, 16px, 16px, 300, 1.45, 0);
+}
+
+p,
+.p {
+	@include p;
+
+	b,
+	strong {
+		font-weight: 700;
+	}
+}
+
+// --- P-BIG ---
+@mixin p-big {
+	@include type($sans, 28px, 24px, 32px, 300, 1.45, 0);
+
+	@include desktop {
+		@include type($sans, 36px, 32px, 44px, 300, 1.45, 0);
+	}
+}
+
+p-big,
+.p-big {
+	@include p-big;
+}
+
+// --- P-BIG ---
+@mixin p-small {
+	@include type($sans, 13px, 13px, 13px, 300, 1.35, 0);
+}
+
+p-small,
+.p-small {
+	@include p-small;
 }

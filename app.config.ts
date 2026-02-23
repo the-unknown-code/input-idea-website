@@ -48,6 +48,7 @@ interface AppConfig {
 		families: {
 			name: string;
 			provider: string;
+			weights?: number[];
 		}[];
 	};
 	link: {
@@ -58,6 +59,7 @@ interface AppConfig {
 // Define base colors and generate their shades
 const colors: any = generateShades({
 	black: '#080808',
+	grey: '#909090',
 	darkgrey: '#2F2C2C',
 	white: '#fffef4',
 	yellow: '#fff615',
@@ -79,12 +81,12 @@ const themes: any = {
 
 // Define responsive design breakpoints for layouts
 const breakpoints: any = {
-	mobile: 800,
+	mobile: 960,
 	wide: 1720,
 };
 
 const typography: any = {
-	minVW: 800,
+	minVW: 960,
 	baseVW: 1440,
 	maxVW: 1920,
 };
@@ -97,7 +99,7 @@ const grid: any = {
 };
 
 // Define global spacers
-const spacers: any = [4, 8, 16, 32, 64];
+const spacers: any = [4, 8, 16, 32, 64, 96, 128];
 
 
 // Application-level configuration (SSR, prefetching, etc.)
@@ -125,13 +127,9 @@ export const app: AppConfig = {
 	},
 	fonts: {
 		defaults: {
-			weights: [300, 400, 600, 900],
+			weights: [300, 400, 500, 600, 700, 800, 900],
 		},
 		families: [
-			{
-				name: 'Wooow',
-				provider: 'local',
-			},
 			{
 				name: 'Zalando Sans',
 				provider: 'google',
