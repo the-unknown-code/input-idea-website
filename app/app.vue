@@ -7,8 +7,7 @@
 -->
 
 <template>
-	<NoJavascript />
-	<rotate-device />
+
 	<div id="site"
 		:class="[
 			toKebabCase(route.name as string),
@@ -24,16 +23,11 @@
 </template>
 
 <script setup lang="ts">
-// @ts-expect-error - Font loader is not typed
-import loadFonts from '@fuzzco/font-loader';
 import { toKebabCase } from './libs/common/utils';
 import { EVENTS } from './libs/constants/event';
 import useAppStore from './store/useAppStore';
 
 const $store = useAppStore();
-const {
-	public: { app },
-} = useRuntimeConfig();
 const { $emit } = useNuxtApp();
 const { width, height } = useWindowSize();
 const { isLoading } = useLoadingIndicator();

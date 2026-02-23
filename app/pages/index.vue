@@ -1,16 +1,11 @@
 <template>
-	<main class="page-index">
-		<h1>Input Idea</h1>
-	</main>>
+	<main class="page-index layout-block">
+		<home-hero />
+	</main>
 </template>
 
 <script setup lang="ts">
-import { useSeo } from '~/composables/useSeo';
-import { useAsyncStory } from '~/libs/storyblok';
 
-const { story } = await useAsyncStory('home');
-
-useSeo(story);
 </script>
 
 <style lang="scss" scoped>

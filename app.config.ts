@@ -58,22 +58,22 @@ interface AppConfig {
 // Define base colors and generate their shades
 const colors: any = generateShades({
 	black: '#080808',
-	grey: '#909090',
+	darkgrey: '#2F2C2C',
 	white: '#fffef4',
-	green: '#00ff6a',
+	yellow: '#fff615',
 });
 
 // Define light and dark themes using generated colors
 const themes: any = {
 	light: {
 		bg: colors['white'],
-		fg: colors['black'],
-		contrast: colors['green'],
+		fg: colors['darkgrey'],
+		contrast: colors['yellow'],
 	},
 	dark: {
-		bg: colors['black'],
+		bg: colors['darkgrey'],
 		fg: colors['white'],
-		contrast: colors['green'],
+		contrast: colors['yellow'],
 	},
 };
 
@@ -91,7 +91,7 @@ const typography: any = {
 
 // Define grid system with columns, gap, and margin settings
 const grid: any = {
-	columns: [4, 16],
+	columns: [4, 12],
 	gap: [8, 8],
 	margin: [16, 48],
 };
@@ -125,21 +125,17 @@ export const app: AppConfig = {
 	},
 	fonts: {
 		defaults: {
-			weights: [300, 400, 500, 700, 900],
+			weights: [300, 400, 600, 900],
 		},
 		families: [
 			{
-				name: 'WooowRegular',
+				name: 'Wooow',
 				provider: 'local',
 			},
 			{
-				name: 'WooowLight',
-				provider: 'local',
-			},
-			{
-				name: 'WooowHeavy',
-				provider: 'local',
-			},
+				name: 'Zalando Sans',
+				provider: 'google',
+			}
 		],
 	},
 	link: {

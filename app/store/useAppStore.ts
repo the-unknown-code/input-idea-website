@@ -8,7 +8,7 @@ interface Story {
 
 export default defineStore('app.store', {
 	state: () => ({
-		theme: 'theme-light',
+		theme: 'theme-dark',
 		enabled: false,
 		stories: [] as Story[],
 		settings: {} as any,

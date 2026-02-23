@@ -4,5 +4,6 @@ export const GSAPDuration = {
 };
 
 export const GSAPEase = {
+	FAST_OUT: 'expo.out',
 	SLOW_IN_OUT: 'power3.inOut',
 };

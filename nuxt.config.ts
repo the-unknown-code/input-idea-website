@@ -10,8 +10,6 @@ const modules = [
 	'@nuxtjs/robots',
 	'@nuxtjs/sitemap',
 	'@nuxt/image',
-	// Storybook module disabled - we serve static build at /storybook instead
-	// '@nuxtjs/storybook',
 ];
 
 if (app.storyblok.enabled) {
@@ -179,14 +177,8 @@ export default defineNuxtConfig({
 			brotli: true,
 			gzip: true,
 		},
-		// Note: We're using a server route instead of publicAssets
-		// because publicAssets doesn't handle SPA routing (index.html fallback)
-		// The server route at server/routes/storybook/[...].ts handles this
+
 	},
 
-	storybook: {
-		// Disable proxy by not setting a route
-		// The module will still work for Storybook config/types, but won't set up proxy
-		// We serve Storybook statically via server/routes/storybook/[...].ts
-	},
+
 });

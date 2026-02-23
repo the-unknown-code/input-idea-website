@@ -1,65 +1,59 @@
 <template>
-	<div v-if="isPanelVisible" class="panel-shell" :class="panelState">
+	<div v-if="isPanelVisible"
+		class="panel-shell"
+		:class="panelState">
 		<div class="panel-inner">
 			<div class="panel-header">
-				<div v-if="panelState !== 'collapsed'" class="header-content">
+				<div v-if="panelState !== 'collapsed'"
+					class="header-content">
 					<span class="env">{{ buildData.env }}</span>
 					<span class="divider">|</span>
 					<span class="build">{{ buildData.buildNumber ?? '-' }}</span>
 					<span class="divider">|</span>
 				</div>
 
-				<button
-					v-if="panelState !== 'collapsed'"
+				<button v-if="panelState !== 'collapsed'"
 					class="arrow-btn toggle-arrow"
 					aria-label="Expand or minimize"
-					@click="handleLeftArrow"
-				>
+					@click="handleLeftArrow">
 					▲
 				</button>
 
-				<button
-					v-if="panelState !== 'collapsed'"
+				<button v-if="panelState !== 'collapsed'"
 					class="arrow-btn collapse-arrow"
 					aria-label="Collapse panel"
-					@click="collapse"
-				>
+					@click="collapse">
 					▶
 				</button>
 
-				<button
-					v-if="panelState === 'collapsed'"
+				<button v-if="panelState === 'collapsed'"
 					class="arrow-btn restore-arrow"
 					aria-label="Restore panel"
-					@click="minimize"
-				>
+					@click="minimize">
 					◀
 				</button>
 			</div>
 
-			<div
-				v-show="panelState === 'expanded'"
+			<div v-show="panelState === 'expanded'"
 				ref="containerRef"
-				class="pane-content"
-			/>
+				class="pane-content" />
 
-			<div v-if="panelState === 'expanded'" class="panel-footer">
-				<button
-					type="button"
+			<div v-if="panelState === 'expanded'"
+				class="panel-footer">
+				<button type="button"
 					class="deploy-btn"
 					aria-label="Trigger new Vercel deployment for this branch"
 					:disabled="deployLoading || !buildData.branch || buildData.branch === 'Unknown'"
-					@click="triggerDeploy"
-				>
+					@click="triggerDeploy">
 					{{ deployLoading ? 'Deploying…' : `Redeploy ${buildData.branch}` }}
 				</button>
-				<p v-if="deployError" class="deploy-error">{{ deployError }}</p>
-				<p v-if="deploySuccess" class="deploy-success">{{ deploySuccess }}</p>
-				<button
-					class="remove-btn"
+				<p v-if="deployError"
+					class="deploy-error">{{ deployError }}</p>
+				<p v-if="deploySuccess"
+					class="deploy-success">{{ deploySuccess }}</p>
+				<button class="remove-btn"
 					aria-label="Remove panel"
-					@click="removePanel"
-				>
+					@click="removePanel">
 					Remove from DOM
 				</button>
 			</div>
@@ -245,6 +239,8 @@ const initialize = async () => {
 		.on('change', ({ value }: { value: boolean }) =>
 			appStore.setDebug('orchestra', value)
 		);
+
+
 };
 
 scope.run(() => {
@@ -272,6 +268,14 @@ const logDebugInfo = () => {
 	console.info('Build Info:', { ...buildData });
 	console.groupEnd();
 };
+
+tryOnMounted(() => {
+	window.addEventListener('keydown', (e) => {
+		if (e.key === 'g') {
+			appStore.setDebug('orchestra', !appStore.debug.orchestra);
+		}
+	});
+});
 
 tryOnBeforeUnmount(() => {
 	scope.stop();
