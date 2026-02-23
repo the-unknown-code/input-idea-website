@@ -4,6 +4,7 @@
 			<home-hero />
 			<layout-services />
 			<layout-stories />
+			<layout-logo-marquee />
 		</div>
 	</main>
 </template>

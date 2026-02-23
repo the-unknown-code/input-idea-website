@@ -4,6 +4,7 @@ import Ham from '~/components/common/ui/ham/Ham.vue'
 
 import Services from '~/components/common/layout/Services.vue'
 import Stories from '~/components/common/layout/Stories.vue'
+import LogoMarquee from '~/components/common/layout/LogoMarquee.vue'
 
 export default defineNuxtPlugin(nuxtApp => {
     nuxtApp.vueApp.component('a-link', ALink)
@@ -12,5 +13,6 @@ export default defineNuxtPlugin(nuxtApp => {
 
     nuxtApp.vueApp.component('layout-services', Services)
     nuxtApp.vueApp.component('layout-stories', Stories)
+    nuxtApp.vueApp.component('layout-logo-marquee', LogoMarquee)
 })
 
