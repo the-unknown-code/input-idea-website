@@ -73,15 +73,22 @@ $max-vw-default: get('typography.maxVW');
 	letter-spacing: $spacing;
 }
 
-$display: 'Wooow';
+$display: 'Sofia Sans Extra Condensed', sans-serif;
 $sans: 'Zalando Sans';
 
 // ------ H1 -------
 @mixin h1 {
-	@include type($display, 82px, 48px, 182px, 300, 0.98, -0.82px);
+	text-transform: uppercase;
+	font-optical-sizing: auto;
+	@include type($display, 128px, 102px, 152px, 120, 1cap, 3%);
 }
 
 h1,
 .h1 {
+	&.heavy {
+		letter-spacing: 2%;
+		font-variation-settings: 'wght' 1000;
+	}
+
 	@include h1;
 }

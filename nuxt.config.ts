@@ -95,7 +95,23 @@ export default defineNuxtConfig({
 		devtools: { enabled: true },
 		app: {
 			rootId: `${toKebabCase(app.title)}-development`,
-			head: {},
+			head: {
+				link: [
+					{
+						rel: 'preconnect',
+						href: 'https://fonts.googleapis.com',
+					},
+					{
+						rel: 'preconnect',
+						href: 'https://fonts.gstatic.com',
+						crossorigin: '',
+					},
+					{
+						rel: 'stylesheet',
+						href: 'https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@1..1000&display=swap',
+					},
+				],
+			},
 		},
 		sitemap: {
 			xsl: false,
@@ -106,7 +122,23 @@ export default defineNuxtConfig({
 	$production: {
 		app: {
 			rootId: `${toKebabCase(app.title)}`,
-			head: {},
+			head: {
+				link: [
+					{
+						rel: 'preconnect',
+						href: 'https://fonts.googleapis.com',
+					},
+					{
+						rel: 'preconnect',
+						href: 'https://fonts.gstatic.com',
+						crossorigin: '',
+					},
+					{
+						rel: 'stylesheet',
+						href: 'https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@1..1000&display=swap',
+					},
+				],
+			},
 		},
 		sitemap: {
 			xsl: false,

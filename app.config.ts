@@ -48,6 +48,7 @@ interface AppConfig {
 		families: {
 			name: string;
 			provider: string;
+			weights?: number[];
 		}[];
 	};
 	link: {
@@ -79,12 +80,12 @@ const themes: any = {
 
 // Define responsive design breakpoints for layouts
 const breakpoints: any = {
-	mobile: 800,
+	mobile: 960,
 	wide: 1720,
 };
 
 const typography: any = {
-	minVW: 800,
+	minVW: 960,
 	baseVW: 1440,
 	maxVW: 1920,
 };
@@ -124,14 +125,7 @@ export const app: AppConfig = {
 		},
 	},
 	fonts: {
-		defaults: {
-			weights: [300, 400, 600, 900],
-		},
 		families: [
-			{
-				name: 'Wooow',
-				provider: 'local',
-			},
 			{
 				name: 'Zalando Sans',
 				provider: 'google',

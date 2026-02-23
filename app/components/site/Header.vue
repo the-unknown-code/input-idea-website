@@ -18,15 +18,14 @@
 
 <script setup lang="ts">
 const $header = ref<HTMLElement | null>(null);
-const { height } = useElementSize($header);
+const { height } = useElementBounding($header);
 
-const initialize = () => {
-	console.log(height.value);
-}
+watch(height, (v) => {
+	if (import.meta.client) {
+		document.documentElement.style.setProperty('--header-height', `${v}px`);
+	}
+}, { immediate: true });
 
-tryOnMounted(() => {
-	initialize();
-});
 </script>
 
 <style scoped lang="scss">
@@ -36,7 +35,7 @@ tryOnMounted(() => {
 	left: 0;
 	width: 100%;
 	z-index: 50;
-	padding-top: var(--spacer-64);
+	padding: var(--spacer-64) 0;
 
 	&__inner {
 		display: flex;
