@@ -1,5 +1,6 @@
 @use 'sass:math';
 @use 'sass:meta';
+@use './functions.scss' as *;
 
 // Viewport defaults
 $min-vw-default: get('typography.minVW');
@@ -80,13 +81,22 @@ $sans: 'Zalando Sans';
 @mixin h1 {
 	text-transform: uppercase;
 	font-optical-sizing: auto;
-	@include type($display, 128px, 102px, 152px, 120, 1cap, 3%);
+	@include type($display, 88px, 78px, 108px, 120, 1cap, 3%);
+
+	@include desktop {
+		@include type($display, 128px, 102px, 152px, 120, 1cap, 3%);
+	}
 }
 
 h1,
 .h1 {
 	&.heavy {
 		letter-spacing: 2%;
+		font-variation-settings: 'wght' 1000;
+	}
+
+	b,
+	strong {
 		font-variation-settings: 'wght' 1000;
 	}
 
