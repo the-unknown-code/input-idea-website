@@ -81,10 +81,10 @@ $sans: 'Zalando Sans';
 @mixin h1 {
 	text-transform: uppercase;
 	font-optical-sizing: auto;
-	@include type($display, 88px, 78px, 108px, 120, 1cap, 3%);
+	@include type($display, 88px, 78px, 108px, 120, 1.15cap, 3%);
 
 	@include desktop {
-		@include type($display, 128px, 102px, 152px, 120, 1cap, 3%);
+		@include type($display, 128px, 102px, 212px, 120, 1.15cap, 3%);
 	}
 }
 
@@ -101,4 +101,33 @@ h1,
 	}
 
 	@include h1;
+}
+
+// --- P ---
+@mixin p {
+	@include type($sans, 16px, 16px, 16px, 300, 1.45, 0);
+}
+
+p,
+.p {
+	@include p;
+
+	b,
+	strong {
+		font-weight: 700;
+	}
+}
+
+// --- P-BIG ---
+@mixin p-big {
+	@include type($sans, 28px, 24px, 32px, 300, 1.45, 0);
+
+	@include desktop {
+		@include type($sans, 36px, 32px, 44px, 300, 1.45, 0);
+	}
+}
+
+p-big,
+.p-big {
+	@include p-big;
 }

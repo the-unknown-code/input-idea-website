@@ -1,7 +1,10 @@
-@use "sass:color";
+@use 'sass:color';
 
 :root {
-    @each $name, $color in getColors() {
-        --#{$name}: #{$color};
-    }
+	@each $name, $color in getColors() {
+		--#{$name}: #{$color};
+		.--#{$name} {
+			color: $color;
+		}
+	}
 }

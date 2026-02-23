@@ -59,6 +59,7 @@ interface AppConfig {
 // Define base colors and generate their shades
 const colors: any = generateShades({
 	black: '#080808',
+	grey: '#909090',
 	darkgrey: '#2F2C2C',
 	white: '#fffef4',
 	yellow: '#fff615',
@@ -98,7 +99,7 @@ const grid: any = {
 };
 
 // Define global spacers
-const spacers: any = [4, 8, 16, 32, 64];
+const spacers: any = [4, 8, 16, 32, 64, 96, 128];
 
 
 // Application-level configuration (SSR, prefetching, etc.)
@@ -125,6 +126,9 @@ export const app: AppConfig = {
 		},
 	},
 	fonts: {
+		defaults: {
+			weights: [300, 400, 500, 600, 700, 800, 900],
+		},
 		families: [
 			{
 				name: 'Zalando Sans',

@@ -108,7 +108,7 @@ export default defineNuxtConfig({
 					},
 					{
 						rel: 'stylesheet',
-						href: 'https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@1..1000&display=swap',
+						href: 'https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@1..1000&family=Zalando+Sans:wght@300..700&display=swap',
 					},
 				],
 			},
@@ -135,7 +135,7 @@ export default defineNuxtConfig({
 					},
 					{
 						rel: 'stylesheet',
-						href: 'https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@1..1000&display=swap',
+						href: 'https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@1..1000&family=Zalando+Sans:wght@300..700&display=swap',
 					},
 				],
 			},

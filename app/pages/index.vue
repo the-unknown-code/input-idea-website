@@ -2,6 +2,7 @@
 	<main class="page-index">
 		<div class="layout-block">
 			<home-hero />
+			<layout-services />
 		</div>
 	</main>
 </template>
@@ -14,8 +15,22 @@
 .page-index {
 	position: relative;
 	padding-top: var(--header-height);
-	max-width: 1440px;
-	margin: 0 auto;
+
+	>div {
+		display: flex;
+		flex-direction: column;
+	}
+
+	section {
+		&:not(:first-child) {
+			margin: var(--spacer-64) 0;
+
+			@include desktop {
+				margin: var(--spacer-128) 0;
+			}
+		}
+	}
+
 
 }
 </style>

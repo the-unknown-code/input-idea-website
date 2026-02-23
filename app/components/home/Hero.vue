@@ -107,9 +107,14 @@ const { isDesktop } = useBreakpoints();
   &__mobile {
     position: relative;
     text-wrap: balance;
-    padding-bottom: var(--spacer-32);
+    height: calc(100dvh - var(--header-height));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 
     h1 {
+      margin-top: var(--spacer-64);
       line-height: 1.25cap;
       text-align: center;
     }
@@ -118,6 +123,7 @@ const { isDesktop } = useBreakpoints();
   &__inner {
     position: relative;
     height: 100%;
+    min-height: calc(100dvh - var(--header-height));
     display: flex;
     flex-direction: column;
     padding: var(--spacer-64) 0;

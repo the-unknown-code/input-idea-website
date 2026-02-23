@@ -19,31 +19,32 @@
 -->
 
 <template>
-	<a
-		v-if="isAbsoluteLink"
-		:class="['a-div', 'has-link']"
+	<a v-if="isAbsoluteLink"
+		:class="['a-div', 'has-link', { disabled }]"
 		:href="href"
 		:aria-label="ariaLabel"
 		:target="noNewTab ? '_self' : '_blank'"
-		:rel="noNewTab ? '' : 'noopener noreferrer'"
-	>
-		<slot />
+		:rel="noNewTab ? '' : 'noopener noreferrer'">
+		<slot :is-absolute-link="true"
+			:is-anchor-link="false" />
 	</a>
-	<a
-		v-else-if="isAnchorLink"
-		class="a-div"
+	<a v-else-if="isAnchorLink"
+		key="anchor"
+		:class="['a-div', { disabled }]"
 		:href="href"
-		:aria-label="ariaLabel"
-	>
-		<slot />
+		:aria-label="ariaLabel">
+		<slot :is-absolute-link="false"
+			:is-anchor-link="true" />
 	</a>
-	<nuxt-link
-		v-else
+	<nuxt-link v-else
+		:class="['a-div', { disabled }]"
 		:to="href"
 		:aria-label="ariaLabel"
 		:replace="replaceState"
-		:prefetch-on="app.link.prefetch"
-	>
+		:prefetch-on="{
+			visibility: app.link.prefetch === 'visibility',
+			interaction: app.link.prefetch === 'interaction',
+		}">
 		<slot />
 	</nuxt-link>
 </template>
@@ -66,6 +67,10 @@ const props = defineProps({
 		type: Boolean,
 		default: false,
 	},
+	disabled: {
+		type: Boolean,
+		default: false,
+	},
 });
 
 const {
@@ -73,7 +78,16 @@ const {
 } = useRuntimeConfig();
 
 const isAbsoluteLink = computed(() => {
-	return props.noNewTab || /^mailto:|^tel:/.test(props.href);
+	const isProtocolLink =
+		/^mailto:/.test(props.href) ||
+		/^tel:/.test(props.href) ||
+		props.href.startsWith('http');
+
+	// Treat root-relative asset files (e.g., /privacy-policy.pdf) as external anchors
+	const isAssetFile =
+		props.href.startsWith('/') && /\.[a-z0-9]{2,8}(?:$|\?)/i.test(props.href);
+
+	return isProtocolLink || isAssetFile;
 });
 
 const isAnchorLink = computed(() => {
@@ -81,4 +95,12 @@ const isAnchorLink = computed(() => {
 });
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.a-div {
+	width: max-content;
+
+	&.disabled {
+		cursor: not-allowed !important;
+	}
+}
+</style>

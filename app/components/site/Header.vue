@@ -35,7 +35,11 @@ watch(height, (v) => {
 	left: 0;
 	width: 100%;
 	z-index: 50;
-	padding: var(--spacer-64) 0;
+	padding: var(--spacer-32) 0;
+
+	@include desktop {
+		padding: var(--spacer-64) 0;
+	}
 
 	&__inner {
 		display: flex;
@@ -61,8 +65,13 @@ watch(height, (v) => {
 
 	.logo {
 		display: flex;
-		width: 210px;
-		flex: 0 0 210px;
+		width: 120px;
+		flex: 0 0 120px;
+
+		@include desktop {
+			width: 210px;
+			flex: 0 0 210px;
+		}
 
 		img {
 			width: 100%;
