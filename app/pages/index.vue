@@ -3,6 +3,7 @@
 		<div class="layout-block">
 			<home-hero />
 			<layout-services />
+			<layout-stories />
 		</div>
 	</main>
 </template>
@@ -19,14 +20,19 @@
 	>div {
 		display: flex;
 		flex-direction: column;
+		gap: var(--spacer-64);
+
+		@include desktop {
+			gap: var(--spacer-128);
+		}
 	}
 
 	section {
-		&:not(:first-child) {
-			margin: var(--spacer-64) 0;
+		&:last-child {
+			margin-bottom: var(--spacer-64);
 
 			@include desktop {
-				margin: var(--spacer-128) 0;
+				margin-bottom: var(--spacer-128);
 			}
 		}
 	}

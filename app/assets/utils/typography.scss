@@ -103,6 +103,31 @@ h1,
 	@include h1;
 }
 
+// ------ DISPLAY -------
+@mixin display {
+	text-transform: uppercase;
+	font-optical-sizing: auto;
+	@include type($display, 88px, 78px, 108px, 120, 1.15cap, 3%);
+
+	@include desktop {
+		@include type($display, 86px, 64px, 112px, 120, 1.15cap, 3%);
+	}
+}
+
+.display {
+	&.heavy {
+		letter-spacing: 2%;
+		font-variation-settings: 'wght' 1000;
+	}
+
+	b,
+	strong {
+		font-variation-settings: 'wght' 1000;
+	}
+
+	@include display;
+}
+
 // --- P ---
 @mixin p {
 	@include type($sans, 16px, 16px, 16px, 300, 1.45, 0);
@@ -130,4 +155,14 @@ p,
 p-big,
 .p-big {
 	@include p-big;
+}
+
+// --- P-BIG ---
+@mixin p-small {
+	@include type($sans, 13px, 13px, 13px, 300, 1.35, 0);
+}
+
+p-small,
+.p-small {
+	@include p-small;
 }
