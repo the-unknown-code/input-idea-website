@@ -59,6 +59,7 @@ interface AppConfig {
 // Define base colors and generate their shades
 const colors: any = generateShades({
 	black: '#080808',
+	'grey-600': '#606060',
 	grey: '#909090',
 	darkgrey: '#2F2C2C',
 	white: '#fffef4',

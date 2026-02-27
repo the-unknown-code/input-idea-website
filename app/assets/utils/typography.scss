@@ -157,12 +157,20 @@ p-big,
 	@include p-big;
 }
 
-// --- P-BIG ---
+// --- P-SMALL ---
 @mixin p-small {
 	@include type($sans, 13px, 13px, 13px, 300, 1.35, 0);
 }
 
-p-small,
 .p-small {
 	@include p-small;
+}
+
+// --- P-TINY ---
+@mixin p-tiny {
+	@include type($sans, 11px, 11px, 11px, 300, 1.35, 0);
+}
+
+.p-tiny {
+	@include p-tiny;
 }
