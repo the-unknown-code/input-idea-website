@@ -10,6 +10,7 @@ import BlogBox from '~/components/common/layout/BlogBox.vue'
 import ProjectHero from '~/components/common/layout/ProjectHero.vue'
 import ProjectGridBlock from '~/components/common/layout/ProjectGridBlock.vue'
 import TextList from '~/components/common/layout/TextList.vue'
+import MediaCarousel from '~/components/common/layout/MediaCarousel.vue'
 
 
 export default defineNuxtPlugin(nuxtApp => {
@@ -25,6 +26,7 @@ export default defineNuxtPlugin(nuxtApp => {
     nuxtApp.vueApp.component('layout-project-hero', ProjectHero)
     nuxtApp.vueApp.component('layout-project-grid-block', ProjectGridBlock)
     nuxtApp.vueApp.component('layout-text-list', TextList)
+    nuxtApp.vueApp.component('layout-media-carousel', MediaCarousel)
 
 
 })

@@ -4,6 +4,7 @@
             <layout-project-hero />
             <layout-project-grid-block />
             <layout-text-list />
+            <layout-media-carousel />
         </div>
     </main>
 </template>
