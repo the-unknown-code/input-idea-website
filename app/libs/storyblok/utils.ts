@@ -17,3 +17,38 @@ export const useStoryblokHead = (story: any = {}) => {
 
 	useHead(generateHead(seoTitle, seoDescription, seoImage));
 };
+
+
+type link = {
+	linktype: string;
+	url: string;
+	email?: string;
+	story?: {
+		url?: string;
+	};
+	cached_url?: string;
+	anchor?: string;
+}
+
+export const resolveLink = (link: string | link | null | undefined): string | undefined => {
+	if (link == null) return undefined;
+	if (typeof link === 'string') return link;
+
+	const l = link as link;
+	let finalLink: string | undefined;
+
+	if (l.linktype === 'url' || l.linktype === 'asset') {
+		finalLink = l.url;
+	} else if (l.linktype === 'email') {
+		finalLink = l.email ? `mailto:${l.email}` : undefined;
+	} else if (l.linktype === 'story') {
+		const storyURL = l.story?.url?.length ? l.story.url : l.cached_url || '';
+		finalLink = `${storyURL.charAt(0) === '/' ? '' : '/'}${storyURL}`;
+	}
+
+	if (finalLink != null && l.anchor) {
+		finalLink += `#${l.anchor}`;
+	}
+
+	return finalLink;
+};

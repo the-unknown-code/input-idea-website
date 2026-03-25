@@ -61,6 +61,7 @@ const colors: any = generateShades({
 	black: '#080808',
 	'grey-600': '#606060',
 	grey: '#909090',
+	lightgrey: '#3b3a3a',
 	darkgrey: '#2F2C2C',
 	white: '#fffef4',
 	yellow: '#fff615',

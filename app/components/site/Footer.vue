@@ -215,8 +215,6 @@ tryOnMounted(() => {
 			margin-top: var(--spacer-16);
 		}
 
-
-
 		>div {
 			grid-column: -1 / 1;
 

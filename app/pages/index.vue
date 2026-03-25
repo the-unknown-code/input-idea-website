@@ -5,6 +5,7 @@
 			<layout-services />
 			<layout-stories />
 			<layout-logo-marquee />
+			<layout-blog-box />
 		</div>
 	</main>
 </template>
