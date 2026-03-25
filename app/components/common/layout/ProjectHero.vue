@@ -80,5 +80,8 @@
     }
   }
 
+  .description {
+    max-width: 1280px;
+  }
 }
 </style>

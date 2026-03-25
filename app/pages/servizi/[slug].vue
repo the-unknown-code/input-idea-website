@@ -1,10 +1,11 @@
 <template>
-    <main class="page-project">
+    <main class="page-service">
         <div class="layout-block">
-            <layout-project-hero />
-            <layout-project-grid-block />
+            <layout-text-hero />
+            <layout-three-columns />
             <layout-text-list />
-            <layout-media-carousel />
+            <layout-large-text />
+            <layout-media-marquee />
         </div>
     </main>
 </template>
@@ -14,7 +15,7 @@
 </script>
 
 <style lang="scss" scoped>
-.page-project {
+.page-service {
     position: relative;
     padding-top: var(--header-height);
 
