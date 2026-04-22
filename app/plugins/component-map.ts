@@ -21,6 +21,7 @@ import Form from '~/components/common/layout/Form.vue'
 import ThreeColumns from '~/components/common/layout/ThreeColumns.vue'
 import LargeText from '~/components/common/layout/LargeText.vue'
 import MediaMarquee from '~/components/common/layout/MediaMarquee.vue'
+import CaseHistory from '~/components/common/layout/CaseHistory.vue'
 
 export default defineNuxtPlugin(nuxtApp => {
     nuxtApp.vueApp.component('a-link', ALink)
@@ -46,6 +47,7 @@ export default defineNuxtPlugin(nuxtApp => {
     nuxtApp.vueApp.component('layout-three-columns', ThreeColumns)
     nuxtApp.vueApp.component('layout-large-text', LargeText)
     nuxtApp.vueApp.component('layout-media-marquee', MediaMarquee)
+    nuxtApp.vueApp.component('layout-case-history', CaseHistory)
 
 })
 
