@@ -13,6 +13,9 @@ import TextList from '~/components/common/layout/TextList.vue'
 import MediaCarousel from '~/components/common/layout/MediaCarousel.vue'
 import LinkList from '~/components/common/layout/LinkList.vue'
 import TextHero from '~/components/common/layout/TextHero.vue'
+import ClaimHero from '~/components/common/layout/ClaimHero.vue'
+import FocusText from '~/components/common/layout/FocusText.vue'
+import FocusItem from '~/components/common/layout/FocusItem.vue'
 import ThreeColumns from '~/components/common/layout/ThreeColumns.vue'
 import LargeText from '~/components/common/layout/LargeText.vue'
 import MediaMarquee from '~/components/common/layout/MediaMarquee.vue'
@@ -33,6 +36,9 @@ export default defineNuxtPlugin(nuxtApp => {
     nuxtApp.vueApp.component('layout-media-carousel', MediaCarousel)
     nuxtApp.vueApp.component('layout-link-list', LinkList)
     nuxtApp.vueApp.component('layout-text-hero', TextHero)
+    nuxtApp.vueApp.component('layout-claim-hero', ClaimHero)
+    nuxtApp.vueApp.component('layout-focus-text', FocusText)
+    nuxtApp.vueApp.component('layout-focus-item', FocusItem)
     nuxtApp.vueApp.component('layout-three-columns', ThreeColumns)
     nuxtApp.vueApp.component('layout-large-text', LargeText)
     nuxtApp.vueApp.component('layout-media-marquee', MediaMarquee)

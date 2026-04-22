@@ -129,11 +129,11 @@ export const app: AppConfig = {
 	},
 	fonts: {
 		defaults: {
-			weights: [300, 400, 500, 600, 700, 800, 900],
+			weights: [],
 		},
 		families: [
 			{
-				name: 'Zalando Sans',
+				name: 'Zalando+Sans',
 				provider: 'google',
 			}
 		],
