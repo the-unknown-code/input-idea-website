@@ -38,21 +38,6 @@ defineProps({
   }
 })
 
-const DATA = [
-  {
-    title: 'Sight',
-    description: 'Partiamo da te, e da chi altro se no? Analizziamo ogni dettaglio per conoscere il mercato e i tuoi prodotti.'
-  },
-  {
-    title: 'in <b>Depth</b>',
-    description: 'Partiamo da te, e da chi altro se no? Analizziamo ogni dettaglio per conoscere il mercato e i tuoi prodotti.'
-  },
-  {
-    title: 'Action',
-    description: 'Partiamo da te, e da chi altro se no? Analizziamo ogni dettaglio per conoscere il mercato e i tuoi prodotti.'
-  }
-]
-
 const { isDesktop } = useBreakpoints()
 const $items = ref<HTMLElement[]>([])
 

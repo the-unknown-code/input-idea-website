@@ -1112,3 +1112,187 @@ export const DATA_FOCUS_LIST = {
     "component": "FocusList",
     "_editable": "<!--#storyblok#{\"name\": \"FocusList\", \"space\": \"292182415226830\", \"uid\": \"bb0045e9-3ba7-41e4-aaea-5b7066711c15\", \"id\": \"171319529563983\"}-->"
 }
+
+export const DATA_CONTENT_HEADER = {
+    "_uid": "e5f935bd-fd0e-47aa-b646-a4b85259621e",
+    "image": [
+        {
+            "_uid": "9475d162-26a1-4270-bfca-2c07e14342f4",
+            "image": {
+                "id": 171336444612628,
+                "alt": "",
+                "name": "",
+                "focus": "",
+                "title": "",
+                "source": "",
+                "filename": "https://a.storyblok.com/f/292182415226830/800x800/3ce83f77e3/placeholder-03.jpg",
+                "copyright": "",
+                "fieldtype": "asset",
+                "meta_data": {},
+                "is_external_url": false
+            },
+            "component": "SimpleImage",
+            "_editable": "<!--#storyblok#{\"name\": \"SimpleImage\", \"space\": \"292182415226830\", \"uid\": \"9475d162-26a1-4270-bfca-2c07e14342f4\", \"id\": \"171319529563983\"}-->"
+        }
+    ],
+    "title": "L’azienda che ha sollevato la sua immagine di brand in tutto il mondo",
+    "eyebrow": "telescopic handlers",
+    "component": "ContentHeader",
+    "description": [
+        {
+            "_uid": "3ce50b86-3a36-4d43-9330-84cb75569a86",
+            "text": {
+                "type": "doc",
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "attrs": {
+                            "textAlign": null
+                        },
+                        "content": [
+                            {
+                                "text": "Magni Telescopic Handlers ",
+                                "type": "text",
+                                "marks": [
+                                    {
+                                        "type": "bold"
+                                    }
+                                ]
+                            },
+                            {
+                                "text": "è una delle più importanti aziende produttrici nel mercato del sollevamento, con un’offerta di macchinari incentrata principalmente su performance e qualità. Fondata nel 2013, ha la sua sede principale a Castelfranco Emilia, nel cuore della Motor Valley, ed ",
+                                "type": "text"
+                            },
+                            {
+                                "text": "è presente in tutto il mondo con 8 filiali",
+                                "type": "text",
+                                "marks": [
+                                    {
+                                        "type": "bold"
+                                    }
+                                ]
+                            },
+                            {
+                                "text": ". In Magni innovazione, design e sicurezza contraddistinguono l’ampia gamma di macchine, con sollevatori telescopici fissi e rotativi, piattaforme aeree e una vasta scelta di accessori.",
+                                "type": "text"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "component": "AdvancedText",
+            "_editable": "<!--#storyblok#{\"name\": \"AdvancedText\", \"space\": \"292182415226830\", \"uid\": \"3ce50b86-3a36-4d43-9330-84cb75569a86\", \"id\": \"171319529563983\"}-->"
+        }
+    ],
+    "_editable": "<!--#storyblok#{\"name\": \"ContentHeader\", \"space\": \"292182415226830\", \"uid\": \"e5f935bd-fd0e-47aa-b646-a4b85259621e\", \"id\": \"171319529563983\"}-->"
+}
+
+
+export const DATA_CONTENT_BLOCK = {
+    "_uid": "f4ff2dbf-03fd-4082-98cb-f80c9948ceae",
+    "logo": [
+        {
+            "_uid": "d936060e-6bb4-4b71-9cfe-49346e9cb208",
+            "image": {
+                "id": 171341749264481,
+                "alt": "",
+                "name": "",
+                "focus": "",
+                "title": "",
+                "source": "",
+                "filename": "https://a.storyblok.com/f/292182415226830/130x41/18ae451a47/magni.svg",
+                "copyright": "",
+                "fieldtype": "asset",
+                "meta_data": {},
+                "is_external_url": false
+            },
+            "component": "SimpleImage",
+            "_editable": "<!--#storyblok#{\"name\": \"SimpleImage\", \"space\": \"292182415226830\", \"uid\": \"d936060e-6bb4-4b71-9cfe-49346e9cb208\", \"id\": \"171319529563983\"}-->"
+        }
+    ],
+    "image": [
+        {
+            "_uid": "b8115129-d9fc-46fe-9b53-0a161262f4a0",
+            "image": {
+                "id": 171336444608531,
+                "alt": "",
+                "name": "",
+                "focus": "",
+                "title": "",
+                "source": "",
+                "filename": "https://a.storyblok.com/f/292182415226830/805x805/0dcd11f985/placeholder-01.jpg",
+                "copyright": "",
+                "fieldtype": "asset",
+                "meta_data": {},
+                "is_external_url": false
+            },
+            "component": "SimpleImage",
+            "_editable": "<!--#storyblok#{\"name\": \"SimpleImage\", \"space\": \"292182415226830\", \"uid\": \"b8115129-d9fc-46fe-9b53-0a161262f4a0\", \"id\": \"171319529563983\"}-->"
+        }
+    ],
+    "title": "Magni Telescopic Handlers",
+    "component": "ContentBlock",
+    "_editable": "<!--#storyblok#{\"name\": \"ContentBlock\", \"space\": \"292182415226830\", \"uid\": \"f4ff2dbf-03fd-4082-98cb-f80c9948ceae\", \"id\": \"171319529563983\"}-->"
+}
+
+export const DATA_CAROUSEL = {
+    "_uid": "b546ec06-6f57-462d-950f-4a91386e2308",
+    "list": [
+        {
+            "_uid": "f73bfd50-539f-49f3-bfa4-549ef4153b99",
+            "image": {
+                "id": 171336444645398,
+                "alt": "",
+                "name": "",
+                "focus": "",
+                "title": "",
+                "source": "",
+                "filename": "https://a.storyblok.com/f/292182415226830/815x815/47a24d4346/placeholder-04.jpg",
+                "copyright": "",
+                "fieldtype": "asset",
+                "meta_data": {},
+                "is_external_url": false
+            },
+            "component": "SimpleImage",
+            "_editable": "<!--#storyblok#{\"name\": \"SimpleImage\", \"space\": \"292182415226830\", \"uid\": \"f73bfd50-539f-49f3-bfa4-549ef4153b99\", \"id\": \"171319529563983\"}-->"
+        },
+        {
+            "_uid": "21e7e444-6db3-4292-a6d2-09537014226e",
+            "image": {
+                "id": 171336444645397,
+                "alt": "",
+                "name": "",
+                "focus": "",
+                "title": "",
+                "source": "",
+                "filename": "https://a.storyblok.com/f/292182415226830/820x820/9a54fac033/placeholder-05.jpg",
+                "copyright": "",
+                "fieldtype": "asset",
+                "meta_data": {},
+                "is_external_url": false
+            },
+            "component": "SimpleImage",
+            "_editable": "<!--#storyblok#{\"name\": \"SimpleImage\", \"space\": \"292182415226830\", \"uid\": \"21e7e444-6db3-4292-a6d2-09537014226e\", \"id\": \"171319529563983\"}-->"
+        },
+        {
+            "_uid": "2eafb450-e148-40e9-9a0c-3ff4550c6141",
+            "image": {
+                "id": 171336444608530,
+                "alt": "",
+                "name": "",
+                "focus": "",
+                "title": "",
+                "source": "",
+                "filename": "https://a.storyblok.com/f/292182415226830/810x810/642131847d/placeholder-02.jpg",
+                "copyright": "",
+                "fieldtype": "asset",
+                "meta_data": {},
+                "is_external_url": false
+            },
+            "component": "SimpleImage",
+            "_editable": "<!--#storyblok#{\"name\": \"SimpleImage\", \"space\": \"292182415226830\", \"uid\": \"2eafb450-e148-40e9-9a0c-3ff4550c6141\", \"id\": \"171319529563983\"}-->"
+        }
+    ],
+    "component": "Carousel",
+    "_editable": "<!--#storyblok#{\"name\": \"Carousel\", \"space\": \"292182415226830\", \"uid\": \"b546ec06-6f57-462d-950f-4a91386e2308\", \"id\": \"171319529563983\"}-->"
+}

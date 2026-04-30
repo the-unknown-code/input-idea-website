@@ -3,22 +3,35 @@
     <div class="layout-project-grid-block__inner layout-grid">
       <div class="content">
         <div>
-          <p class="p-big --yellow">Magni Telescopic Handlers</p>
+          <p class="p-big --yellow">{{ blok.title }}</p>
         </div>
         <div></div>
         <div>
-          <nuxt-img src="/images/magni.png" />
+          <nuxt-img :src="storyblokFormat(getMedia(blok.logo[0]).image.src, 960)" />
         </div>
       </div>
       <div class="content">
-        <common-media src="https://picsum.photos/800/800?random=4"
+        <common-media :src="storyblokFormat(getMedia(blok.image[0]).image.src, 640)"
           cover />
       </div>
     </div>
   </section>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { DATA_CONTENT_BLOCK } from '~/libs/data';
+import { getMedia, storyblokFormat } from '~/libs/storyblok';
+
+
+defineProps({
+  blok: {
+    type: Object,
+    required: false,
+    default: DATA_CONTENT_BLOCK
+  }
+})
+
+</script>
 
 <style lang="scss" scoped>
 .layout-project-grid-block {

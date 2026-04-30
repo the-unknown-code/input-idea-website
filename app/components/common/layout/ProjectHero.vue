@@ -1,26 +1,36 @@
-<script setup lang="ts"></script>
-
 <template>
   <section class="layout-project-hero">
     <div class="media">
-      <common-media src="https://picsum.photos/800/800?random=3"
+      <common-media :src="storyblokFormat(getMedia(blok.image[0]).image.src, 1280)"
         cover />
       <div class="content">
-        <h1 class="p-tiny">TELESCOPIC HANDLERS</h1>
-        <h2 class="p-big">L’azienda che ha sollevato la sua immagine di brand in tutto il mondo</h2>
+        <h1 class="p-tiny">{{ blok.eyebrow }}</h1>
+        <h2 class="p-big">{{ blok.title }}</h2>
       </div>
     </div>
     <div class="description">
-      <p class="--grey">Magni Telescopic Handlers è una delle più importanti aziende produttrici nel mercato del
-        sollevamento, con
-        un’offerta di macchinari incentrata principalmente su performance e qualità. Fondata nel 2013, ha la sua sede
-        principale a Castelfranco Emilia, nel cuore della Motor Valley, ed è presente in tutto il mondo con 8 filiali.
-        <b>In Magni innovazione, design e sicurezza contraddistinguono</b> l’ampia gamma di macchine, con sollevatori
-        telescopici fissi e rotativi, piattaforme aeree e una vasta scelta di accessori.
+      <p class="--grey">
+        <storyblok-richtext :content="blok.description[0].text"
+          cleanup />
       </p>
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import { DATA_CONTENT_HEADER } from '~/libs/data';
+import { getMedia, storyblokFormat } from '~/libs/storyblok';
+
+
+defineProps({
+  blok: {
+    type: Object,
+    required: false,
+    default: DATA_CONTENT_HEADER
+  }
+})
+</script>
+
 
 <style lang="scss" scoped>
 .layout-project-hero {

@@ -4,12 +4,12 @@
       <transition name="fade"
         mode="out-in">
         <common-media :key="activeIndex"
-          :src="images[activeIndex] ?? ''"
+          :src="storyblokFormat(getMedia(blok.list[activeIndex]).image.src, 1280) ?? ''"
           cover />
       </transition>
     </div>
     <div class="layout-media-carousel__controls">
-      <div v-for="index in images.length"
+      <div v-for="index in blok.list.length"
         :key="index"
         :class="['layout-media-carousel__control', '--darkgrey p-tiny', { active: index - 1 === activeIndex }]"
         @click="activeIndex = index - 1">
@@ -20,15 +20,20 @@
 </template>
 
 <script setup lang="ts">
+import { DATA_CAROUSEL } from '~/libs/data';
+import { getMedia, storyblokFormat } from '~/libs/storyblok';
+
+
+
+defineProps({
+  blok: {
+    type: Object,
+    required: false,
+    default: DATA_CAROUSEL
+  }
+})
 
 const activeIndex = ref(0);
-const images = [
-  'https://picsum.photos/800/800?random=1',
-  'https://picsum.photos/800/800?random=2',
-  'https://picsum.photos/800/800?random=3',
-  'https://picsum.photos/800/800?random=4',
-  'https://picsum.photos/800/800?random=5',
-];
 
 </script>
 

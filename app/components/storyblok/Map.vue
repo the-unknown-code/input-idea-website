@@ -19,6 +19,9 @@ import LargeText from '../common/layout/LargeText.vue';
 import MediaMarquee from '../common/layout/MediaMarquee.vue';
 import FocusText from '../common/layout/FocusText.vue';
 import FocusItem from '../common/layout/FocusItem.vue';
+import ProjectHero from '../common/layout/ProjectHero.vue';
+import ProjectGridBlock from '../common/layout/ProjectGridBlock.vue';
+import MediaCarousel from '../common/layout/MediaCarousel.vue';
 
 const props = defineProps({
 	bloks: {
@@ -43,6 +46,8 @@ const getBlokAttributes = blok => {
 
 const COMPONENT_MAP = {
 	"ContentList": Services,
+	"ContentHeader": ProjectHero,
+	"ContentBlock": ProjectGridBlock,
 	"Stories": Stories,
 	"LogoMarquee": LogoMarquee,
 	"ArticlesBlock": BlogBox,
@@ -51,7 +56,9 @@ const COMPONENT_MAP = {
 	"LargeText": LargeText,
 	"MediaMarquee": MediaMarquee,
 	"FocusText": FocusText,
-	"FocusList": FocusItem
+	"FocusList": FocusItem,
+	"Carousel": MediaCarousel
+
 
 };
 
