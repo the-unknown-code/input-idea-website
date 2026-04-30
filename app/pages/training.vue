@@ -4,7 +4,8 @@
       <main :key="refreshKey"
         class="page-training">
         <div class="layout-block">
-          {{ story }}
+          <StoryblokMap :bloks="story.content.body"
+            :refresh-key="refreshKey" />
         </div>
       </main>
     </template>

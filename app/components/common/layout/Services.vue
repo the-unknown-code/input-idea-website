@@ -2,25 +2,26 @@
   <section class="layout-services">
     <div class="layout-services__inner layout-grid">
       <div>
-        <h3 v-text-reveal
-          class="h1">I nostri <b>Servizi</b></h3>
-        <p v-text-reveal
-          class="--grey"><b>Ogni azienda arriva da noi con un bagaglio unico: un’esigenza, un dato, un sogno nel
-            cassetto
-            o una sfida
-            critica. </b>Per noi, questo è l’input. Siamo l’agenzia di comunicazione di Reggio Emilia che lavora come un
-          sistema intelligente che ascolta, analizza e rielabora. In base a ciò che ci affidi, attiviamo le competenze
-          necessarie per restituirti l’output più efficace: quel risultato concreto — che sia un’identità visiva, una
-          strategia social o una campagna pubblicitaria — capace di parlare la lingua del tuo pubblico e generare
-          valore.</p>
+        <h3 v-if="blok.title"
+          v-text-reveal
+          class="h1">
+          <storyblok-richtext :content="blok.title[0].text"
+            cleanup />
+        </h3>
+        <p v-if="blok.description"
+          v-text-reveal
+          class="--grey">
+          <storyblok-richtext :content="blok.description[0].text"
+            cleanup />
+        </p>
       </div>
       <div>
         <ul>
-          <li v-for="service in SERVICES"
+          <li v-for="item in blok.list"
             ref="$items"
-            :key="service.title">
-            <a-link :href="service.link">
-              <p class="p-big"> {{ service.title }}</p>
+            :key="item.label">
+            <a-link :href="resolveLink(item.link)">
+              <p class="p-big"> {{ item.label }}</p>
               <ui-arrow />
             </a-link>
           </li>
@@ -32,35 +33,19 @@
 
 <script setup lang="ts">
 import gsap from 'gsap/all';
+import { resolveLink } from '~/libs/storyblok/utils';
 import { GSAPEase } from '~/libs/constants/gsap';
+import { DATA_CONTENT_LIST } from '~/libs/data';
 
-const SERVICES = [
-  {
-    title: 'Copywriting & SEO',
-    link: 'https://www.google.com'
-  },
-  {
-    title: 'Brand Identity',
-    link: 'https://www.google.com'
-  },
-  {
-    title: 'Marketing Automation',
-    link: 'https://www.google.com'
-  },
-  {
-    title: 'Customer Software',
-    link: 'https://www.google.com'
-  },
-  {
-    title: 'Website & E-commerce',
-    link: 'https://www.google.com'
-  },
-
-]
+defineProps({
+  blok: {
+    type: Object,
+    required: false,
+    default: DATA_CONTENT_LIST
+  }
+})
 
 const $items = ref<HTMLLIElement[]>([]);
-
-
 const initialize = () => {
   $items.value.forEach((item) => {
     gsap.to(item, {

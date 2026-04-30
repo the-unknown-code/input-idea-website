@@ -1,12 +1,11 @@
 <template>
 	<div>
-		<slot :story="story" :refresh-key="refreshKey" />
+		<slot :story="story"
+			:refresh-key="refreshKey" />
 
 		<client-only>
-			<storyblok-bridge
-				:story-id="story?.id"
-				@story-updated="handleStoryUpdate"
-			/>
+			<storyblok-bridge :story-id="story?.id"
+				@story-updated="handleStoryUpdate" />
 		</client-only>
 	</div>
 </template>
@@ -21,6 +20,7 @@ const props = defineProps<{
 }>();
 
 const { story, refreshKey } = await useAsyncStory(props.url, props.apiOptions);
+console.log(story.value)
 
 const handleStoryUpdate = ({
 	story: updatedStory,

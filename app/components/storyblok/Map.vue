@@ -1,17 +1,15 @@
 <template>
-	<component
-		:is="mapComponents(blok.component)"
+	<component :is="mapComponents(blok.component)"
 		v-for="(blok, index) in bloks"
 		:key="`${refreshKey}-${blok._uid}`"
 		v-bind="{ ...childProps, ...getBlokAttributes(blok) }"
 		:blok="blok"
-		:index="index"
-	/>
+		:index="index" />
 </template>
 
 <script setup>
 import { storyblokEditable } from '@storyblok/js';
-import BlogAllArticles from '~/components/blog/AllArticles.vue';
+import Services from '../common/layout/Services.vue';
 
 const props = defineProps({
 	bloks: {
@@ -35,7 +33,7 @@ const getBlokAttributes = blok => {
 };
 
 const COMPONENT_MAP = {
-	all_articles: BlogAllArticles,
+	"ContentList": Services
 };
 
 const mapComponents = componentName => {
