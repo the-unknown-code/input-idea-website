@@ -1,9 +1,9 @@
 <template>
   <section class="layout-media-marquee">
     <common-marquee>
-      <span v-for="logo in LOGOS"
-        :key="logo.name">
-        <common-media :src="logo.src"
+      <span v-for="item in blok.list"
+        :key="item._uid">
+        <common-media :src="storyblokFormat(getMedia(item).image.src, 420)"
           cover />
       </span>
     </common-marquee>
@@ -11,32 +11,19 @@
 </template>
 
 <script setup lang="ts">
-const LOGOS = [
-  {
-    name: 'Cellular Line',
-    src: 'https://picsum.photos/320/200?random=1',
-  },
-  {
-    name: 'DAlessandro',
-    src: 'https://picsum.photos/320/200?random=2',
-  },
-  {
-    name: 'Delivery Plus',
-    src: 'https://picsum.photos/320/200?random=3',
-  },
-  {
-    name: 'La contabile',
-    src: 'https://picsum.photos/320/200?random=4',
-  },
-  {
-    name: 'Magni',
-    src: 'https://picsum.photos/320/200?random=5',
-  },
-  {
-    name: 'Mazak',
-    src: 'https://picsum.photos/320/200?random=6',
-  },
-]
+import { DATA_MEDIA_MARQUEE } from '~/libs/data';
+import { getMedia, storyblokFormat } from '~/libs/storyblok';
+
+
+defineProps({
+  blok: {
+    type: Object,
+    required: false,
+    default: DATA_MEDIA_MARQUEE
+
+  }
+})
+
 </script>
 
 <style lang="scss" scoped>

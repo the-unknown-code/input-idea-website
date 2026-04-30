@@ -13,6 +13,12 @@ import Services from '../common/layout/Services.vue';
 import Stories from '../common/layout/Stories.vue';
 import LogoMarquee from '../common/layout/LogoMarquee.vue';
 import BlogBox from '../common/layout/BlogBox.vue';
+import ThreeColumns from '../common/layout/ThreeColumns.vue';
+import TextList from '../common/layout/TextList.vue';
+import LargeText from '../common/layout/LargeText.vue';
+import MediaMarquee from '../common/layout/MediaMarquee.vue';
+import FocusText from '../common/layout/FocusText.vue';
+import FocusItem from '../common/layout/FocusItem.vue';
 
 const props = defineProps({
 	bloks: {
@@ -39,7 +45,14 @@ const COMPONENT_MAP = {
 	"ContentList": Services,
 	"Stories": Stories,
 	"LogoMarquee": LogoMarquee,
-	"ArticlesBlock": BlogBox
+	"ArticlesBlock": BlogBox,
+	"ThreeColumns": ThreeColumns,
+	"PointList": TextList,
+	"LargeText": LargeText,
+	"MediaMarquee": MediaMarquee,
+	"FocusText": FocusText,
+	"FocusList": FocusItem
+
 };
 
 const mapComponents = componentName => {

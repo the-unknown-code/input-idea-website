@@ -4,21 +4,39 @@
       <div />
       <div>
         <div class="media">
-          <common-media src="https://picsum.photos/800/800?random=4"
+          <common-media :src="storyblokFormat(getMedia(blok.image[0]).image.src, 480)"
             cover />
         </div>
       </div>
       <div>
-        <h1 class="display">L'<b>output</b> più efficace</h1>
-        <p class="--grey-600"><b>Ogni cliente</b> è un input unico: un set di valori, obiettivi e sfide che richiede una
-          risposta specifica. Non replichiamo modelli pronti, ma progettiamo un output su misura per trasformare il tuo
-          potenziale in un risultato concreto.</p>
+        <h1 class="display">
+          <storyblok-richtext :content="blok.title[0].text"
+            cleanup />
+        </h1>
+        <p class="--grey-600">
+          <storyblok-richtext :content="blok.description[0].text"
+            cleanup />
+        </p>
       </div>
     </div>
   </section>
 </template>
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { DATA_FOCUS_TEXT } from '~/libs/data';
+import { getMedia, storyblokFormat } from '~/libs/storyblok';
+
+
+defineProps({
+  blok: {
+    type: Object,
+    required: false,
+    default: DATA_FOCUS_TEXT
+
+  }
+})
+
+</script>
 
 
 <style lang="scss" scoped>

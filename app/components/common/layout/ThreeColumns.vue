@@ -1,33 +1,28 @@
-<script setup lang="ts"></script>
-
 <template>
   <section class="layout-three-columns">
     <div class="layout-three-columns__inner layout-grid">
-      <div>
-        <div class="display --yellow">L'arena </div>
-        <p class="p-tiny --grey">In un ambiente altamente competitivo e in continua evoluzione come quello del marketing
-          digitale, avere una
-          visione chiara del proprio brand non è più un semplice valore aggiunto, ma il requisito fondamentale per
-          costruire una presenza digitale di successo anche sul lungo termine.</p>
-      </div>
-      <div>
-        <div class="display --yellow">Voce o Rumore?</div>
-        <p class="p-tiny --grey">Spesso infatti le aziende si concentrano esclusivamente sull’azione immediata, ma
-          l’azione senza visione è
-          solo rumore nella rete. Per noi l’output di una strategia corretta è proprio questo: una voce autorevole che
-          emerge dal coro, trasformando la confusione digitale in un messaggio nitido, potente e impossibile da
-          ignorare.</p>
-      </div>
-      <div>
-        <div class="display --yellow">Serve una Strategia</div>
-        <p class="p-tiny --grey">Una prospettiva ben definita agisce come un filtro intelligente: è la condizione che
-          orienta nella scelta
-          delle decisioni migliori da adottare per il proprio business e incoraggia a superare le sfide quotidiane,
-          trasformandole in opportunità di crescita concrete.</p>
+      <div v-for="item in blok.list"
+        :key="item._uid">
+        <div class="display --yellow">{{ item.title }}</div>
+        <p class="p-tiny --grey">{{ item.description }}</p>
       </div>
     </div>
   </section>
 </template>
+
+
+<script setup lang="ts">
+import { DATA_THREE_COLUMNS } from '~/libs/data';
+
+defineProps({
+  blok: {
+    type: Object,
+    required: false,
+    default: DATA_THREE_COLUMNS
+
+  }
+})
+</script>
 
 <style lang="scss" scoped>
 .layout-three-columns {

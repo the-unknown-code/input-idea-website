@@ -1,30 +1,42 @@
 <template>
   <section class="layout-focus-item">
-    <h1 class="display">L'<b>Algoritmo</b> inputidea</h1>
+    <h1 class="display">
+      <storyblok-richtext :content="blok.title[0].text"
+        cleanup />
+    </h1>
     <div class="list">
-      <div v-for="(item, index) in DATA"
+      <div v-for="(item, index) in blok.list"
         ref="$items"
         :key="index"
         class="layout-grid">
         <div>
-          <h2 class="display --yellow"
-            v-html="item.title" />
+          <h2 class="display --yellow">
+            {{ item.title }}
+          </h2>
         </div>
         <div>
           <p v-html="item.description" />
         </div>
         <div v-show="isDesktop">
-          <div class="display number --grey-600">0<b>{{ index + 1 }}</b></div>
+          <div class="display number --grey-600">0<b>{{ Number(index) + 1 }}</b></div>
         </div>
       </div>
-
-
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
 import { ScrollTrigger } from 'gsap/all'
+import { DATA_FOCUS_LIST } from '~/libs/data'
+
+defineProps({
+  blok: {
+    type: Object,
+    required: false,
+    default: DATA_FOCUS_LIST
+
+  }
+})
 
 const DATA = [
   {

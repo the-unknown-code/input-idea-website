@@ -1,19 +1,26 @@
-<script setup lang="ts"></script>
-
 <template>
   <section class="layout-large-text">
     <div v-text-reveal
       class="display">
-      <b>Analisi di mercato</b> e del contesto d’interesse Analisi target e individuazione delle <b>buyer personas</b>
-      Analisi della
-      <b>concorrenza</b> e delle strategie adottate <b>Analisi qualitativa</b> del sito Analisi dei <b>canali social</b>
-      attivati Misurazione
-      delle performance delle <b>campagne adv</b> passate <b>Valutazione</b> dei <b>budget</b> Identificazione dei
-      <b>canali</b> di <b>comunicazione</b> da
-      attivare
+      <storyblok-richtext :content="blok.text[0].text"
+        cleanup />
     </div>
   </section>
 </template>
+
+<script setup lang="ts">
+import { DATA_LARGE_TEXT } from '~/libs/data';
+
+
+defineProps({
+  blok: {
+    type: Object,
+    required: false,
+    default: DATA_LARGE_TEXT
+
+  }
+})
+</script>
 
 <style lang="scss" scoped>
 .layout-large-text {

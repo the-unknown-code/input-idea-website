@@ -4,32 +4,21 @@
       <div>
         <div v-text-reveal
           class="display">
-          <b>STARTING</b> POINT
+          <storyblok-richtext :content="blok.title[0].text"
+            cleanup />
         </div>
         <div v-text-reveal
           class="p --grey">
-          Magni TH si è affidato a Inputidea con l’obiettivo di sviluppare una brand identity forte e coerente, con
-          contenuti corporate diversificati per le pagine social (LinkedIn, Facebook e Instagram) della sede principale
-          e delle sue filiali internazionali. Oltre alla comunicazione multi-piattaforma, negli obiettivi di Magni
-          rientrava uno “svecchiamento” dello stile comunicativo, soprattutto nel modo di rappresentare azienda e
-          prodotti.
+          <storyblok-richtext :content="blok.description[0].text"
+            cleanup />
         </div>
       </div>
       <div ref="$content">
-        <div class="item">
-          <div class="display --yellow">0<b>1</b></div>
-          <p class="p-tiny --grey">Difficoltà nel garantire una presenza coerente e globale del brand Magni</p>
-        </div>
-        <div class="item">
-          <div class="display --yellow">0<b>2</b></div>
-          <p class="p-tiny --grey">Nunc leo est, blandit eu consectetur sit amet, maximus ut urna. Mauris nec turpis non
-            diam tristique aliquam non id nisl. Morbi at dui ullamcorper, sagittis risus at, feugiat nibh.</p>
-        </div>
-        <div class="item">
-          <div class="display --yellow">0<b>3</b></div>
-          <p class="p-tiny --grey">Praesent est ipsum, dapibus ac lorem vel, bibendum rutrum neque. Duis sagittis tellus
-            sagittis ultrices vehicula. Cras purus quam, sollicitudin ut tempor vitae, tincidunt a augue. Quisque non
-            elit vitae nisi lacinia venenatis. Praesent finibus mauris eros, nec tempor nisi blandit vitae. </p>
+        <div v-for="(item, index) in blok.list"
+          :key="item._uid"
+          class="item">
+          <div class="display --yellow">0<b>{{ Number(index) + 1 }}</b></div>
+          <p class="p-tiny --grey">{{ item.description }}</p>
         </div>
       </div>
     </div>
@@ -39,10 +28,18 @@
 
 <script setup lang="ts">
 import gsap from 'gsap/all';
+import { DATA_POINT_LIST } from '~/libs/data';
 
+defineProps({
+  blok: {
+    type: Object,
+    required: false,
+    default: DATA_POINT_LIST
+
+  }
+})
 
 const $content = ref<HTMLElement | null>(null);
-
 
 const initialize = () => {
   if ($content.value) {
