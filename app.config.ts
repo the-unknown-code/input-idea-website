@@ -96,7 +96,7 @@ const typography: any = {
 // Define grid system with columns, gap, and margin settings
 const grid: any = {
 	columns: [4, 12],
-	gap: [8, 8],
+	gap: [8, 16],
 	margin: [16, 48],
 };
 
