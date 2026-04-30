@@ -2,33 +2,40 @@
   <a-link :href="resolveLink('https://www.google.com')"
     class="ui-blog-card-item">
     <div class="media">
-      <common-media src="https://picsum.photos/800/800?random=1"
+      <common-media :src="storyblokFormat(getMedia(blok.image[0]).image.src, 640)"
         cover />
     </div>
     <div class="content">
 
-
       <div class="eyebrow">
-        <span class="p-tiny">Brand identity</span>
-        <span class="p-tiny read --yellow">5 Min.</span>
+        <span class="p-tiny">{{ blok.category }}</span>
+        <span class="p-tiny read --yellow">{{ blok.read_time }} Min.</span>
       </div>
       <div class="title --yellow">
         <p class="p">
-          <span>Il passaggio tra oggi e domani al TEDx ReggioEmilia 2023</span>&nbsp;
+          <span>{{ blok.image[0].title }}</span>&nbsp;
           <ui-arrow />
         </p>
       </div>
       <div class="description">
-        <p class="p-tiny --grey">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec eget est id diam
-          venenatis
-          faucibus. Fusce lobortis ligula purus, fringilla sollicitudin magna aliquet sed. </p>
+        <p class="p-tiny --grey">
+          {{ blok.image[0].description }}
+        </p>
       </div>
     </div>
   </a-link>
 </template>
 
 <script setup lang="ts">
-import { resolveLink } from '~/libs/storyblok/utils';
+import { getMedia, resolveLink, storyblokFormat } from '~/libs/storyblok/utils';
+
+defineProps({
+  blok: {
+    type: Object,
+    required: true,
+  }
+})
+
 </script>
 
 

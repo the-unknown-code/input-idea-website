@@ -125,9 +125,6 @@ import { DATA_STORIES } from '~/libs/data';
 import { getMedia, storyblokFormat } from '~/libs/storyblok';
 import { resolveLink } from '~/libs/storyblok/utils';
 
-
-
-
 const props = defineProps({
   blok: {
     type: Object,

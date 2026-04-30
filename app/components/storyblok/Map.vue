@@ -11,6 +11,8 @@
 import { storyblokEditable } from '@storyblok/js';
 import Services from '../common/layout/Services.vue';
 import Stories from '../common/layout/Stories.vue';
+import LogoMarquee from '../common/layout/LogoMarquee.vue';
+import BlogBox from '../common/layout/BlogBox.vue';
 
 const props = defineProps({
 	bloks: {
@@ -35,7 +37,9 @@ const getBlokAttributes = blok => {
 
 const COMPONENT_MAP = {
 	"ContentList": Services,
-	"Stories": Stories
+	"Stories": Stories,
+	"LogoMarquee": LogoMarquee,
+	"ArticlesBlock": BlogBox
 };
 
 const mapComponents = componentName => {

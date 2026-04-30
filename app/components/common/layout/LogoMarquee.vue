@@ -1,42 +1,28 @@
 <template>
   <section class="layout-logo-marquee">
     <common-marquee>
-      <span v-for="logo in LOGOS"
-        :key="logo.name">
-        <img :src="logo.src"
-          :alt="logo.name" />
+      <span v-for="item in blok.list"
+        :key="item._uid">
+        <img :src="getMedia(item).image.src"
+          :alt="getMedia(item).image.alt" />
       </span>
     </common-marquee>
   </section>
 </template>
 
 <script setup lang="ts">
-const LOGOS = [
-  {
-    name: 'Cellular Line',
-    src: '/svgs/cellular-line.svg',
-  },
-  {
-    name: 'DAlessandro',
-    src: '/svgs/dalessandro.svg',
-  },
-  {
-    name: 'Delivery Plus',
-    src: '/svgs/delivery-plus.svg',
-  },
-  {
-    name: 'La contabile',
-    src: '/svgs/la-contabile.svg',
-  },
-  {
-    name: 'Magni',
-    src: '/svgs/magni.svg',
-  },
-  {
-    name: 'Mazak',
-    src: '/svgs/mazak.svg',
-  },
-]
+import { DATA_LOGO_MARQUEE } from '~/libs/data';
+import { getMedia } from '~/libs/storyblok';
+
+
+defineProps({
+  blok: {
+    type: Object,
+    required: false,
+    default: DATA_LOGO_MARQUEE
+  }
+})
+
 </script>
 
 <style lang="scss" scoped>

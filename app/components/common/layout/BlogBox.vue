@@ -3,36 +3,48 @@
     <div class="layout-blog-box__inner layout-grid">
       <div class="content">
         <div class="title display">
-          <b>Black box:</b><br />
-          Input blog
+          <storyblok-richtext :content="blok.title[0].text"
+            cleanup />
         </div>
         <div class="p --grey">
-          Il blog di Input Idea è un <b>laboratorio di pensiero aperto</b>. Abbiamo creato Black Box per dare forma ai
-          nostri
-          processi di analisi: qui raccogliamo gli input più interessanti della comunicazione contemporanea e li
-          processiamo attraverso l’esperienza della nostra agenzia di comunicazione a Reggio Emilia. Il risultato è un
-          flusso costante di contenuti pensati per chi non si accontenta della superficie, ma cerca l’essenza della
-          strategia.
+          <storyblok-richtext :content="blok.description[0].text"
+            cleanup />
         </div>
-        <a-link href="#">
+        <a-link :href="resolveLink(blok.global_link[0].link)">
           <div class="p cta">
-            <span>Scopri tutti gli articoli</span>
+            <span>
+              {{ blok.global_link[0].label }}
+            </span>
             <ui-arrow />
           </div>
         </a-link>
       </div>
       <div>
-        <ui-blog-card-item />
+        <ui-blog-card-item :blok="blok.articles[0]" />
       </div>
       <div>
-        <ui-blog-card-item />
+        <ui-blog-card-item :blok="blok.articles[1]" />
       </div>
     </div>
   </section>
 </template>
 
 
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { DATA_ARTICLE_BLOCK } from '~/libs/data';
+import { resolveLink } from '~/libs/storyblok/utils';
+
+
+defineProps({
+  blok: {
+    type: Object,
+    required: false,
+    default: DATA_ARTICLE_BLOCK
+  }
+})
+
+
+</script>
 
 <style lang="scss" scoped>
 .layout-blog-box {
