@@ -1,9 +1,14 @@
 <template>
-  <main class="page-training">
-    <div class="layout-block">
-
-    </div>
-  </main>
+  <storyblok-wrapper url="training">
+    <template #default="{ story, refreshKey }">
+      <main :key="refreshKey"
+        class="page-training">
+        <div class="layout-block">
+          {{ story }}
+        </div>
+      </main>
+    </template>
+  </storyblok-wrapper>
 </template>
 
 <script setup lang="ts">
