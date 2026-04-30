@@ -10,6 +10,7 @@
 <script setup>
 import { storyblokEditable } from '@storyblok/js';
 import Services from '../common/layout/Services.vue';
+import Stories from '../common/layout/Stories.vue';
 
 const props = defineProps({
 	bloks: {
@@ -33,7 +34,8 @@ const getBlokAttributes = blok => {
 };
 
 const COMPONENT_MAP = {
-	"ContentList": Services
+	"ContentList": Services,
+	"Stories": Stories
 };
 
 const mapComponents = componentName => {

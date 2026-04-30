@@ -1,5 +1,5 @@
 export { useAsyncStory, useAsyncStoryState, useGetAllStories } from './stories';
-export { useUnwrapBlok, useStoryblokHead } from './utils';
+export { useUnwrapBlok, useStoryblokHead, getMedia, storyblokFormat } from './utils';
 export {
     renderStoryblokRichtext,
     useStoryblokRichtext,

@@ -1,66 +1,116 @@
 <template>
   <section ref="$stories"
     class="layout-stories layout-grid">
-    <a-link href="#"
+    <a-link :href="resolveLink(storiesList[0].link)"
       role="article"
+      -
       class="item item--big-left">
-      <common-media src="https://picsum.photos/800/800?random=1"
+      <common-media :src="storyblokFormat(getMedia(storiesList[0]).image.src, 640)"
         cover />
       <div class="content">
-        <p class="--yellow"><b>Lorem ipsum dolor amet</b></p>
-        <p class="p-small">Dalla comunicazione social istituzionale a quella personalizzata per punto vendita</p>
+        <p class="--yellow">
+          <b>
+            {{ storiesList[0].title }}
+          </b>
+        </p>
+        <p class="p-small">
+          {{ storiesList[0].description }}
+        </p>
       </div>
       <ui-arrow />
     </a-link>
-    <a-link href="#"
+    <a-link href="/portoflio"
       role="article"
       class="item item--title">
       <h3 class="display">
-        <span v-text-reveal>Tutte le nostre <b>storie</b></span>
+        <span v-text-reveal>
+          <storyblok-richtext :content="blok.title[0].text"
+            cleanup />
+        </span>
       </h3>
       <ui-arrow />
     </a-link>
-    <a-link href="#"
+    <a-link :href="resolveLink(storiesList[1].link)"
       role="article"
       class="item item--top-right">
-      <common-media src="https://picsum.photos/800/800?random=2"
+      <common-media :src="storyblokFormat(getMedia(storiesList[1]).image.src, 640)"
         cover />
       <div class="content">
-        <p class="--yellow"><b>Lorem ipsum dolor amet</b></p>
-        <p class="p-small">Dalla comunicazione social istituzionale a quella personalizzata per punto vendita</p>
+        <p class="--yellow">
+          <b>
+            <p class="--yellow">
+              <b>
+                {{ storiesList[1].title }}
+              </b>
+            </p>
+          </b>
+        </p>
+        <p class="p-small">
+          {{ storiesList[1].description }}
+        </p>
       </div>
       <ui-arrow />
     </a-link>
-    <a-link href="#"
+    <a-link :href="resolveLink(storiesList[2].link)"
       role="article"
       class="item item--bottom-left">
-      <common-media src="https://picsum.photos/800/800?random=3"
+      <common-media :src="storyblokFormat(getMedia(storiesList[2]).image.src, 640)"
         cover />
       <div class="content">
-        <p class="--yellow"><b>Lorem ipsum dolor amet</b></p>
-        <p class="p-small">Dalla comunicazione social istituzionale a quella personalizzata per punto vendita</p>
+        <p class="--yellow">
+          <b>
+            <p class="--yellow">
+              <b>
+                {{ storiesList[2].title }}
+              </b>
+            </p>
+          </b>
+        </p>
+        <p class="p-small">
+          {{ storiesList[2].description }}
+        </p>
       </div>
       <ui-arrow />
     </a-link>
-    <a-link href="#"
+    <a-link :href="resolveLink(storiesList[3].link)"
       role="article"
       class="item item--bottom-center">
-      <common-media src="https://picsum.photos/800/800?random=4"
+      <common-media :src="storyblokFormat(getMedia(storiesList[3]).image.src, 640)"
         cover />
       <div class="content">
-        <p class="--yellow"><b>Lorem ipsum dolor amet</b></p>
-        <p class="p-small">Dalla comunicazione social istituzionale a quella personalizzata per punto vendita</p>
+        <p class="--yellow">
+          <b>
+            <p class="--yellow">
+              <b>
+                {{ storiesList[3].title }}
+              </b>
+            </p>
+          </b>
+        </p>
+        <p class="p-small">
+          {{ storiesList[3].description }}
+        </p>
       </div>
       <ui-arrow />
     </a-link>
-    <a-link href="#"
+    <a-link :href="resolveLink(storiesList[4].link)"
       role="article"
       class="item item--bottom-right">
-      <common-media src="https://picsum.photos/800/800?random=5"
+      <common-media :src="storyblokFormat(getMedia(storiesList[4]).image.src, 640)"
         cover />
       <div class="content">
-        <p class="--yellow"><b>Lorem ipsum dolor amet</b></p>
-        <p class="p-small">Dalla comunicazione social istituzionale a quella personalizzata per punto vendita</p>
+        <p class="--yellow">
+          <b>
+            <p class="--yellow">
+              <b>
+                {{ storiesList[4].title }}
+              </b>
+            </p>
+          </b>
+        </p>
+        <p class="p-small">
+          {{ storiesList[4].description }}
+        </p>
       </div>
       <ui-arrow />
     </a-link>
@@ -71,9 +121,24 @@
 <script setup lang="ts">
 import gsap from 'gsap/all';
 import { GSAPEase } from '~/libs/constants/gsap';
+import { DATA_STORIES } from '~/libs/data';
+import { getMedia, storyblokFormat } from '~/libs/storyblok';
+import { resolveLink } from '~/libs/storyblok/utils';
 
+
+
+
+const props = defineProps({
+  blok: {
+    type: Object,
+    required: false,
+    default: DATA_STORIES
+  }
+})
 
 const $stories = ref<HTMLElement | null>(null);
+const storiesList = computed(() => props.blok.stories)
+
 
 const initialize = () => {
   const $items = $stories.value?.querySelectorAll('.a-div') ?? [];
