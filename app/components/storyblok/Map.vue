@@ -22,6 +22,7 @@ import FocusItem from '../common/layout/FocusItem.vue';
 import ProjectHero from '../common/layout/ProjectHero.vue';
 import ProjectGridBlock from '../common/layout/ProjectGridBlock.vue';
 import MediaCarousel from '../common/layout/MediaCarousel.vue';
+import LinkList from '../common/layout/LinkList.vue';
 
 const props = defineProps({
 	bloks: {
@@ -57,7 +58,8 @@ const COMPONENT_MAP = {
 	"MediaMarquee": MediaMarquee,
 	"FocusText": FocusText,
 	"FocusList": FocusItem,
-	"Carousel": MediaCarousel
+	"Carousel": MediaCarousel,
+	"LinkList": LinkList
 
 
 };

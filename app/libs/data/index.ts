@@ -1296,3 +1296,110 @@ export const DATA_CAROUSEL = {
     "component": "Carousel",
     "_editable": "<!--#storyblok#{\"name\": \"Carousel\", \"space\": \"292182415226830\", \"uid\": \"b546ec06-6f57-462d-950f-4a91386e2308\", \"id\": \"171319529563983\"}-->"
 }
+
+export const DATA_LINK_LIST = {
+    "_uid": "df96b080-53f8-43b2-b405-e74d5320926a",
+    "list": [
+        {
+            "_uid": "9fc15285-66d5-420d-8f7f-baa7fa93e119",
+            "link": {
+                "id": "bb839d15-567c-4e86-85b8-c43ff9cd42a9",
+                "url": "",
+                "linktype": "story",
+                "fieldtype": "multilink",
+                "cached_url": "home",
+                "story": {
+                    "name": "Home",
+                    "id": 171319016810318,
+                    "uuid": "bb839d15-567c-4e86-85b8-c43ff9cd42a9",
+                    "slug": "home",
+                    "url": "home",
+                    "full_slug": "home",
+                    "_stopResolving": true
+                }
+            },
+            "title": [
+                {
+                    "_uid": "7d8c5f56-e82d-476e-94fc-95d2702728d6",
+                    "text": {
+                        "type": "doc",
+                        "content": [
+                            {
+                                "type": "paragraph",
+                                "attrs": {
+                                    "textAlign": null
+                                },
+                                "content": [
+                                    {
+                                        "text": "Brand identity design ",
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "bold"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "text": "& positioning",
+                                        "type": "text"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "component": "AdvancedText",
+                    "_editable": "<!--#storyblok#{\"name\": \"AdvancedText\", \"space\": \"292182415226830\", \"uid\": \"7d8c5f56-e82d-476e-94fc-95d2702728d6\", \"id\": \"171319529563983\"}-->"
+                }
+            ],
+            "component": "AdvanceLinkItem",
+            "_editable": "<!--#storyblok#{\"name\": \"AdvanceLinkItem\", \"space\": \"292182415226830\", \"uid\": \"9fc15285-66d5-420d-8f7f-baa7fa93e119\", \"id\": \"171319529563983\"}-->"
+        },
+        {
+            "_uid": "63c97249-496a-4640-8b47-ebb47a0ac06f",
+            "link": {
+                "id": "",
+                "url": "https://www.google.com",
+                "linktype": "url",
+                "fieldtype": "multilink",
+                "cached_url": "https://www.google.com"
+            },
+            "title": [
+                {
+                    "_uid": "0dd65bbb-31c0-4974-a7bf-b5b55536b64d",
+                    "text": {
+                        "type": "doc",
+                        "content": [
+                            {
+                                "type": "paragraph",
+                                "attrs": {
+                                    "textAlign": null
+                                },
+                                "content": [
+                                    {
+                                        "text": "Socia Media",
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "bold"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "text": " Management",
+                                        "type": "text"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "component": "AdvancedText",
+                    "_editable": "<!--#storyblok#{\"name\": \"AdvancedText\", \"space\": \"292182415226830\", \"uid\": \"0dd65bbb-31c0-4974-a7bf-b5b55536b64d\", \"id\": \"171319529563983\"}-->"
+                }
+            ],
+            "component": "AdvanceLinkItem",
+            "_editable": "<!--#storyblok#{\"name\": \"AdvanceLinkItem\", \"space\": \"292182415226830\", \"uid\": \"63c97249-496a-4640-8b47-ebb47a0ac06f\", \"id\": \"171319529563983\"}-->"
+        }
+    ],
+    "component": "LinkList",
+    "_editable": "<!--#storyblok#{\"name\": \"LinkList\", \"space\": \"292182415226830\", \"uid\": \"df96b080-53f8-43b2-b405-e74d5320926a\", \"id\": \"171319529563983\"}-->"
+}

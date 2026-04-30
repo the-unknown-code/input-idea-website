@@ -1,32 +1,32 @@
 <template>
   <section class="layout-link-list">
-    <a-link :href="resolveLink('https://www.google.com')"
+    <a-link v-for="item in blok.list"
+      :key="item._uid"
+      :href="resolveLink(item.link)"
       class="item">
       <div class="display">
-        <b>Brand identity design</b> & positioning
+        <storyblok-richtext :content="item.title[0].text"
+          cleanup />
       </div>
       <ui-arrow />
     </a-link>
-    <a-link :href="resolveLink('https://www.google.com')"
-      class="item">
-      <div class="display">
-        <b>Social Media</b> Management
-      </div>
-      <ui-arrow />
-    </a-link>
-    <a-link :href="resolveLink('https://www.google.com')"
-      class="item">
-      <div class="display">
-        Brand <b>Awareness</b>
-      </div>
-      <ui-arrow />
-    </a-link>
+
   </section>
 </template>
 
 
 <script setup lang="ts">
+import { DATA_LINK_LIST } from '~/libs/data';
 import { resolveLink } from '~/libs/storyblok/utils';
+
+
+defineProps({
+  blok: {
+    type: Object,
+    required: false,
+    default: DATA_LINK_LIST
+  }
+})
 </script>
 
 <style lang="scss" scoped>
