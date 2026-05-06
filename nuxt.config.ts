@@ -183,11 +183,7 @@ export default defineNuxtConfig({
 
 	nitro: {
 		prerender: {
-			routes: [
-				'/',
-				'/portfolio',
-				'/perche-sceglierci'
-			]
+
 		},
 		compressPublicAssets: {
 			brotli: true,
