@@ -5,13 +5,12 @@
         <h3 v-if="blok.title"
           v-text-reveal
           class="h1">
-          <storyblok-richtext :content="blok.title[0].text"
-            cleanup />
+          <storyblok-richtext :content="blok.title[0].text" />
         </h3>
         <p v-if="blok.description"
           v-text-reveal
           class="--grey">
-
+          <storyblok-richtext :content="blok.description[0].text" />
         </p>
       </div>
       <div>

@@ -3,7 +3,6 @@
     class="layout-stories layout-grid">
     <a-link :href="resolveLink(storiesList[0].link)"
       role="article"
-      -
       class="item item--big-left">
       <common-media :src="storyblokFormat(getMedia(storiesList[0]).image.src, 640)"
         cover />
@@ -38,11 +37,7 @@
       <div class="content">
         <p class="--yellow">
           <b>
-            <p class="--yellow">
-              <b>
-                {{ storiesList[1].title }}
-              </b>
-            </p>
+            {{ storiesList[1].title }}
           </b>
         </p>
         <p class="p-small">
@@ -59,11 +54,7 @@
       <div class="content">
         <p class="--yellow">
           <b>
-            <p class="--yellow">
-              <b>
-                {{ storiesList[2].title }}
-              </b>
-            </p>
+            {{ storiesList[2].title }}
           </b>
         </p>
         <p class="p-small">
@@ -80,11 +71,7 @@
       <div class="content">
         <p class="--yellow">
           <b>
-            <p class="--yellow">
-              <b>
-                {{ storiesList[3].title }}
-              </b>
-            </p>
+            {{ storiesList[3].title }}
           </b>
         </p>
         <p class="p-small">
@@ -101,11 +88,7 @@
       <div class="content">
         <p class="--yellow">
           <b>
-            <p class="--yellow">
-              <b>
-                {{ storiesList[4].title }}
-              </b>
-            </p>
+            {{ storiesList[4].title }}
           </b>
         </p>
         <p class="p-small">
@@ -337,6 +320,10 @@ tryOnBeforeUnmount(() => {
   h3 {
     display: flex;
 
+  }
+
+  .p-small {
+    text-wrap: balance;
   }
 }
 </style>
