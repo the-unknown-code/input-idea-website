@@ -10,7 +10,8 @@
         <p v-if="blok.description"
           v-text-reveal
           class="--grey">
-          <storyblok-richtext :content="blok.description[0].text" />
+          <storyblok-richtext :content="blok.description[0].text"
+            :allowed-tags="['b', 'strong', 'br']" />
         </p>
       </div>
       <div>

@@ -92,12 +92,14 @@ defineProps({
         padding: 4px;
         border-radius: var(--spacer-4);
         border: 1px solid var(--yellow);
+        white-space: nowrap;
       }
     }
   }
 
   .title {
     margin-top: var(--spacer-8);
+    text-wrap: balance;
 
     @include desktop {
       padding-right: var(--spacer-32);
