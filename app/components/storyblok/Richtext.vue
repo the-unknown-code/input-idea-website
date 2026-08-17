@@ -4,16 +4,19 @@
 </template>
 
 <script setup lang="ts">
+
+import type { StoryblokRichTextInput } from '@storyblok/richtext';
 import { renderHTML } from '~/libs/storyblok/text';
 
 const props = withDefaults(
     defineProps<{
-        content: any,
+        content: StoryblokRichTextInput | null | undefined;
         allowedTags?: string[]
     }>(),
     {
-        allowedTags: () => ['b', 'strong']
-    }
+        allowedTags: () => ['b', 'strong', 'br']
+    },
+
 );
 
 const html = computed(() => {
