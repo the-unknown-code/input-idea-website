@@ -19,8 +19,6 @@ const props = withDefaults(
 
 );
 
-
-
 const html = computed(() => {
     return renderHTML(props.content, props.allowedTags)
 });

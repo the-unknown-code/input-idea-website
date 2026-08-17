@@ -49,6 +49,13 @@ defineProps({
   &:deep(.marquee) {
     width: 100%;
 
+    img {
+      position: relative;
+      object-fit: contain;
+      width: 100%;
+      max-width: 70%;
+    }
+
     .inner {
       display: flex;
       align-items: center;
@@ -65,7 +72,6 @@ defineProps({
     height: 72px;
     aspect-ratio: 16 / 6;
     margin: 0 8px;
-    border-radius: var(--spacer-16);
     overflow: hidden;
   }
 

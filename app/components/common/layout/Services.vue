@@ -5,14 +5,13 @@
         <h3 v-if="blok.title"
           v-text-reveal
           class="h1">
-          <storyblok-richtext :content="blok.title[0].text"
-            cleanup />
+          <storyblok-richtext :content="blok.title[0].text" />
         </h3>
         <p v-if="blok.description"
           v-text-reveal
           class="--grey">
           <storyblok-richtext :content="blok.description[0].text"
-            cleanup />
+            :allowed-tags="['b', 'strong', 'br']" />
         </p>
       </div>
       <div>
@@ -37,13 +36,15 @@ import { resolveLink } from '~/libs/storyblok/utils';
 import { GSAPEase } from '~/libs/constants/gsap';
 import { DATA_CONTENT_LIST } from '~/libs/data';
 
-defineProps({
+const { blok } = defineProps({
   blok: {
     type: Object,
     required: false,
     default: DATA_CONTENT_LIST
   }
 })
+
+
 
 const $items = ref<HTMLLIElement[]>([]);
 const initialize = () => {
