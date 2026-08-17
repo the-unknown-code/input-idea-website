@@ -1,29 +1,27 @@
 <template>
-    <span :class="richtextClass"
-        v-bind="$attrs"
+    <span v-bind="$attrs"
         v-html="html" />
 </template>
 
 <script setup lang="ts">
-import { renderStoryblokRichtext } from '~/libs/storyblok';
-import type { StoryblokRichtextDocument, StoryblokRichtextOptions } from '~/libs/storyblok';
-import { cleanupHtml } from '~/libs/storyblok/richtext';
+
+import type { StoryblokRichTextInput } from '@storyblok/richtext';
+import { renderHTML } from '~/libs/storyblok/text';
 
 const props = withDefaults(
     defineProps<{
-        content: StoryblokRichtextDocument | null | undefined;
-        richtextClass?: string;
-        options?: StoryblokRichtextOptions;
-        cleanup?: boolean;
+        content: StoryblokRichTextInput | null | undefined;
+        allowedTags?: string[]
     }>(),
-    { richtextClass: undefined, options: undefined },
+    {
+        allowedTags: () => ['b', 'strong', 'br']
+    },
 
 );
 
 
 
 const html = computed(() => {
-    const rendered = renderStoryblokRichtext(props.content, props.options);
-    return props.cleanup ? cleanupHtml(rendered) : rendered;
+    return renderHTML(props.content, props.allowedTags)
 });
 </script>
