@@ -7,7 +7,7 @@
 		"dev": "nuxt dev --dotenv .env.local",
 		"generate": "nuxt generate --dotenv .env.local",
 		"preview": "nuxt preview --dotenv .env.local",
-		"postinstall": "nuxt prepare"
+		"postinstall": "npm ls jsdom html-encoding-sniffer @exodus/bytes || true && nuxt prepare"
 	},
 	"dependencies": {
 		"@fuzzco/font-loader": "^1.0.2",
