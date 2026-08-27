@@ -1,6 +1,7 @@
 <script setup lang="ts"></script>
 
 <template>
+
   <section class="layout-text-hero">
     <div class="media">
       <common-media src="https://picsum.photos/420/420?random=3"
@@ -9,6 +10,7 @@
     <h1 class="display header"><b>Marketing</b> Consulting</h1>
     <h2 class="p --yellow">Analisi, consulenza e strategia di digital marketing</h2>
   </section>
+
 </template>
 
 <style lang="scss" scoped>

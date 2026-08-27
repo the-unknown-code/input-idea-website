@@ -1235,6 +1235,358 @@ export const DATA_CONTENT_BLOCK = {
     "_editable": "<!--#storyblok#{\"name\": \"ContentBlock\", \"space\": \"292182415226830\", \"uid\": \"f4ff2dbf-03fd-4082-98cb-f80c9948ceae\", \"id\": \"171319529563983\"}-->"
 }
 
+export const STORY_HIGHLIGHT = {
+    "_uid": "1606979e-673f-48fc-bc71-343615705d0a",
+    "list": [
+        {
+            "cta": [
+                {
+                    "_uid": "40e356f8-42c3-4a7c-8371-7785d7ba1853",
+                    "link": {
+                        "id": "",
+                        "url": "https://www.google.com",
+                        "linktype": "url",
+                        "fieldtype": "multilink",
+                        "cached_url": "https://www.google.com"
+                    },
+                    "label": "Open",
+                    "component": "AdvancedLink",
+                    "_editable": "<!--#storyblok#{\"name\": \"AdvancedLink\", \"space\": \"292182415226830\", \"uid\": \"40e356f8-42c3-4a7c-8371-7785d7ba1853\", \"id\": \"213509135924444\"}-->"
+                }
+            ],
+            "_uid": "648adf5c-fbf2-457e-a125-3cfb6e74e5e6",
+            "title": "Autostile",
+            "component": "StoryHighlightItem",
+            "description": "Test",
+            "_editable": "<!--#storyblok#{\"name\": \"StoryHighlightItem\", \"space\": \"292182415226830\", \"uid\": \"648adf5c-fbf2-457e-a125-3cfb6e74e5e6\", \"id\": \"213509135924444\"}-->"
+        },
+        {
+            "cta": [
+                {
+                    "_uid": "0fa70e0c-9240-45b8-b34f-a155c20d08c6",
+                    "link": {
+                        "id": "",
+                        "url": "https://www.google.com",
+                        "linktype": "url",
+                        "fieldtype": "multilink",
+                        "cached_url": "https://www.google.com"
+                    },
+                    "label": "Progetto",
+                    "component": "AdvancedLink",
+                    "_editable": "<!--#storyblok#{\"name\": \"AdvancedLink\", \"space\": \"292182415226830\", \"uid\": \"0fa70e0c-9240-45b8-b34f-a155c20d08c6\", \"id\": \"213509135924444\"}-->"
+                },
+                {
+                    "_uid": "8ead4aa1-8233-4fc7-bc49-103ba8f72781",
+                    "link": {
+                        "id": "",
+                        "url": "",
+                        "linktype": "story",
+                        "fieldtype": "multilink",
+                        "cached_url": ""
+                    },
+                    "label": "Test",
+                    "component": "AdvancedLink",
+                    "_editable": "<!--#storyblok#{\"name\": \"AdvancedLink\", \"space\": \"292182415226830\", \"uid\": \"8ead4aa1-8233-4fc7-bc49-103ba8f72781\", \"id\": \"213509135924444\"}-->"
+                }
+            ],
+            "_uid": "fccba443-101e-4b0b-b6e2-238ee1d6cb77",
+            "title": "D’Alessandro Confetture",
+            "component": "StoryHighlightItem",
+            "description": "D’Alessandro Confetture",
+            "_editable": "<!--#storyblok#{\"name\": \"StoryHighlightItem\", \"space\": \"292182415226830\", \"uid\": \"fccba443-101e-4b0b-b6e2-238ee1d6cb77\", \"id\": \"213509135924444\"}-->"
+        },
+        {
+            "cta": [
+                {
+                    "_uid": "6f298736-c7e5-4524-a59f-a47decfcc5ba",
+                    "link": {
+                        "id": "",
+                        "url": "https://www.google.com",
+                        "linktype": "url",
+                        "fieldtype": "multilink",
+                        "cached_url": "https://www.google.com"
+                    },
+                    "label": "Scopri",
+                    "component": "AdvancedLink",
+                    "_editable": "<!--#storyblok#{\"name\": \"AdvancedLink\", \"space\": \"292182415226830\", \"uid\": \"6f298736-c7e5-4524-a59f-a47decfcc5ba\", \"id\": \"213509135924444\"}-->"
+                }
+            ],
+            "_uid": "b3239bdf-e069-4378-ba16-23f2a238bc2b",
+            "title": "Caffè Melioli",
+            "component": "StoryHighlightItem",
+            "description": "Caffè Melioli",
+            "_editable": "<!--#storyblok#{\"name\": \"StoryHighlightItem\", \"space\": \"292182415226830\", \"uid\": \"b3239bdf-e069-4378-ba16-23f2a238bc2b\", \"id\": \"213509135924444\"}-->"
+        },
+        {
+            "cta": [
+                {
+                    "_uid": "7f81efba-6393-40cb-8103-3c5054d69bda",
+                    "link": {
+                        "id": "",
+                        "url": "https://www.google.com",
+                        "linktype": "url",
+                        "fieldtype": "multilink",
+                        "cached_url": "https://www.google.com"
+                    },
+                    "label": "Scopri il progetto",
+                    "component": "AdvancedLink",
+                    "_editable": "<!--#storyblok#{\"name\": \"AdvancedLink\", \"space\": \"292182415226830\", \"uid\": \"7f81efba-6393-40cb-8103-3c5054d69bda\", \"id\": \"213509135924444\"}-->"
+                }
+            ],
+            "_uid": "3a5784cd-3fa6-4b49-8560-c927df019186",
+            "media": [
+                {
+                    "_uid": "4e24260b-ce64-4e4e-81b1-a6c3e4f80928",
+                    "link": {
+                        "id": "",
+                        "url": "",
+                        "linktype": "story",
+                        "fieldtype": "multilink",
+                        "cached_url": ""
+                    },
+                    "image": {
+                        "id": 209991402139261,
+                        "alt": "",
+                        "name": "",
+                        "focus": "",
+                        "title": "",
+                        "source": "",
+                        "filename": "https://a.storyblok.com/f/292182415226830/814x392/45185a7aa4/magni.png",
+                        "copyright": "",
+                        "fieldtype": "asset",
+                        "meta_data": {
+                            "size": "814x392"
+                        },
+                        "is_external_url": false
+                    },
+                    "title": "Magni",
+                    "component": "AdvancedImage",
+                    "description": "",
+                    "_editable": "<!--#storyblok#{\"name\": \"AdvancedImage\", \"space\": \"292182415226830\", \"uid\": \"4e24260b-ce64-4e4e-81b1-a6c3e4f80928\", \"id\": \"213509135924444\"}-->"
+                }
+            ],
+            "title": "Magni TH",
+            "component": "StoryHighlightItem",
+            "description": "Magni TH si è affidato a Inputidea con l’obiettivo di sviluppare una brand identity forte e coerente, con contenuti corporate diversificati per le pagine social.",
+            "_editable": "<!--#storyblok#{\"name\": \"StoryHighlightItem\", \"space\": \"292182415226830\", \"uid\": \"3a5784cd-3fa6-4b49-8560-c927df019186\", \"id\": \"213509135924444\"}-->"
+        }
+    ],
+    "title": [
+        {
+            "_uid": "da7e1a0e-3ee8-4444-90c6-d66727010727",
+            "text": {
+                "type": "doc",
+                "attrs": {
+                    "backgroundColor": null
+                },
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "attrs": {
+                            "textAlign": null
+                        },
+                        "content": [
+                            {
+                                "text": "Storie",
+                                "type": "text",
+                                "marks": [
+                                    {
+                                        "type": "bold"
+                                    }
+                                ]
+                            },
+                            {
+                                "text": " di Successo",
+                                "type": "text"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "component": "AdvancedText",
+            "_editable": "<!--#storyblok#{\"name\": \"AdvancedText\", \"space\": \"292182415226830\", \"uid\": \"da7e1a0e-3ee8-4444-90c6-d66727010727\", \"id\": \"213509135924444\"}-->"
+        }
+    ],
+    "component": "StoryHighlight",
+    "_editable": "<!--#storyblok#{\"name\": \"StoryHighlight\", \"space\": \"292182415226830\", \"uid\": \"1606979e-673f-48fc-bc71-343615705d0a\", \"id\": \"213509135924444\"}-->"
+}
+
+export const TEXT_CAROUSEL =
+{
+    "_uid": "8510d6cd-0fa7-4cdf-bd7c-5a6205046412",
+    "list": [
+        {
+            "_uid": "25896bf5-3a4c-4b91-a8be-28cd5384b9ef",
+            "title": [
+                {
+                    "_uid": "53a06b75-40e3-46e5-8765-3599ef2c461e",
+                    "text": {
+                        "type": "doc",
+                        "attrs": {
+                            "backgroundColor": null
+                        },
+                        "content": [
+                            {
+                                "type": "paragraph",
+                                "attrs": {
+                                    "textAlign": null
+                                },
+                                "content": [
+                                    {
+                                        "text": "Da dove si ",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "text": "parte?",
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "bold"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "component": "AdvancedText",
+                    "_editable": "<!--#storyblok#{\"name\": \"AdvancedText\", \"space\": \"292182415226830\", \"uid\": \"53a06b75-40e3-46e5-8765-3599ef2c461e\", \"id\": \"213509135924444\"}-->"
+                }
+            ],
+            "eyebrow": "01",
+            "component": "CarouselTextItem",
+            "description": [
+                {
+                    "_uid": "58446bba-d3d0-468b-b033-74aaa11dbc09",
+                    "text": {
+                        "type": "doc",
+                        "attrs": {
+                            "backgroundColor": null
+                        },
+                        "content": [
+                            {
+                                "type": "paragraph",
+                                "attrs": {
+                                    "textAlign": null
+                                },
+                                "content": [
+                                    {
+                                        "text": "Dal punto zero, l’analisi. In un panorama digitale saturo, l’analisi di mercato è fondamentale per decodificare le forze che muovono il settore e identificare la “hidden demand” (domanda latente) prima dei competitor e per capire i desideri e le necessità del tuo target. ",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "type": "hard_break"
+                                    },
+                                    {
+                                        "type": "hard_break"
+                                    },
+                                    {
+                                        "text": "Approfondire questo scenario significa mappare il territorio operativo, individuando le forze che lo muovono e le opportunità che spesso rimangono nascoste. ",
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "bold"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "text": "Senza questa architettura di informazioni, ogni azione di marketing sarebbe priva di direzione: comprendere dove ci si trova è l’unico modo per determinare, con consapevolezza, dove si vuole arrivare.",
+                                        "type": "text"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "component": "AdvancedText",
+                    "_editable": "<!--#storyblok#{\"name\": \"AdvancedText\", \"space\": \"292182415226830\", \"uid\": \"58446bba-d3d0-468b-b033-74aaa11dbc09\", \"id\": \"213509135924444\"}-->"
+                }
+            ],
+            "_editable": "<!--#storyblok#{\"name\": \"CarouselTextItem\", \"space\": \"292182415226830\", \"uid\": \"25896bf5-3a4c-4b91-a8be-28cd5384b9ef\", \"id\": \"213509135924444\"}-->"
+        },
+        {
+            "_uid": "58ec26e5-2901-4901-8c44-57ad508f4d29",
+            "title": [
+                {
+                    "_uid": "34f6bffb-a07f-45b8-9c97-5634d251b035",
+                    "text": {
+                        "type": "doc",
+                        "attrs": {
+                            "backgroundColor": null
+                        },
+                        "content": [
+                            {
+                                "type": "paragraph",
+                                "attrs": {
+                                    "textAlign": null
+                                },
+                                "content": [
+                                    {
+                                        "text": "Approccio",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "text": " data-driven",
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "bold"
+                                            }
+                                        ]
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "component": "AdvancedText",
+                    "_editable": "<!--#storyblok#{\"name\": \"AdvancedText\", \"space\": \"292182415226830\", \"uid\": \"34f6bffb-a07f-45b8-9c97-5634d251b035\", \"id\": \"213509135924444\"}-->"
+                }
+            ],
+            "eyebrow": "02",
+            "component": "CarouselTextItem",
+            "description": [
+                {
+                    "_uid": "d0710375-3b1a-49b1-a50d-e34150e9201a",
+                    "text": {
+                        "type": "doc",
+                        "attrs": {
+                            "backgroundColor": null
+                        },
+                        "content": [
+                            {
+                                "type": "paragraph",
+                                "attrs": {
+                                    "textAlign": null
+                                },
+                                "content": [
+                                    {
+                                        "text": "In Input Idea siamo convinti che qualunque attività di marketing e comunicazione, debba poggiare su un approccio analitico rigoroso. ",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "type": "hard_break"
+                                    },
+                                    {
+                                        "type": "hard_break"
+                                    },
+                                    {
+                                        "text": "In un mercato che premia esclusivamente la sostanza, la creatività fine a se stessa rischia di restare un esercizio di stile isolato; al contrario, quando è sostenuta da una solida architettura dei dati, diventa un potente motore di crescita. È in questo scenario che la nostra consulenza di digital marketing si applica.",
+                                        "type": "text"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "component": "AdvancedText",
+                    "_editable": "<!--#storyblok#{\"name\": \"AdvancedText\", \"space\": \"292182415226830\", \"uid\": \"d0710375-3b1a-49b1-a50d-e34150e9201a\", \"id\": \"213509135924444\"}-->"
+                }
+            ],
+            "_editable": "<!--#storyblok#{\"name\": \"CarouselTextItem\", \"space\": \"292182415226830\", \"uid\": \"58ec26e5-2901-4901-8c44-57ad508f4d29\", \"id\": \"213509135924444\"}-->"
+        }
+    ],
+    "component": "CarouselText",
+    "_editable": "<!--#storyblok#{\"name\": \"CarouselText\", \"space\": \"292182415226830\", \"uid\": \"8510d6cd-0fa7-4cdf-bd7c-5a6205046412\", \"id\": \"213509135924444\"}-->"
+}
+
 export const DATA_CAROUSEL = {
     "_uid": "b546ec06-6f57-462d-950f-4a91386e2308",
     "list": [

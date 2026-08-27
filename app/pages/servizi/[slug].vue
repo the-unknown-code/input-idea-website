@@ -1,13 +1,23 @@
 <template>
-    <main class="page-service">
-        <div class="layout-block">
-            <layout-text-hero />
-            <layout-three-columns />
-            <layout-text-list />
-            <layout-large-text />
-            <layout-media-marquee />
-        </div>
-    </main>
+    <storyblok-wrapper :url="`servizi/${$route.params.slug}`">
+        <template #default="{ story, refreshKey }">
+            <main :key="refreshKey"
+                class="page-service">
+                <div class="layout-block">
+                    <layout-text-hero />
+                    <storyblok-map :bloks="story.content.body"
+                        :refresh-key="refreshKey" />
+                    <!--
+                    <layout-text-hero />
+                    <layout-three-columns />
+                    <layout-text-list />
+                    <layout-large-text />
+                    <layout-media-marquee />
+                    -->
+                </div>
+            </main>
+        </template>
+    </storyblok-wrapper>
 </template>
 
 <script setup lang="ts">

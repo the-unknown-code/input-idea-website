@@ -32,7 +32,7 @@
           <span class="h1">with one</span>
         </div>
         <div class="media empty">
-          <div></div>
+          <span class="p --yellow">Costruiamo l'infrastruttura digitale che guida il tuo successo</span>
         </div>
       </div>
       <div class="row row-2">
@@ -94,7 +94,7 @@ const { isDesktop } = useBreakpoints();
             left: 0;
             width: calc(90% / 8 * #{$i});
             height: 100%;
-            background: linear-gradient(180deg, var(--darkgrey) 0%, var(--theme-contrast) 100%);
+            background: linear-gradient(180deg, var(--darkgrey) 0%, var(--grey-30) 100%);
           }
 
         }
@@ -176,6 +176,22 @@ const { isDesktop } = useBreakpoints();
       max-width: 360px;
       aspect-ratio: 4;
       margin-top: var(--spacer-16);
+    }
+
+    &.empty {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+
+      .p {
+        position: relative;
+        max-width: 400px;
+        white-space: initial;
+        text-wrap: balance;
+        padding: 0 32px;
+      }
     }
 
     &:not(.empty) {
