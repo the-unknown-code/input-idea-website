@@ -1,4 +1,5 @@
 <template>
+
   <section class="layout-case-history">
     <h1 class="display">
       <storyblok-richtext :content="blok.title[0].text"
@@ -11,28 +12,32 @@
         type="button"
         @click="selectedTag = null">Tutti</button>
       <button v-for="tag in availableTags"
-        :key="tag as any"
+        :key="tag"
         class="p-small"
         :class="{ active: selectedTag === tag }"
         type="button"
-        @click="selectedTag = tag as any">{{ tag }}</button>
+        @click="selectedTag = tag">{{ tag }}</button>
     </div>
     <div class="list">
-      <div v-for="item in filteredItems"
-        :key="item._uid"
+      <nuxt-link v-for="item in filteredItems"
+        :key="item.id"
+        :to="item.href"
+        :aria-label="`Apri il progetto ${item.title}`"
         class="layout-grid">
         <div>
-          <div class="media">
-            <common-media :src="storyblokFormat(item.media[0].image.filename, 420)"
+          <div v-if="item.media"
+            class="media">
+            <common-media :src="storyblokFormat(item.media, 420)"
               cover />
           </div>
         </div>
         <div>
           <p class="h2 --yellow">{{ item.title }}</p>
-          <p class="p-small --grey">
-            <storyblok-richtext :content="item.description[0].text"
+          <div v-if="item.description"
+            class="p-small --grey">
+            <storyblok-richtext :content="item.description"
               cleanup />
-          </p>
+          </div>
           <div class="tags">
             <p v-for="tag in item.tags"
               :key="tag"
@@ -42,14 +47,40 @@
         <div>
           <ui-arrow />
         </div>
-      </div>
+      </nuxt-link>
     </div>
   </section>
+
 </template>
 
 <script setup lang="ts">
 import { PORTFOLIO } from '~/libs/data';
 import { storyblokFormat } from '~/libs/storyblok';
+
+type ProjectContent = {
+  _uid?: string
+  title?: string
+  tags?: string[]
+  media?: Array<{ image?: { filename?: string } }>
+  description?: Array<{ text?: unknown }>
+}
+
+type ResolvedProject = ProjectContent & {
+  id?: number
+  uuid?: string
+  name?: string
+  full_slug?: string
+  content?: ProjectContent
+}
+
+type ProjectCard = {
+  id: string
+  href: string
+  title: string
+  tags: string[]
+  media: string
+  description?: unknown
+}
 
 
 const props = defineProps({
@@ -62,16 +93,32 @@ const props = defineProps({
 
 const selectedTag = ref<string | null>(null)
 
+const projects = computed<ProjectCard[]>(() => {
+  const list = (props.blok?.list ?? []) as ResolvedProject[]
+
+  return list.map((project) => {
+    const content = project.content ?? project
+
+    return {
+      id: project.uuid ?? content._uid ?? String(project.id),
+      href: project.full_slug ? `/${project.full_slug}` : '#',
+      title: content.title ?? project.name ?? '',
+      tags: content.tags ?? [],
+      media: content.media?.[0]?.image?.filename ?? '',
+      description: content.description?.[0]?.text,
+    }
+  })
+})
+
 const availableTags = computed(() => {
-  const tags = props.blok?.list?.flatMap((item: { tags?: string[] }) => item.tags ?? []) ?? []
-  return [...new Set(tags)].sort((first, second) => (first as string).localeCompare(second as string))
+  const tags = projects.value.flatMap(item => item.tags)
+  return [...new Set(tags)].sort((first, second) => first.localeCompare(second))
 })
 
 const filteredItems = computed(() => {
-  const items = props.blok?.list ?? []
   return selectedTag.value === null
-    ? items
-    : items.filter((item: { tags?: string[] }) => item.tags?.includes(selectedTag.value as string))
+    ? projects.value
+    : projects.value.filter(item => item.tags.includes(selectedTag.value as string))
 })
 
 </script>
@@ -126,6 +173,7 @@ const filteredItems = computed(() => {
 
   .layout-grid {
     position: relative;
+    width: 100%;
     padding: 16px 16px;
     border-bottom: 1px solid var(--grey-600);
     border-radius: 16px;

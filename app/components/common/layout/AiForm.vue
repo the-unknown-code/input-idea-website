@@ -68,6 +68,7 @@ const step = ref<'initial' | 'detail' | 'other' | 'contact' | 'email' | 'complet
 const selectedFlow = ref('')
 const freeMessage = ref('')
 const contact = reactive({ firstName: '', lastName: '', email: '' })
+const canGoBack = computed(() => step.value !== 'initial' && step.value !== 'complete')
 
 const currentStep = computed<ConversationStep>((): any => {
   if (step.value === 'initial') return initialStep
@@ -116,6 +117,21 @@ function submitContact() {
   step.value = 'complete'
 }
 
+function goBack() {
+  if (step.value === 'detail' || step.value === 'other') {
+    step.value = 'initial'
+    selectedFlow.value = ''
+    return
+  }
+
+  if (step.value === 'contact') {
+    step.value = selectedFlow.value === 'other' ? 'other' : 'detail'
+    return
+  }
+
+  if (step.value === 'email') step.value = 'contact'
+}
+
 function restart() {
   step.value = 'initial'
   selectedFlow.value = ''
@@ -128,6 +144,12 @@ function restart() {
   <section class="layout-ai-form"
     aria-label="Assistente Input Idea">
     <div class="layout-ai-form__content">
+      <button v-if="canGoBack"
+        class="back-button p-tiny --grey"
+        type="button"
+        aria-label="Torna alla domanda precedente"
+        @click="goBack">← Indietro</button>
+
       <template v-if="step === 'complete'">
         <p class="title --yellow">Ricevuto! A prestissimo. 🚀</p>
         <button class="button p-tiny --grey"
@@ -267,6 +289,17 @@ function restart() {
     &:hover,
     &:focus-visible {
       border-color: var(--yellow);
+      color: var(--yellow);
+    }
+  }
+
+  .back-button {
+    align-self: flex-start;
+    cursor: pointer;
+    transition: color .2s ease;
+
+    &:hover,
+    &:focus-visible {
       color: var(--yellow);
     }
   }

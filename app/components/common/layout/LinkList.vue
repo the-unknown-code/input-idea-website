@@ -1,5 +1,14 @@
 <template>
   <section class="layout-link-list">
+
+    <div class="title">
+      <div class="h2">
+        <storyblok-richtext :content="blok.title[0].text"
+          cleanup />
+      </div>
+      <p class="--yellow">{{ blok.description }}</p>
+    </div>
+
     <a-link v-for="item in blok.list"
       :key="item._uid"
       :href="resolveLink(item.link)"
@@ -36,7 +45,19 @@ defineProps({
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 960px;
+  margin: 0 auto;
   gap: var(--spacer-8);
+
+  .title {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
 
   .item {
     position: relative;
@@ -53,6 +74,7 @@ defineProps({
 
     @include hover {
       &:hover {
+        color: var(--yellow);
         background-color: var(--grey-20);
       }
     }

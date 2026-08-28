@@ -5,6 +5,7 @@
 
 		<client-only>
 			<storyblok-bridge :story-id="story?.id"
+				:resolve-relations="resolveRelations"
 				@story-updated="handleStoryUpdate" />
 		</client-only>
 	</div>
@@ -17,6 +18,7 @@ import type { ISbStoryData } from '@storyblok/js';
 const props = defineProps<{
 	url: string;
 	apiOptions?: any;
+	resolveRelations?: string[];
 }>();
 
 const { story, refreshKey } = await useAsyncStory(props.url, props.apiOptions);

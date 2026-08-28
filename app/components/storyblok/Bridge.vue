@@ -8,6 +8,7 @@ import { useStoryblokBridge, type ISbStoryData } from '@storyblok/js';
 
 const props = defineProps<{
 	storyId: number;
+	resolveRelations?: string[];
 }>();
 
 // v-model:story
@@ -37,5 +38,5 @@ useStoryblokBridge(props.storyId, (updatedStory: ISbStoryData<any>) => {
 		.substring(2, 7)}`;
 
 	emit('story-updated', { story: updatedStory, refreshKey: refreshKey.value });
-});
+}, { resolveRelations: props.resolveRelations });
 </script>

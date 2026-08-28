@@ -1,20 +1,13 @@
 <template>
-  <storyblok-wrapper url="portfolio">
+  <storyblok-wrapper url="portfolio"
+    :api-options="{ resolve_relations: 'Portfolio.list' }"
+    :resolve-relations="['Portfolio.list']">
     <template #default="{ story, refreshKey }">
       <main :key="refreshKey"
         class="page-portfolio">
         <div class="layout-block">
-
-
           <storyblok-map :bloks="story.content.body"
             :refresh-key="refreshKey" />
-
-
-          <!--
-
-      <layout-case-history />
-      <layout-form />
-      -->
         </div>
       </main>
     </template>
