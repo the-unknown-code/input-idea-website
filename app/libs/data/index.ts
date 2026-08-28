@@ -1827,3 +1827,235 @@ export const SECTION_TITLE = {
     "description": "\nAnalisi, consulenza e strategia di digital marketing",
     "_editable": "<!--#storyblok#{\"name\": \"SectionTitle\", \"space\": \"292182415226830\", \"uid\": \"21ff6cf2-a2fc-473b-945d-a18366a3d9ed\", \"id\": \"213509135924444\"}-->"
 }
+
+export const PORTFOLIO = {
+    "_uid": "e02f8490-b81f-4c7a-9ad0-ce47718e76b0",
+    "list": [
+        {
+            "_uid": "409a0286-e2ed-419e-b83f-3aad9aa86052",
+            "tags": [
+                "strategy",
+                "copywriting"
+            ],
+            "media": [
+                {
+                    "_uid": "0d1acbe8-4e1f-4841-9bd5-6500cd247341",
+                    "image": {
+                        "id": 171341749264481,
+                        "alt": "",
+                        "name": "",
+                        "focus": "",
+                        "title": "",
+                        "source": "",
+                        "filename": "https://a.storyblok.com/f/292182415226830/130x41/18ae451a47/magni.svg",
+                        "copyright": "",
+                        "fieldtype": "asset",
+                        "meta_data": {},
+                        "is_external_url": false
+                    },
+                    "component": "SimpleImage",
+                    "_editable": "<!--#storyblok#{\"name\": \"SimpleImage\", \"space\": \"292182415226830\", \"uid\": \"0d1acbe8-4e1f-4841-9bd5-6500cd247341\", \"id\": \"213800997543093\"}-->"
+                }
+            ],
+            "title": "Magni",
+            "component": "PortfolioItem",
+            "description": [
+                {
+                    "_uid": "92c256d0-597f-46b3-a84c-4b77274024bf",
+                    "text": {
+                        "type": "doc",
+                        "attrs": {
+                            "backgroundColor": null
+                        },
+                        "content": [
+                            {
+                                "type": "paragraph",
+                                "attrs": {
+                                    "textAlign": null
+                                },
+                                "content": [
+                                    {
+                                        "text": "Abbiamo ideato una ",
+                                        "type": "text"
+                                    },
+                                    {
+                                        "text": "social strategy globale ",
+                                        "type": "text",
+                                        "marks": [
+                                            {
+                                                "type": "bold"
+                                            }
+                                        ]
+                                    },
+                                    {
+                                        "text": "per narrare l’universo Magni, portando l’eccellenza tecnologica al centro della scena digitale e consolidando la presenza del marchio su scala mondiale.",
+                                        "type": "text"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    "component": "AdvancedText",
+                    "_editable": "<!--#storyblok#{\"name\": \"AdvancedText\", \"space\": \"292182415226830\", \"uid\": \"92c256d0-597f-46b3-a84c-4b77274024bf\", \"id\": \"213800997543093\"}-->"
+                }
+            ],
+            "_editable": "<!--#storyblok#{\"name\": \"PortfolioItem\", \"space\": \"292182415226830\", \"uid\": \"409a0286-e2ed-419e-b83f-3aad9aa86052\", \"id\": \"213800997543093\"}-->"
+        }
+    ],
+    "title": [
+        {
+            "_uid": "75798a14-4d57-43fd-a1b8-c1a499894c1c",
+            "text": {
+                "type": "doc",
+                "attrs": {
+                    "backgroundColor": null
+                },
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "attrs": {
+                            "textAlign": null
+                        },
+                        "content": [
+                            {
+                                "text": "I ",
+                                "type": "text"
+                            },
+                            {
+                                "text": "CLIENTI",
+                                "type": "text",
+                                "marks": [
+                                    {
+                                        "type": "bold"
+                                    }
+                                ]
+                            },
+                            {
+                                "text": " CHE HANNO SCELTO LE NOSTRE ",
+                                "type": "text"
+                            },
+                            {
+                                "text": "MARKETING SOLUTIONS",
+                                "type": "text",
+                                "marks": [
+                                    {
+                                        "type": "bold"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "component": "AdvancedText",
+            "_editable": "<!--#storyblok#{\"name\": \"AdvancedText\", \"space\": \"292182415226830\", \"uid\": \"75798a14-4d57-43fd-a1b8-c1a499894c1c\", \"id\": \"213800997543093\"}-->"
+        }
+    ],
+    "component": "Portfolio",
+    "_editable": "<!--#storyblok#{\"name\": \"Portfolio\", \"space\": \"292182415226830\", \"uid\": \"e02f8490-b81f-4c7a-9ad0-ce47718e76b0\", \"id\": \"213800997543093\"}-->"
+}
+
+export const PROJECT_DETAILS = {
+    "_uid": "cf30a29e-bcb5-464f-aedf-78d75804f6b1",
+    "list": [
+        {
+            "_uid": "76a8d14a-5856-4b8c-8ba7-fa70d062eab7",
+            "title": "Settore:",
+            "component": "ProjectDetailItem",
+            "description": "Macchine movimento/sollevamento",
+            "_editable": "<!--#storyblok#{\"name\": \"ProjectDetailItem\", \"space\": \"292182415226830\", \"uid\": \"76a8d14a-5856-4b8c-8ba7-fa70d062eab7\", \"id\": \"213823705692356\"}-->"
+        },
+        {
+            "_uid": "c6dfc1f4-2d5b-4284-a037-9b3ea7d59364",
+            "title": "KPI Numerici:",
+            "component": "ProjectDetailItem",
+            "description": "12 Pagine Social mondiali; 7 Filiali coordinate; 7 Lingue gestite.",
+            "_editable": "<!--#storyblok#{\"name\": \"ProjectDetailItem\", \"space\": \"292182415226830\", \"uid\": \"c6dfc1f4-2d5b-4284-a037-9b3ea7d59364\", \"id\": \"213823705692356\"}-->"
+        },
+        {
+            "_uid": "058612e1-4002-4523-a339-7dec0936ee7f",
+            "title": "Strumenti:",
+            "component": "ProjectDetailItem",
+            "description": "Meta & LinkedIn ADV, 3D Modeling, Video Production, CRM Integration.",
+            "_editable": "<!--#storyblok#{\"name\": \"ProjectDetailItem\", \"space\": \"292182415226830\", \"uid\": \"058612e1-4002-4523-a339-7dec0936ee7f\", \"id\": \"213823705692356\"}-->"
+        },
+        {
+            "_uid": "0a89021f-65b2-4a3f-b2a7-5ba392f5047c",
+            "title": "Time-to-Value:",
+            "component": "ProjectDetailItem",
+            "description": "Consolidamento della Brand Authority globale in 12 mesi.",
+            "_editable": "<!--#storyblok#{\"name\": \"ProjectDetailItem\", \"space\": \"292182415226830\", \"uid\": \"0a89021f-65b2-4a3f-b2a7-5ba392f5047c\", \"id\": \"213823705692356\"}-->"
+        }
+    ],
+    "media": [
+        {
+            "_uid": "3797ad48-a9c3-4fbd-9e0d-5bad13e9b7b5",
+            "image": {
+                "id": 171390517408938,
+                "alt": "",
+                "name": "",
+                "focus": "",
+                "title": "",
+                "source": "",
+                "filename": "https://a.storyblok.com/f/292182415226830/555x176/078ea3fa4b/magni.png",
+                "copyright": "",
+                "fieldtype": "asset",
+                "meta_data": {},
+                "is_external_url": false
+            },
+            "component": "SimpleImage",
+            "_editable": "<!--#storyblok#{\"name\": \"SimpleImage\", \"space\": \"292182415226830\", \"uid\": \"3797ad48-a9c3-4fbd-9e0d-5bad13e9b7b5\", \"id\": \"213823705692356\"}-->"
+        }
+    ],
+    "title": [
+        {
+            "_uid": "dded3e59-5d21-4302-8fdc-5265b3dd31bc",
+            "text": {
+                "type": "doc",
+                "attrs": {
+                    "backgroundColor": null
+                },
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "attrs": {
+                            "textAlign": null
+                        },
+                        "content": [
+                            {
+                                "text": "I ",
+                                "type": "text"
+                            },
+                            {
+                                "text": "dettagli",
+                                "type": "text",
+                                "marks": [
+                                    {
+                                        "type": "bold"
+                                    }
+                                ]
+                            },
+                            {
+                                "text": " Del ",
+                                "type": "text"
+                            },
+                            {
+                                "text": "progetto",
+                                "type": "text",
+                                "marks": [
+                                    {
+                                        "type": "bold"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "component": "AdvancedText",
+            "_editable": "<!--#storyblok#{\"name\": \"AdvancedText\", \"space\": \"292182415226830\", \"uid\": \"dded3e59-5d21-4302-8fdc-5265b3dd31bc\", \"id\": \"213823705692356\"}-->"
+        }
+    ],
+    "component": "ProjectDetails",
+    "_editable": "<!--#storyblok#{\"name\": \"ProjectDetails\", \"space\": \"292182415226830\", \"uid\": \"cf30a29e-bcb5-464f-aedf-78d75804f6b1\", \"id\": \"213823705692356\"}-->"
+}

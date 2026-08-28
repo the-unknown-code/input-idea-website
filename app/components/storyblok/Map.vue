@@ -27,6 +27,9 @@ import TextCarousel from '../common/layout/TextCarousel.vue';
 import StoryHighlight from '../common/layout/StoryHighlight.vue';
 import SectionTitle from '../common/layout/SectionTitle.vue';
 import AiForm from '../common/layout/AiForm.vue';
+import CaseHistory from '../common/layout/CaseHistory.vue';
+import ProjectDescription from '../common/layout/ProjectDescription.vue';
+import ProjectDetails from '../common/layout/ProjectDetails.vue';
 
 const props = defineProps({
 	bloks: {
@@ -51,7 +54,7 @@ const getBlokAttributes = blok => {
 
 const COMPONENT_MAP = {
 	"ContentList": Services,
-	"ContentHeader": ProjectHero,
+	"ProjectHero": ProjectHero,
 	"ContentBlock": ProjectGridBlock,
 	"Stories": Stories,
 	"LogoMarquee": LogoMarquee,
@@ -67,7 +70,10 @@ const COMPONENT_MAP = {
 	"CarouselText": TextCarousel,
 	"StoryHighlight": StoryHighlight,
 	"SectionTitle": SectionTitle,
-	"Chatbot": AiForm
+	"Chatbot": AiForm,
+	"Portfolio": CaseHistory,
+	"ProjectDescription": ProjectDescription,
+	"ProjectDetails": ProjectDetails
 
 
 };

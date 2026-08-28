@@ -7,13 +7,7 @@
 
                     <storyblok-map :bloks="story.content.body"
                         :refresh-key="refreshKey" />
-                    <!--
-                    <layout-text-hero />
-                    <layout-three-columns />
-                    <layout-text-list />
-                    <layout-large-text />
-                    <layout-media-marquee />
-                    -->
+
                 </div>
             </main>
         </template>

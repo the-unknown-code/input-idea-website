@@ -1,28 +1,43 @@
-<script setup lang="ts"></script>
-
 <template>
   <section class="layout-case-history">
-    <h1 class="display">I <b>CLIENTI</b> CHE HANNO <b>SCELTO</b> LE NOSTRE MARKETING <b>SOLUTIONS</b></h1>
-    <div class="filters">
-      <p class="p-small active">strategy</p>
-      <p class="p-small">brand identity</p>
-      <p class="p-small">marketing</p>
-      <p class="p-small">advertising</p>
-      <p class="p-small">software</p>
+    <h1 class="display">
+      <storyblok-richtext :content="blok.title[0].text"
+        cleanup />
+    </h1>
+    <div class="filters"
+      aria-label="Filtra i progetti per tag">
+      <button class="p-small"
+        :class="{ active: selectedTag === null }"
+        type="button"
+        @click="selectedTag = null">Tutti</button>
+      <button v-for="tag in availableTags"
+        :key="tag as any"
+        class="p-small"
+        :class="{ active: selectedTag === tag }"
+        type="button"
+        @click="selectedTag = tag as any">{{ tag }}</button>
     </div>
     <div class="list">
-      <div v-for="item in 10"
-        :key="item"
+      <div v-for="item in filteredItems"
+        :key="item._uid"
         class="layout-grid">
         <div>
           <div class="media">
-            <common-media :src="`https://picsum.photos/400/400?random=${item}`"
+            <common-media :src="storyblokFormat(item.media[0].image.filename, 420)"
               cover />
           </div>
         </div>
         <div>
-          <p class="display --yellow">Autostile</p>
-          <p class="p-small">Una comunicazione territoriale su misura</p>
+          <p class="h2 --yellow">{{ item.title }}</p>
+          <p class="p-small --grey">
+            <storyblok-richtext :content="item.description[0].text"
+              cleanup />
+          </p>
+          <div class="tags">
+            <p v-for="tag in item.tags"
+              :key="tag"
+              class="p-tiny --yellow">{{ tag }}</p>
+          </div>
         </div>
         <div>
           <ui-arrow />
@@ -32,6 +47,35 @@
   </section>
 </template>
 
+<script setup lang="ts">
+import { PORTFOLIO } from '~/libs/data';
+import { storyblokFormat } from '~/libs/storyblok';
+
+
+const props = defineProps({
+  blok: {
+    type: Object,
+    required: false,
+    default: PORTFOLIO
+  }
+})
+
+const selectedTag = ref<string | null>(null)
+
+const availableTags = computed(() => {
+  const tags = props.blok?.list?.flatMap((item: { tags?: string[] }) => item.tags ?? []) ?? []
+  return [...new Set(tags)].sort((first, second) => (first as string).localeCompare(second as string))
+})
+
+const filteredItems = computed(() => {
+  const items = props.blok?.list ?? []
+  return selectedTag.value === null
+    ? items
+    : items.filter((item: { tags?: string[] }) => item.tags?.includes(selectedTag.value as string))
+})
+
+</script>
+
 <style lang="scss" scoped>
 .layout-case-history {
   position: relative;
@@ -39,6 +83,18 @@
   flex-direction: column;
   gap: 16px;
 
+
+  h1 {
+    text-align: center;
+    max-width: 1280px;
+  }
+
+  .tags {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 16px;
+  }
 
   .filters {
     position: relative;
@@ -49,9 +105,13 @@
     flex-direction: row;
     gap: 8px;
     color: var(--grey);
-    cursor: pointer;
+    flex-wrap: wrap;
 
-    p {
+    button {
+      color: inherit;
+      cursor: pointer;
+      transition: color .2s ease;
+
       &.active {
         color: var(--yellow);
       }

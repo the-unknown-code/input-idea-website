@@ -1,13 +1,25 @@
 <template>
-    <main class="page-project">
-        <div class="layout-block">
-            <layout-project-hero />
-            <layout-project-grid-block />
-            <layout-text-list />
-            <layout-media-carousel />
-            <layout-link-list />
-        </div>
-    </main>
+    <storyblok-wrapper :url="`progetti/${$route.params.slug}`">
+        <template #default="{ story, refreshKey }">
+            <main :key="refreshKey"
+                class="page-project">
+                <div class="layout-block">
+
+
+                    <storyblok-map :bloks="story.content.body"
+                        :refresh-key="refreshKey" />
+
+                    <!--
+                    <layout-project-hero />
+                    <layout-project-grid-block />
+                    <layout-text-list />
+                    <layout-media-carousel />
+                    <layout-link-list />
+                    -->
+                </div>
+            </main>
+        </template>
+    </storyblok-wrapper>
 </template>
 
 <script setup lang="ts">

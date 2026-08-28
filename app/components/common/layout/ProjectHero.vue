@@ -1,15 +1,16 @@
 <template>
   <section class="layout-project-hero">
     <div class="media">
-      <common-media :src="storyblokFormat(getMedia(blok.image[0]).image.src, 1280)"
+      <common-media :src="storyblokFormat(getMedia(blok.media[0]).image.src, 1280)"
         cover />
       <div class="content">
         <h1 class="p-tiny">{{ blok.eyebrow }}</h1>
-        <h2 class="p-big">{{ blok.title }}</h2>
+        <h2 class="p-big">{{ blok.claim }}</h2>
       </div>
     </div>
     <div class="description">
-      <p class="--grey">
+      <p v-text-reveal
+        class="--grey">
         <storyblok-richtext :content="blok.description[0].text"
           cleanup />
       </p>

@@ -1,12 +1,24 @@
 <template>
-  <main class="page-portfolio">
-    <div class="layout-block">
-      <layout-claim-hero
-        highlight="Ogni cliente rappresenta un input unico, una sfida che richiede progettualità su misura." />
+  <storyblok-wrapper url="portfolio">
+    <template #default="{ story, refreshKey }">
+      <main :key="refreshKey"
+        class="page-portfolio">
+        <div class="layout-block">
+
+
+          <storyblok-map :bloks="story.content.body"
+            :refresh-key="refreshKey" />
+
+
+          <!--
+
       <layout-case-history />
       <layout-form />
-    </div>
-  </main>
+      -->
+        </div>
+      </main>
+    </template>
+  </storyblok-wrapper>
 </template>
 
 <script setup lang="ts">

@@ -12,6 +12,7 @@
           <storyblok-richtext :content="blok.title[0].text"
             cleanup />
         </h1>
+        <p class="highlight --yellow">{{ blok.highlight }}</p>
       </div>
     </div>
 

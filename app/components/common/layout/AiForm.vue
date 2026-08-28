@@ -69,7 +69,7 @@ const selectedFlow = ref('')
 const freeMessage = ref('')
 const contact = reactive({ firstName: '', lastName: '', email: '' })
 
-const currentStep = computed<ConversationStep>(() => {
+const currentStep = computed<ConversationStep>((): any => {
   if (step.value === 'initial') return initialStep
   if (step.value === 'detail') return flows[selectedFlow.value]
   if (step.value === 'contact') {
