@@ -25,6 +25,7 @@ import CaseHistory from '~/components/common/layout/CaseHistory.vue'
 import TextCarousel from '~/components/common/layout/TextCarousel.vue'
 import StoryHighlight from '~/components/common/layout/StoryHighlight.vue'
 import ProjectDetails from '~/components/common/layout/ProjectDetails.vue'
+import ProjectFocus from '~/components/common/layout/ProjectFocus.vue'
 import AIForm from '~/components/common/layout/AiForm.vue'
 
 export default defineNuxtPlugin(nuxtApp => {
@@ -55,6 +56,7 @@ export default defineNuxtPlugin(nuxtApp => {
     nuxtApp.vueApp.component('layout-text-carousel', TextCarousel)
     nuxtApp.vueApp.component('layout-story-highlight', StoryHighlight)
     nuxtApp.vueApp.component('layout-project-details', ProjectDetails)
+    nuxtApp.vueApp.component('layout-project-focus', ProjectFocus)
     nuxtApp.vueApp.component('layout-ai-form', AIForm)
 
 })

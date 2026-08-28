@@ -30,6 +30,7 @@ import AiForm from '../common/layout/AiForm.vue';
 import CaseHistory from '../common/layout/CaseHistory.vue';
 import ProjectDescription from '../common/layout/ProjectDescription.vue';
 import ProjectDetails from '../common/layout/ProjectDetails.vue';
+import ProjectFocus from '../common/layout/ProjectFocus.vue';
 
 const props = defineProps({
 	bloks: {
@@ -73,7 +74,8 @@ const COMPONENT_MAP = {
 	"Chatbot": AiForm,
 	"Portfolio": CaseHistory,
 	"ProjectDescription": ProjectDescription,
-	"ProjectDetails": ProjectDetails
+	"ProjectDetails": ProjectDetails,
+	"ProjectFocus": ProjectFocus
 
 
 };

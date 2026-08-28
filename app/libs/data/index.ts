@@ -2059,3 +2059,136 @@ export const PROJECT_DETAILS = {
     "component": "ProjectDetails",
     "_editable": "<!--#storyblok#{\"name\": \"ProjectDetails\", \"space\": \"292182415226830\", \"uid\": \"cf30a29e-bcb5-464f-aedf-78d75804f6b1\", \"id\": \"213823705692356\"}-->"
 }
+
+export const PROJECT_FOCUS = {
+    "_uid": "16589d0e-4b45-47d4-8299-d84b893cd792",
+    "list": [
+        {
+            "_uid": "b1a3a548-b5ed-4128-afd7-d456f5615a93",
+            "label": [
+                {
+                    "_uid": "18941538-18f9-4204-ab71-72b56de4b894",
+                    "text": {
+                        "type": "doc",
+                        "content": [
+                            {
+                                "type": "paragraph"
+                            }
+                        ]
+                    },
+                    "component": "AdvancedText",
+                    "_editable": "<!--#storyblok#{\"name\": \"AdvancedText\", \"space\": \"292182415226830\", \"uid\": \"18941538-18f9-4204-ab71-72b56de4b894\", \"id\": \"213823705692356\"}-->"
+                }
+            ],
+            "title": "Global Brand Governance",
+            "component": "SimpleTextBlock",
+            "description": "orchestrare la comunicazione di 7 filiali per evitare comunicazioni frammentate o incoerenti.",
+            "_editable": "<!--#storyblok#{\"name\": \"SimpleTextBlock\", \"space\": \"292182415226830\", \"uid\": \"b1a3a548-b5ed-4128-afd7-d456f5615a93\", \"id\": \"213823705692356\"}-->"
+        },
+        {
+            "_uid": "a9f59389-ccf8-403c-a67f-1338ec103bc7",
+            "label": [],
+            "title": "Decodifica della Complessità",
+            "component": "SimpleTextBlock",
+            "description": "accontare, tramite contenuti accessibili e persuasivi, prodotti tecnici complessi a una platea eterogenea di stakeholder (operatori, dealer, aziende, noleggiatori).",
+            "_editable": "<!--#storyblok#{\"name\": \"SimpleTextBlock\", \"space\": \"292182415226830\", \"uid\": \"a9f59389-ccf8-403c-a67f-1338ec103bc7\", \"id\": \"213823705692356\"}-->"
+        },
+        {
+            "_uid": "59a92553-9cbb-41c0-b8b4-e57d3de7ad64",
+            "label": [],
+            "title": "International Competitive Edge",
+            "component": "SimpleTextBlock",
+            "description": "consolidare il posizionamento del brand in un panorama dominato da player internazionali estremamente dinamici e attivi sul piano della comunicazione.",
+            "_editable": "<!--#storyblok#{\"name\": \"SimpleTextBlock\", \"space\": \"292182415226830\", \"uid\": \"59a92553-9cbb-41c0-b8b4-e57d3de7ad64\", \"id\": \"213823705692356\"}-->"
+        }
+    ],
+    "label": "Dalla frammentazione alla Digital Consistency",
+    "title": [
+        {
+            "_uid": "9d0c1bcc-04cb-4660-b243-c1ede4abf1d9",
+            "text": {
+                "type": "doc",
+                "attrs": {
+                    "backgroundColor": null
+                },
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "attrs": {
+                            "textAlign": null
+                        },
+                        "content": [
+                            {
+                                "text": "La ",
+                                "type": "text"
+                            },
+                            {
+                                "text": "Sfida",
+                                "type": "text",
+                                "marks": [
+                                    {
+                                        "type": "bold"
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                ]
+            },
+            "component": "AdvancedText",
+            "_editable": "<!--#storyblok#{\"name\": \"AdvancedText\", \"space\": \"292182415226830\", \"uid\": \"9d0c1bcc-04cb-4660-b243-c1ede4abf1d9\", \"id\": \"213823705692356\"}-->"
+        }
+    ],
+    "component": "ProjectFocus",
+    "description": [
+        {
+            "_uid": "16a7befd-b33b-4004-9277-e999633a3af8",
+            "text": {
+                "type": "doc",
+                "attrs": {
+                    "backgroundColor": null
+                },
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "attrs": {
+                            "textAlign": null
+                        },
+                        "content": [
+                            {
+                                "text": "L’intervento di INPUTIDEA è nato dall’esigenza di Magni TH di trasformare una presenza online frammentata in un ",
+                                "type": "text"
+                            },
+                            {
+                                "text": "asset di comunicazione unificato e scalabile a livello globale",
+                                "type": "text",
+                                "marks": [
+                                    {
+                                        "type": "bold"
+                                    }
+                                ]
+                            },
+                            {
+                                "text": ", capace di valorizzare la complessità tecnica e la qualità dei propri prodotti.",
+                                "type": "text"
+                            },
+                            {
+                                "type": "hard_break"
+                            },
+                            {
+                                "type": "hard_break"
+                            },
+                            {
+                                "text": "Le criticità includevano:",
+                                "type": "text"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "component": "AdvancedText",
+            "_editable": "<!--#storyblok#{\"name\": \"AdvancedText\", \"space\": \"292182415226830\", \"uid\": \"16a7befd-b33b-4004-9277-e999633a3af8\", \"id\": \"213823705692356\"}-->"
+        }
+    ],
+    "_editable": "<!--#storyblok#{\"name\": \"ProjectFocus\", \"space\": \"292182415226830\", \"uid\": \"16589d0e-4b45-47d4-8299-d84b893cd792\", \"id\": \"213823705692356\"}-->"
+}
