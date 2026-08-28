@@ -1,14 +1,26 @@
 <template>
-  <main class="page-why">
-    <div class="layout-block">
-      <layout-claim-hero />
-      <layout-focus-text />
-      <layout-focus-item />
-      <layout-services />
-      <layout-media-marquee />
-      <layout-form />
-    </div>
-  </main>
+  <storyblok-wrapper url="perche-sceglierci">
+    <template #default="{ story, refreshKey }">
+      <main :key="refreshKey"
+        class="page-why">
+        <div class="layout-block">
+
+
+          <storyblok-map :bloks="story.content.body"
+            :refresh-key="refreshKey" />
+
+          <!--
+          <layout-claim-hero />
+          <layout-focus-text />
+          <layout-focus-item />
+          <layout-services />
+          <layout-media-marquee />
+          <layout-form />
+          -->
+        </div>
+      </main>
+    </template>
+  </storyblok-wrapper>
 </template>
 
 <script setup lang="ts">

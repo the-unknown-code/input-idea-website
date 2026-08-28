@@ -4,7 +4,7 @@
       <div>
         <h3 v-if="blok.title"
           v-text-reveal
-          class="h1">
+          class="h2">
           <storyblok-richtext :content="blok.title[0].text" />
         </h3>
         <p v-if="blok.description"

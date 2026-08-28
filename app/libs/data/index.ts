@@ -1755,3 +1755,75 @@ export const DATA_LINK_LIST = {
     "component": "LinkList",
     "_editable": "<!--#storyblok#{\"name\": \"LinkList\", \"space\": \"292182415226830\", \"uid\": \"df96b080-53f8-43b2-b405-e74d5320926a\", \"id\": \"171319529563983\"}-->"
 }
+
+export const SECTION_TITLE = {
+    "_uid": "21ff6cf2-a2fc-473b-945d-a18366a3d9ed",
+    "media": [
+        {
+            "_uid": "d67fee16-b83a-48cd-8ceb-ed9a81d08a21",
+            "link": {
+                "id": "",
+                "url": "",
+                "linktype": "story",
+                "fieldtype": "multilink",
+                "cached_url": ""
+            },
+            "image": {
+                "id": 171336444612628,
+                "alt": "",
+                "name": "",
+                "focus": "",
+                "title": "",
+                "source": "",
+                "filename": "https://a.storyblok.com/f/292182415226830/800x800/3ce83f77e3/placeholder-03.jpg",
+                "copyright": "",
+                "fieldtype": "asset",
+                "meta_data": {},
+                "is_external_url": false
+            },
+            "title": "Marketing Consulting",
+            "component": "AdvancedImage",
+            "description": "",
+            "_editable": "<!--#storyblok#{\"name\": \"AdvancedImage\", \"space\": \"292182415226830\", \"uid\": \"d67fee16-b83a-48cd-8ceb-ed9a81d08a21\", \"id\": \"213509135924444\"}-->"
+        }
+    ],
+    "title": [
+        {
+            "_uid": "8a802547-561c-4332-86b0-e0ef8fe5c2b2",
+            "text": {
+                "type": "doc",
+                "attrs": {
+                    "backgroundColor": null
+                },
+                "content": [
+                    {
+                        "type": "paragraph",
+                        "attrs": {
+                            "textAlign": null
+                        },
+                        "content": [
+                            {
+                                "text": "Marketing",
+                                "type": "text",
+                                "marks": [
+                                    {
+                                        "type": "bold"
+                                    }
+                                ]
+                            },
+                            {
+                                "text": " Consulting",
+                                "type": "text"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "component": "AdvancedText",
+            "_editable": "<!--#storyblok#{\"name\": \"AdvancedText\", \"space\": \"292182415226830\", \"uid\": \"8a802547-561c-4332-86b0-e0ef8fe5c2b2\", \"id\": \"213509135924444\"}-->"
+        }
+    ],
+    "component": "SectionTitle",
+    "description": "\nAnalisi, consulenza e strategia di digital marketing",
+    "_editable": "<!--#storyblok#{\"name\": \"SectionTitle\", \"space\": \"292182415226830\", \"uid\": \"21ff6cf2-a2fc-473b-945d-a18366a3d9ed\", \"id\": \"213509135924444\"}-->"
+}

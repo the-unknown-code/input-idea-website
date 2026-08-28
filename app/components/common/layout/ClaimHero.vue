@@ -3,32 +3,37 @@
     <div>
       <div>
         <div class="media">
-          <common-media src="https://picsum.photos/800/800?random=3"
+          <common-media :src="storyblokFormat(blok.media[0].image.filename, 420)"
             cover />
         </div>
       </div>
       <div>
-        <h1 class="display header">Il<b>Successo</b> Digitale è un <b>Progetto</b></h1>
-        <p v-if="highlight"
-          class="p-small highlight --yellow">{{ highlight }}</p>
+        <h1 class="display header">
+          <storyblok-richtext :content="blok.title[0].text"
+            cleanup />
+        </h1>
       </div>
     </div>
 
-    <p class="p-small --grey-600">Affidarsi alla web agency INPUTIDEA significa dare una direzione precisa alla propria
-      presenza online. Analizziamo lo scenario digitale per fornirti gli strumenti e le strategie necessari a superare
-      le sfide del mercato, garantendo una crescita costante e consapevole.</p>
+    <p class="p-small --grey-600">{{ blok.description }}</p>
   </section>
 </template>
 
 
 <script setup lang="ts">
+import { SECTION_TITLE } from '~/libs/data';
+import { storyblokFormat } from '~/libs/storyblok';
+
+
 defineProps({
-  highlight: {
-    type: String,
+  blok: {
+    type: Object,
     required: false,
-    default: null
+    default: SECTION_TITLE
   }
 })
+
+
 </script>
 
 <style lang="scss" scoped>

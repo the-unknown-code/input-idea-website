@@ -1,9 +1,13 @@
 <template>
   <section class="layout-focus-item">
-    <h1 class="display">
-      <storyblok-richtext :content="blok.title[0].text"
-        cleanup />
-    </h1>
+    <div class="content title">
+      <h1 class="display">
+        <storyblok-richtext :content="blok.title[0].text"
+          cleanup />
+      </h1>
+      <p class="--yellow">{{ blok.description }}</p>
+    </div>
+
     <div class="list">
       <div v-for="(item, index) in blok.list"
         ref="$items"
@@ -11,10 +15,12 @@
         class="layout-grid">
         <div>
           <h2 class="display --yellow">
-            {{ item.title }}
+            <storyblok-richtext :content="item.label[0].text"
+              cleanup />
           </h2>
         </div>
-        <div>
+        <div class="content">
+          <p><b>{{ item.title }}</b></p>
           <p v-html="item.description" />
         </div>
         <div v-show="isDesktop">
@@ -74,6 +80,22 @@ tryOnMounted(async () => {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  h1 {
+    text-align: center;
+    max-width: 960px;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &.title {
+      justify-content: center;
+      align-items: center;
+    }
+  }
 
   .list {
     width: 100%;

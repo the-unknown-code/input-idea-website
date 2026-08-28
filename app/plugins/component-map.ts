@@ -24,6 +24,7 @@ import MediaMarquee from '~/components/common/layout/MediaMarquee.vue'
 import CaseHistory from '~/components/common/layout/CaseHistory.vue'
 import TextCarousel from '~/components/common/layout/TextCarousel.vue'
 import StoryHighlight from '~/components/common/layout/StoryHighlight.vue'
+import AIForm from '~/components/common/layout/AiForm.vue'
 
 export default defineNuxtPlugin(nuxtApp => {
     nuxtApp.vueApp.component('a-link', ALink)
@@ -52,6 +53,7 @@ export default defineNuxtPlugin(nuxtApp => {
     nuxtApp.vueApp.component('layout-case-history', CaseHistory)
     nuxtApp.vueApp.component('layout-text-carousel', TextCarousel)
     nuxtApp.vueApp.component('layout-story-highlight', StoryHighlight)
+    nuxtApp.vueApp.component('layout-ai-form', AIForm)
 
 })
 

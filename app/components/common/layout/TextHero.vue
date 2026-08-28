@@ -1,17 +1,34 @@
-<script setup lang="ts"></script>
-
 <template>
 
   <section class="layout-text-hero">
-    <div class="media">
-      <common-media src="https://picsum.photos/420/420?random=3"
+    <div v-if="blok.media && blok.media[0]"
+      class="media">
+      <common-media :src="storyblokFormat(blok.media[0].image.filename, 420)"
         cover />
     </div>
-    <h1 class="display header"><b>Marketing</b> Consulting</h1>
-    <h2 class="p --yellow">Analisi, consulenza e strategia di digital marketing</h2>
+    <h1 class="display header">
+      <storyblok-richtext :content="blok.title[0].text"
+        cleanup />
+    </h1>
+    <h2 class="p --yellow">{{ blok.description }}</h2>
   </section>
 
 </template>
+
+<script setup lang="ts">
+import { SECTION_TITLE } from '~/libs/data';
+import { storyblokFormat } from '~/libs/storyblok';
+
+
+defineProps({
+  blok: {
+    type: Object,
+    required: false,
+    default: SECTION_TITLE
+  }
+})
+
+</script>
 
 <style lang="scss" scoped>
 .layout-text-hero {

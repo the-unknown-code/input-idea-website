@@ -4,7 +4,7 @@
             <main :key="refreshKey"
                 class="page-service">
                 <div class="layout-block">
-                    <layout-text-hero />
+
                     <storyblok-map :bloks="story.content.body"
                         :refresh-key="refreshKey" />
                     <!--

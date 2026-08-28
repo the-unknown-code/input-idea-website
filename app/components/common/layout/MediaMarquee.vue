@@ -30,6 +30,9 @@ defineProps({
 .layout-media-marquee {
   position: relative;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 
   &::after {
     content: '';
@@ -51,9 +54,9 @@ defineProps({
 
     img {
       position: relative;
-      object-fit: contain;
+      object-fit: cover;
       width: 100%;
-      max-width: 70%;
+      border-radius: 8px;
     }
 
     .inner {
@@ -69,10 +72,12 @@ defineProps({
     align-items: center;
     justify-content: center;
     width: auto;
-    height: 72px;
+    height: 86px;
     aspect-ratio: 16 / 6;
     margin: 0 8px;
     overflow: hidden;
+
+
   }
 
 

@@ -6,11 +6,13 @@
         <div class="h1 heavy">{{ currentItem.eyebrow }}</div>
       </div>
       <div>
-        <div class="h2">
+        <div v-text-reveal
+          class="h2">
           <storyblok-richtext :content="currentItem.title[0].text"
             cleanup />
         </div>
-        <div class="p --grey">
+        <div v-text-reveal
+          class="p --grey">
           <storyblok-richtext :content="currentItem.description[0].text"
             cleanup />
         </div>

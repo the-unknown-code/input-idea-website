@@ -25,6 +25,8 @@ import MediaCarousel from '../common/layout/MediaCarousel.vue';
 import LinkList from '../common/layout/LinkList.vue';
 import TextCarousel from '../common/layout/TextCarousel.vue';
 import StoryHighlight from '../common/layout/StoryHighlight.vue';
+import SectionTitle from '../common/layout/SectionTitle.vue';
+import AiForm from '../common/layout/AiForm.vue';
 
 const props = defineProps({
 	bloks: {
@@ -63,7 +65,9 @@ const COMPONENT_MAP = {
 	"Carousel": MediaCarousel,
 	"LinkList": LinkList,
 	"CarouselText": TextCarousel,
-	"StoryHighlight": StoryHighlight
+	"StoryHighlight": StoryHighlight,
+	"SectionTitle": SectionTitle,
+	"Chatbot": AiForm
 
 
 };
