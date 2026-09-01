@@ -16,21 +16,24 @@
             <div>
               <p class="--black">{{ item.title }}</p>
             </div>
-            <a-link class="cta"
+            <a-link v-if="item.cta && item.cta.length > 0"
+              class="cta"
               :href="resolveLink(item.cta[0].link)">
               <ui-arrow />
             </a-link>
 
           </template>
           <template v-else>
-            <div class="media">
+            <div class="media"
+              v-if="item.media && item.media.length > 0">
               <common-media :src="storyblokFormat(item.media[0].image.filename, 640)"
                 cover />
             </div>
             <div class="content">
               <p class="p-big --yellow">{{ item.title }}</p>
               <p class="p-tiny --white">{{ item.description }}</p>
-              <a-link :href="resolveLink(item.cta[0].link)"
+              <a-link v-if="item.cta && item.cta.length > 0"
+                :href="resolveLink(item.cta[0].link)"
                 class="cta p --yellow">
                 <span>{{ item.cta[0].label }}</span>
                 <ui-arrow />

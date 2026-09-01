@@ -4,7 +4,11 @@
       <div v-for="item in blok.list"
         :key="item._uid">
         <div class="display --yellow">{{ item.title }}</div>
-        <p class="p-tiny --grey">{{ item.description }}</p>
+        <p v-if="item.description && item.description.length > 0"
+          class="p-tiny --grey">
+          <storyblok-richtext :content="item.description[0].text"
+            cleanup />
+        </p>
       </div>
     </div>
   </section>
