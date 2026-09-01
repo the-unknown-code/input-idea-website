@@ -14,11 +14,12 @@ const props = withDefaults(
         allowedTags?: string[]
     }>(),
     {
-        allowedTags: () => ['b', 'strong', 'br']
+        allowedTags: () => ['b', 'strong', 'br', 'pre', 'code']
     },
 
 );
 
+console.log(props.content);
 const html = computed(() => {
     return renderHTML(props.content, props.allowedTags)
 });

@@ -13,6 +13,8 @@ import ProjectGridBlock from '~/components/common/layout/ProjectGridBlock.vue'
 import TextList from '~/components/common/layout/TextList.vue'
 import MediaCarousel from '~/components/common/layout/MediaCarousel.vue'
 import LinkList from '~/components/common/layout/LinkList.vue'
+import AccordionList from '~/components/common/layout/AccordionList.vue'
+import OrderedList from '~/components/common/layout/OrderedList.vue'
 import TextHero from '~/components/common/layout/TextHero.vue'
 import ClaimHero from '~/components/common/layout/ClaimHero.vue'
 import FocusText from '~/components/common/layout/FocusText.vue'
@@ -44,6 +46,8 @@ export default defineNuxtPlugin(nuxtApp => {
     nuxtApp.vueApp.component('layout-text-list', TextList)
     nuxtApp.vueApp.component('layout-media-carousel', MediaCarousel)
     nuxtApp.vueApp.component('layout-link-list', LinkList)
+    nuxtApp.vueApp.component('layout-accordion-list', AccordionList)
+    nuxtApp.vueApp.component('layout-ordered-list', OrderedList)
     nuxtApp.vueApp.component('layout-text-hero', TextHero)
     nuxtApp.vueApp.component('layout-claim-hero', ClaimHero)
     nuxtApp.vueApp.component('layout-focus-text', FocusText)

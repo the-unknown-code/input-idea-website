@@ -136,7 +136,7 @@ h2,
 	@include type($display, 88px, 78px, 108px, 120, 1.15cap, 3%);
 
 	@include desktop {
-		@include type($display, 86px, 64px, 112px, 120, 1.15cap, 3%);
+		@include type($display, 80px, 64px, 100px, 120, 1.15cap, 3%);
 	}
 }
 
@@ -203,4 +203,8 @@ p-big,
 	&.b {
 		font-weight: bold;
 	}
+}
+
+code {
+	color: var(--yellow);
 }

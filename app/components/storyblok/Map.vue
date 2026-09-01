@@ -31,6 +31,8 @@ import CaseHistory from '../common/layout/CaseHistory.vue';
 import ProjectDescription from '../common/layout/ProjectDescription.vue';
 import ProjectDetails from '../common/layout/ProjectDetails.vue';
 import ProjectFocus from '../common/layout/ProjectFocus.vue';
+import AccordionList from '../common/layout/AccordionList.vue';
+import OrderedList from '../common/layout/OrderedList.vue';
 
 const props = defineProps({
 	bloks: {
@@ -75,8 +77,9 @@ const COMPONENT_MAP = {
 	"Portfolio": CaseHistory,
 	"ProjectDescription": ProjectDescription,
 	"ProjectDetails": ProjectDetails,
-	"ProjectFocus": ProjectFocus
-
+	"ProjectFocus": ProjectFocus,
+	"AccordionList": AccordionList,
+	"OrderedList": OrderedList
 
 };
 

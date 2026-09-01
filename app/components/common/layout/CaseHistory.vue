@@ -35,7 +35,7 @@
           <p class="h2 --yellow">{{ item.title }}</p>
           <div v-if="item.description"
             class="p-small --grey">
-            <storyblok-richtext :content="item.description"
+            <storyblok-richtext :content="item.description as StoryblokRichTextInput"
               cleanup />
           </div>
           <div class="tags">
@@ -54,6 +54,7 @@
 </template>
 
 <script setup lang="ts">
+import type { StoryblokRichTextInput } from '@storyblok/richtext';
 import { PORTFOLIO } from '~/libs/data';
 import { storyblokFormat } from '~/libs/storyblok';
 

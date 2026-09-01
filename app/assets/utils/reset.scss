@@ -76,6 +76,10 @@ video {
 	display: revert;
 }
 
+* {
+	user-select: none !important;
+}
+
 /* Preferred box-sizing value */
 *,
 *::before,
