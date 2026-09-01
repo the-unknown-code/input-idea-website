@@ -67,13 +67,13 @@ defineProps({
     li {
       position: relative;
       width: 100%;
-      border-top: 1px solid var(--grey-20);
+      border-top: 1px solid var(--grey-10);
       text-align: center;
       padding: 8px 0;
       text-wrap: balance;
 
       &:last-child {
-        border-bottom: 1px solid var(--grey-20);
+        border-bottom: 1px solid var(--grey-10);
       }
     }
   }
