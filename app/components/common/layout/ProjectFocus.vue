@@ -18,7 +18,11 @@
           <div class="p --yellow">
             {{ item.title }}
           </div>
-          <div class="p-tiny --grey">{{ item.description }}</div>
+          <div v-if="item.description && item.description.length > 0"
+            class="p-tiny --grey">
+            <storyblok-richtext :content="item.description[0].text"
+              cleanup />
+          </div>
         </div>
       </div>
     </div>
