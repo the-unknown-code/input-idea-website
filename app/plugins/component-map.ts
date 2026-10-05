@@ -29,6 +29,9 @@ import StoryHighlight from '~/components/common/layout/StoryHighlight.vue'
 import ProjectDetails from '~/components/common/layout/ProjectDetails.vue'
 import ProjectFocus from '~/components/common/layout/ProjectFocus.vue'
 import AIForm from '~/components/common/layout/AiForm.vue'
+import WhoTitle from '~/components/common/layout/WhoTitle.vue'
+import Pillar from '~/components/common/layout/Pillar.vue'
+import Claim from '~/components/common/layout/Claim.vue'
 
 export default defineNuxtPlugin(nuxtApp => {
     nuxtApp.vueApp.component('a-link', ALink)
@@ -62,6 +65,9 @@ export default defineNuxtPlugin(nuxtApp => {
     nuxtApp.vueApp.component('layout-project-details', ProjectDetails)
     nuxtApp.vueApp.component('layout-project-focus', ProjectFocus)
     nuxtApp.vueApp.component('layout-ai-form', AIForm)
+    nuxtApp.vueApp.component('layout-who-title', WhoTitle)
+    nuxtApp.vueApp.component('layout-pillar', Pillar)
+    nuxtApp.vueApp.component('layout-claim', Claim)
 
 })
 

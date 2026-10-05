@@ -33,6 +33,9 @@ import ProjectDetails from '../common/layout/ProjectDetails.vue';
 import ProjectFocus from '../common/layout/ProjectFocus.vue';
 import AccordionList from '../common/layout/AccordionList.vue';
 import OrderedList from '../common/layout/OrderedList.vue';
+import Pillar from '../common/layout/Pillar.vue';
+import Claim from '../common/layout/Claim.vue';
+import WhoTitle from '../common/layout/WhoTitle.vue';
 
 const props = defineProps({
 	bloks: {
@@ -79,7 +82,10 @@ const COMPONENT_MAP = {
 	"ProjectDetails": ProjectDetails,
 	"ProjectFocus": ProjectFocus,
 	"AccordionList": AccordionList,
-	"OrderedList": OrderedList
+	"OrderedList": OrderedList,
+	"Pillars": Pillar,
+	"Claim": Claim,
+	"WhoTitle": WhoTitle
 
 };
 

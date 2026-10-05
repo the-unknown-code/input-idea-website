@@ -143,7 +143,11 @@ function restart() {
 <template>
   <section class="layout-ai-form"
     aria-label="Assistente Input Idea">
+
+
     <div class="layout-ai-form__content">
+      <h2>In<b>Breve</b></h2>
+
       <button v-if="canGoBack"
         class="back-button p-tiny --grey"
         type="button"
@@ -318,6 +322,10 @@ function restart() {
 
   @media (max-width: 767px) {
     padding: 32px 20px;
+  }
+
+  h2 {
+    display: block;
   }
 }
 </style>

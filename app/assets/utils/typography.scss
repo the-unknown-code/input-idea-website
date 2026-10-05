@@ -74,30 +74,48 @@ $max-vw-default: get('typography.maxVW');
 	letter-spacing: $spacing;
 }
 
-$display: 'Sofia Sans Extra Condensed', sans-serif;
+$display: 'Pathway Extreme', sans-serif;
 $sans: 'Zalando Sans';
+
+$weight-normal: 225;
+$pathway-spacing-normal: 3%;
 
 // ------ H1 -------
 @mixin h1 {
 	text-transform: uppercase;
 	font-optical-sizing: auto;
-	@include type($display, 88px, 78px, 108px, 120, 1.15cap, 3%);
+	@include type($display, 88px, 78px, 108px, $weight-normal, 1.15cap, 3%);
 
 	@include desktop {
-		@include type($display, 128px, 102px, 212px, 120, 1.15cap, 3%);
+		@include type(
+			$display,
+			128px,
+			102px,
+			212px,
+			$weight-normal,
+			1.15cap,
+			$pathway-spacing-normal
+		);
 	}
 }
 
 h1,
 .h1 {
+	font-optical-sizing: auto;
+	font-variation-settings: 'wdth' 79;
+
 	&.heavy {
 		letter-spacing: 2%;
-		font-variation-settings: 'wght' 1000;
+		// font-variation-settings: 'wght' 900 'wdth' 75;
+		font-variation-settings: 'wdth' 94;
+		font-weight: 900;
 	}
 
 	b,
 	strong {
-		font-variation-settings: 'wght' 1000;
+		//font-variation-settings: 'wght' 900;
+		font-variation-settings: 'wdth' 94;
+		font-weight: 900;
 	}
 
 	@include h1;
@@ -107,23 +125,27 @@ h1,
 @mixin h2 {
 	text-transform: uppercase;
 	font-optical-sizing: auto;
-	@include type($display, 72px, 63px, 88px, 120, 1.15cap, 3%);
+	font-variation-settings: 'wdth' 79;
+
+	@include type($display, 72px, 63px, 88px, 100, 1.15cap, 3%);
 
 	@include desktop {
-		@include type($display, 88px, 78px, 108px, 120, 1.15cap, 3%);
+		@include type($display, 88px, 78px, 108px, 100, 1.15cap, 3%);
 	}
 }
 
 h2,
 .h2 {
 	&.heavy {
-		letter-spacing: 2%;
-		font-variation-settings: 'wght' 1000;
+		// letter-spacing: 2%;
+		font-variation-settings: 'wdth' 94;
+		font-weight: 900;
 	}
 
 	b,
 	strong {
-		font-variation-settings: 'wght' 1000;
+		font-variation-settings: 'wdth' 94;
+		font-weight: 900;
 	}
 
 	@include h2;
@@ -133,22 +155,27 @@ h2,
 @mixin display {
 	text-transform: uppercase;
 	font-optical-sizing: auto;
-	@include type($display, 88px, 78px, 108px, 120, 1.15cap, 3%);
+	@include type($display, 88px, 78px, 108px, 100, 1.15cap, 3%);
 
 	@include desktop {
-		@include type($display, 80px, 64px, 100px, 120, 1.15cap, 3%);
+		@include type($display, 80px, 64px, 100px, 100, 1.15cap, 3%);
 	}
 }
 
 .display {
+	font-optical-sizing: auto;
+	font-variation-settings: 'wdth' 79;
+
 	&.heavy {
 		letter-spacing: 2%;
-		font-variation-settings: 'wght' 1000;
+		font-variation-settings: 'wdth' 94;
+		font-weight: 900;
 	}
 
 	b,
 	strong {
-		font-variation-settings: 'wght' 1000;
+		font-variation-settings: 'wdth' 94;
+		font-weight: 900;
 	}
 
 	@include display;
