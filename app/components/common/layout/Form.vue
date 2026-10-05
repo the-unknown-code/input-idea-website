@@ -1,10 +1,21 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps({
+  blok: {
+    type: Object,
+    required: true,
+  }
+})
+
+</script>
 
 <template>
   <section class="layout-form">
     <div class="layout-grid">
       <div>
-        <h1 class="display"><b>Richiedi</b> una consulenza</h1>
+        <h1 class="display">
+          <storyblok-richtext :content="blok.title[0].text"
+            cleanup />
+        </h1>
       </div>
       <div>
         <ui-form-input placeholder="Nome *" />
