@@ -42,7 +42,19 @@ export default defineNuxtConfig({
 
 	modules,
 
-	app: {},
+	app: {
+		head: {
+			script: process.env.GOOGLE_MAPS_API_KEY
+				? [
+					{ innerHTML: 'window.initMap = () => window.dispatchEvent(new Event("google-maps-ready"))' },
+					{
+					src: `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(process.env.GOOGLE_MAPS_API_KEY)}&loading=async&libraries=maps&callback=initMap`,
+						async: true,
+					},
+				]
+				: [],
+		},
+	},
 
 	css: ['@/assets/main.scss'],
 

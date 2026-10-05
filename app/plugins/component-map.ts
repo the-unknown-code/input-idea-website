@@ -32,6 +32,7 @@ import AIForm from '~/components/common/layout/AiForm.vue'
 import WhoTitle from '~/components/common/layout/WhoTitle.vue'
 import Pillar from '~/components/common/layout/Pillar.vue'
 import Claim from '~/components/common/layout/Claim.vue'
+import Map from '~/components/common/layout/Map.vue'
 
 export default defineNuxtPlugin(nuxtApp => {
     nuxtApp.vueApp.component('a-link', ALink)
@@ -68,6 +69,7 @@ export default defineNuxtPlugin(nuxtApp => {
     nuxtApp.vueApp.component('layout-who-title', WhoTitle)
     nuxtApp.vueApp.component('layout-pillar', Pillar)
     nuxtApp.vueApp.component('layout-claim', Claim)
+    nuxtApp.vueApp.component('layout-map', Map)
 
 })
 

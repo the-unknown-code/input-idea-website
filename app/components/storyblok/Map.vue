@@ -36,6 +36,8 @@ import OrderedList from '../common/layout/OrderedList.vue';
 import Pillar from '../common/layout/Pillar.vue';
 import Claim from '../common/layout/Claim.vue';
 import WhoTitle from '../common/layout/WhoTitle.vue';
+import Form from '../common/layout/Form.vue';
+import Map from '../common/layout/Map.vue';
 
 const props = defineProps({
 	bloks: {
@@ -85,7 +87,9 @@ const COMPONENT_MAP = {
 	"OrderedList": OrderedList,
 	"Pillars": Pillar,
 	"Claim": Claim,
-	"WhoTitle": WhoTitle
+	"WhoTitle": WhoTitle,
+	"Form": Form,
+	"Map": Map
 
 };
 
