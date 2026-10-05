@@ -1,4 +1,12 @@
 <script setup lang="ts">
+
+defineProps({
+  blok: {
+    type: Object,
+    required: true,
+  }
+})
+
 type ChatOption = {
   label: string
   value: string
@@ -146,7 +154,11 @@ function restart() {
 
 
     <div class="layout-ai-form__content">
-      <h2>In<b>Breve</b></h2>
+      <h2 v-if="blok.title && blok.title.length">
+
+        <storyblok-richtext :content="blok.title[0].text"
+          cleanup />
+      </h2>
 
       <button v-if="canGoBack"
         class="back-button p-tiny --grey"
