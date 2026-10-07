@@ -3,9 +3,9 @@
     <div class="layout-three-columns__inner layout-grid">
       <div v-for="item in blok.list"
         :key="item._uid">
-        <div class="display --yellow">{{ item.title }}</div>
+        <div class="h2 --yellow">{{ item.title }}</div>
         <p v-if="item.description && item.description.length > 0"
-          class="p-tiny --grey">
+          class="p-small --grey">
           <storyblok-richtext :content="item.description[0].text"
             cleanup />
         </p>
