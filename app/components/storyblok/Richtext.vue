@@ -19,7 +19,7 @@ const props = withDefaults(
 
 );
 
-console.log(props.content);
+
 const html = computed(() => {
     return renderHTML(props.content, props.allowedTags)
 });

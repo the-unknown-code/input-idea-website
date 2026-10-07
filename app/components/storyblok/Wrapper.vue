@@ -22,7 +22,7 @@ const props = defineProps<{
 }>();
 
 const { story, refreshKey } = await useAsyncStory(props.url, props.apiOptions);
-console.log(story.value)
+
 
 const handleStoryUpdate = ({
 	story: updatedStory,

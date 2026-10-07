@@ -30,7 +30,7 @@ const emit = defineEmits<{
 // Initialize Storyblok bridge
 
 useStoryblokBridge(props.storyId, (updatedStory: ISbStoryData<any>) => {
-	console.log('Story updated via bridge:', updatedStory);
+	// console.log('Story updated via bridge:', updatedStory);
 
 	story.value = updatedStory;
 	refreshKey.value = `story-${props.storyId}-${Math.random()
