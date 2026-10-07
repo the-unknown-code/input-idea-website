@@ -1,7 +1,7 @@
 <template>
 
   <section class="layout-case-history">
-    <h1 class="display">
+    <h1 class="h3">
       <storyblok-richtext :content="blok.title[0].text"
         cleanup />
     </h1>
@@ -135,6 +135,7 @@ const filteredItems = computed(() => {
   h1 {
     text-align: center;
     max-width: 1280px;
+    margin-bottom: 32px;
   }
 
   .tags {
@@ -226,6 +227,10 @@ const filteredItems = computed(() => {
         @include desktop {
           padding: 16px;
           grid-column: span 8;
+
+          .h2 {
+            margin-bottom: 8px;
+          }
         }
       }
 

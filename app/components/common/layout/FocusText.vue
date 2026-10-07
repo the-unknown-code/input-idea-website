@@ -9,7 +9,7 @@
         </div>
       </div>
       <div>
-        <h1 class="display">
+        <h1 class="h3">
           <storyblok-richtext :content="blok.title[0].text"
             cleanup />
         </h1>

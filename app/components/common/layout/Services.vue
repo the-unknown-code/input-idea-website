@@ -232,6 +232,18 @@ tryOnBeforeUnmount(() => {
         align-items: center;
         gap: var(--spacer-16);
       }
+
+      &:deep(.h2) {
+        transition: color 200ms ease;
+      }
+
+      @include hover {
+        &:hover {
+          &:deep(.h2) {
+            color: var(--yellow);
+          }
+        }
+      }
     }
   }
 
