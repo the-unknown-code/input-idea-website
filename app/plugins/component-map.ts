@@ -33,6 +33,7 @@ import WhoTitle from '~/components/common/layout/WhoTitle.vue'
 import Pillar from '~/components/common/layout/Pillar.vue'
 import Claim from '~/components/common/layout/Claim.vue'
 import Map from '~/components/common/layout/Map.vue'
+import AdvancedHeader from '~/components/common/layout/AdvancedHeader.vue'
 
 export default defineNuxtPlugin(nuxtApp => {
     nuxtApp.vueApp.component('a-link', ALink)
@@ -70,6 +71,7 @@ export default defineNuxtPlugin(nuxtApp => {
     nuxtApp.vueApp.component('layout-pillar', Pillar)
     nuxtApp.vueApp.component('layout-claim', Claim)
     nuxtApp.vueApp.component('layout-map', Map)
+    nuxtApp.vueApp.component('layout-advanced-header', AdvancedHeader)
 
 })
 

@@ -38,6 +38,7 @@ import Claim from '../common/layout/Claim.vue';
 import WhoTitle from '../common/layout/WhoTitle.vue';
 import Form from '../common/layout/Form.vue';
 import Map from '../common/layout/Map.vue';
+import AdvancedHeader from '../common/layout/AdvancedHeader.vue';
 
 const props = defineProps({
 	bloks: {
@@ -89,7 +90,8 @@ const COMPONENT_MAP = {
 	"Claim": Claim,
 	"WhoTitle": WhoTitle,
 	"Form": Form,
-	"Map": Map
+	"Map": Map,
+	"AdvancedHeader": AdvancedHeader
 
 };
 

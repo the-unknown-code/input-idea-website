@@ -154,7 +154,8 @@ function restart() {
 
 
     <div class="layout-ai-form__content">
-      <h2 v-if="blok.title && blok.title.length">
+      <h2 v-if="blok.title && blok.title.length"
+        class="h3">
 
         <storyblok-richtext :content="blok.title[0].text"
           cleanup />
