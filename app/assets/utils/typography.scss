@@ -151,6 +151,35 @@ h2,
 	@include h2;
 }
 
+@mixin h3 {
+	text-transform: uppercase;
+	font-optical-sizing: auto;
+	font-variation-settings: 'wdth' 79;
+
+	@include type($display, 52px, 40px, 64px, 100, 1.15cap, 3%);
+
+	@include desktop {
+		@include type($display, 68px, 58px, 80px, 100, 1.15cap, 3%);
+	}
+}
+
+h3,
+.h3 {
+	&.heavy {
+		// letter-spacing: 2%;
+		font-variation-settings: 'wdth' 94;
+		font-weight: 900;
+	}
+
+	b,
+	strong {
+		font-variation-settings: 'wdth' 94;
+		font-weight: 900;
+	}
+
+	@include h3;
+}
+
 // ------ DISPLAY -------
 @mixin display {
 	text-transform: uppercase;

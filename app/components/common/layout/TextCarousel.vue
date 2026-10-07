@@ -3,11 +3,11 @@
 
     <div class="layout-text-carousel__content layout-grid">
       <div>
-        <div class="h1 heavy">{{ currentItem.eyebrow }}</div>
+        <div class="h2 heavy">{{ currentItem.eyebrow }}</div>
       </div>
       <div>
         <div v-text-reveal
-          class="h2">
+          class="h3">
           <storyblok-richtext :content="currentItem.title[0].text"
             cleanup />
         </div>

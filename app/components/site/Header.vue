@@ -2,15 +2,15 @@
 	<header ref="$header"
 		class="header">
 		<div class="header__inner layout-block">
-			<div>
-				<ui-arrow />
+			<div class="circle">
+				<ui-arrow color="var(--darkgrey)" />
 			</div>
 			<div class="logo">
 				<img ref="$logo"
 					src="/svgs/logo-input-idea.svg"
 					alt="Input Idea" />
 			</div>
-			<div>
+			<div class="circle">
 				<ui-ham />
 			</div>
 		</div>
@@ -70,6 +70,35 @@ tryOnMounted(() => {
 		padding: var(--spacer-64) 0;
 	}
 
+	.circle {
+		position: relative;
+
+		&::before {
+			content: '';
+			position: absolute;
+			width: 48px;
+			height: 48px;
+			border-radius: 50%;
+			background-color: var(--yellow);
+			z-index: 0;
+
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, calc(-50% - 1px));
+
+
+		}
+
+		>* {
+			position: relative;
+			z-index: 1;
+		}
+
+		&:deep(.ui-ham) {
+			transform: scale(.8);
+		}
+	}
+
 	&__inner {
 		display: flex;
 		justify-content: space-between;
@@ -77,17 +106,16 @@ tryOnMounted(() => {
 
 		>div {
 
+			width: 40px;
+			flex: 0 0 40px;
+			display: flex;
+			justify-content: center;
+
 			&:nth-child(1),
 			&:nth-child(3) {
 				position: relative;
 				display: flex;
-				width: 32px;
-				flex: 0 0 32px;
 				height: auto;
-			}
-
-			&:nth-child(3) {
-				justify-content: flex-end;
 			}
 		}
 	}

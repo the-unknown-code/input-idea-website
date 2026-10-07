@@ -13,17 +13,17 @@
           width="29"
           height="10"
           transform="translate(1221 3)"
-          fill="#fff" />
+          fill="#2F2C2C" />
         <rect ref="$rect2"
           width="29"
           height="5"
           transform="translate(1221 18)"
-          fill="#fff" />
+          fill="#2F2C2C" />
         <rect ref="$rect3"
           width="29"
           height="1"
           transform="translate(1221 28)"
-          fill="#fff" />
+          fill="#2F2C2C" />
       </g>
     </svg>
 

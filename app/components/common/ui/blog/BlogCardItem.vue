@@ -8,7 +8,7 @@
     <div class="content">
 
       <div class="eyebrow">
-        <span class="p-tiny">{{ blok.category }}</span>
+        <span class="p-small">{{ blok.category }}</span>
         <span class="p-tiny read --yellow">{{ blok.read_time }} Min.</span>
       </div>
       <div class="title --yellow">
@@ -18,7 +18,7 @@
         </p>
       </div>
       <div class="description">
-        <p class="p-tiny --grey">
+        <p class="p-smll --grey">
           {{ blok.image[0].description }}
         </p>
       </div>

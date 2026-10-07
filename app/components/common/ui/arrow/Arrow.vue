@@ -1,4 +1,8 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps<{
+  color?: string
+}>()
+</script>
 
 <template>
   <div class="ui-arrow">
@@ -13,7 +17,8 @@
           data-name="Tracciato 74771"
           d="M2.253,21.147.92,19.876l13.3-13.358H4.949V4.72H17.378V17.18H15.549V7.85Z"
           transform="translate(-0.92 -4.72)"
-          fill="#fff615" />
+          :fill="color || '#fff615'" />
+
       </g>
     </svg>
 

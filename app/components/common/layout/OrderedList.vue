@@ -1,7 +1,7 @@
 <template>
   <section class="layout-ordered-list">
     <div class="layout-ordered-list__content">
-      <h2>
+      <h2 class="h3">
         <storyblok-richtext :content="blok.title[0].text"
           cleanup />
       </h2>
@@ -11,9 +11,10 @@
 
       <ol>
         <li v-for="item in blok.list"
+          ref="$items"
           :key="item._uid">
           <p v-text-reveal
-            class="--grey">
+            class="h2 --grey">
             <storyblok-richtext :content="item.text"
               cleanup />
           </p>
@@ -25,7 +26,7 @@
 
 
 <script setup lang="ts">
-
+import { ScrollTrigger } from 'gsap/all';
 
 defineProps({
   blok: {
@@ -33,13 +34,40 @@ defineProps({
     required: true,
   }
 })
+
+const $items = ref<HTMLElement[]>([]);
+const scrollTriggers: ScrollTrigger[] = [];
+
+const initialize = () => {
+  $items.value.forEach((item) => {
+    scrollTriggers.push(
+      ScrollTrigger.create({
+        trigger: item,
+        start: 'top bottom',
+        end: 'top 60%',
+        onEnter: () => item.classList.add('is-highlighted'),
+        onLeave: () => item.classList.remove('is-highlighted'),
+        onEnterBack: () => item.classList.add('is-highlighted'),
+        onLeaveBack: () => item.classList.remove('is-highlighted'),
+      })
+    );
+  });
+};
+
+tryOnMounted(async () => {
+  await nextTick();
+  initialize();
+});
+
+tryOnBeforeUnmount(() => {
+  scrollTriggers.forEach((trigger) => trigger.kill());
+});
 </script>
 
 <style lang="scss" scoped>
 .layout-ordered-list {
   position: relative;
   width: 100%;
-  max-width: 720px;
   margin: 0 auto;
 
 
@@ -67,13 +95,26 @@ defineProps({
     li {
       position: relative;
       width: 100%;
-      border-top: 1px solid var(--grey-10);
       text-align: center;
       padding: 8px 0;
       text-wrap: balance;
 
-      &:last-child {
-        border-bottom: 1px solid var(--grey-10);
+      @include mobile {
+        padding: 3px 0;
+      }
+
+      &:deep(.h2) {
+        transition: color 200ms ease;
+
+        @include mobile {
+          font-size: 32px !important;
+        }
+      }
+
+      &.is-highlighted {
+        &:deep(.h2) {
+          color: var(--yellow);
+        }
       }
     }
   }

@@ -141,6 +141,7 @@ export default defineNuxtConfig({
 			app: app as any,
 			storyblokPreviewKey: process.env.STORYBLOK_PREVIEW_KEY,
 			storyblokApiKey: process.env.STORYBLOK_KEY,
+			googleMapsId: process.env.GOOGLE_MAPS_ID,
 			showDebug: process.env.SHOW_DEBUG === 'true',
 			SITE_PASSWORD: process.env.SITE_PASSWORD,
 

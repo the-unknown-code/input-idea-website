@@ -10,22 +10,24 @@
       </div>
       <div>
         <div v-for="(item, i) in blok.list"
-          :key="i"
-          :class="['highlight', { last: i === blok.list.length - 1 }]">
-          <template v-if="Number(i) < blok.list.length - 1">
+          :key="item._uid ?? i"
+          :class="['highlight', { 'is-active': i === activeIndex }]"
+          @click="open(Number(i))">
+          <template v-if="i !== activeIndex">
             <div>
               <p class="--black">{{ item.title }}</p>
             </div>
             <a-link v-if="item.cta && item.cta.length > 0"
               class="cta"
-              :href="resolveLink(item.cta[0].link)">
+              :href="resolveLink(item.cta[0].link)"
+              @click.stop>
               <ui-arrow />
             </a-link>
 
           </template>
           <template v-else>
-            <div class="media"
-              v-if="item.media && item.media.length > 0">
+            <div v-if="item.media && item.media.length > 0"
+              class="media">
               <common-media :src="storyblokFormat(item.media[0].image.filename, 640)"
                 cover />
             </div>
@@ -59,6 +61,12 @@ const { blok } = defineProps({
     default: TEXT_CAROUSEL
   }
 })
+
+const activeIndex = ref(Math.max(0, blok.list.length - 1));
+
+const open = (index: number) => {
+  activeIndex.value = index;
+};
 
 </script>
 
@@ -111,6 +119,8 @@ const { blok } = defineProps({
     border-radius: 16px;
     padding: 24px;
     background-color: var(--yellow);
+    cursor: pointer;
+    transition: background-color .35s var(--ease-in-out-circ), width .5s var(--ease-in-out-circ);
 
 
     @include desktop {
@@ -119,7 +129,7 @@ const { blok } = defineProps({
       height: 420px;
       flex-grow: 1;
 
-      &:not(.last) {
+      &:not(.is-active) {
         p {
           position: relative;
           white-space: nowrap;
@@ -131,7 +141,7 @@ const { blok } = defineProps({
         }
       }
 
-      &.last {
+      &.is-active {
         width: 50%;
       }
     }
@@ -148,7 +158,7 @@ const { blok } = defineProps({
       }
     }
 
-    &.last {
+    &.is-active {
       background-color: var(--black);
       aspect-ratio: 2.5;
     }

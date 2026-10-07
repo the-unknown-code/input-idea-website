@@ -1,35 +1,11 @@
 <script setup lang="ts">
 
 const $map = ref<HTMLElement>()
-
-const mapStyles = [
-  { elementType: 'geometry', stylers: [{ color: '#212121' }] },
-  { elementType: 'labels.icon', stylers: [{ visibility: 'off' }] },
-  { elementType: 'labels.text.fill', stylers: [{ color: '#ffff00' }] },
-  { elementType: 'labels.text.stroke', stylers: [{ color: '#212121' }] },
-  { featureType: 'administrative', elementType: 'geometry', stylers: [{ color: '#757575' }] },
-  { featureType: 'administrative.country', elementType: 'labels.text.fill', stylers: [{ color: '#ffff00' }] },
-  { featureType: 'administrative.land_parcel', stylers: [{ visibility: 'off' }] },
-  { featureType: 'administrative.locality', elementType: 'labels.text.fill', stylers: [{ color: '#ffff00' }] },
-  { featureType: 'poi', elementType: 'labels.text.fill', stylers: [{ color: '#ffff00' }] },
-  { featureType: 'poi.park', elementType: 'geometry', stylers: [{ color: '#181818' }] },
-  { featureType: 'poi.park', elementType: 'labels.text.fill', stylers: [{ color: '#ffff00' }] },
-  { featureType: 'poi.park', elementType: 'labels.text.stroke', stylers: [{ color: '#1b1b1b' }] },
-  { featureType: 'road', elementType: 'geometry.fill', stylers: [{ color: '#2c2c2c' }] },
-  { featureType: 'road', elementType: 'labels.text.fill', stylers: [{ color: '#ffff00' }] },
-  { featureType: 'road.arterial', elementType: 'geometry', stylers: [{ color: '#373737' }] },
-  { featureType: 'road.highway', elementType: 'geometry', stylers: [{ color: '#3c3c3c' }] },
-  { featureType: 'road.highway.controlled_access', elementType: 'geometry', stylers: [{ color: '#4e4e4e' }] },
-  { featureType: 'road.local', elementType: 'labels.text.fill', stylers: [{ color: '#ffff00' }] },
-  { featureType: 'transit', elementType: 'labels.text.fill', stylers: [{ color: '#ffff00' }] },
-  { featureType: 'water', elementType: 'geometry', stylers: [{ color: '#000000' }] },
-  { featureType: 'water', elementType: 'labels.text.fill', stylers: [{ color: '#ffff00' }] },
-]
-
 const pinSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="48" viewBox="0 0 36 48"><path d="M18 1C8.6 1 1 8.6 1 18c0 12.2 17 29 17 29s17-16.8 17-29C35 8.6 27.4 1 18 1Z" fill="#ffff00" stroke="#212121" stroke-width="2"/><circle cx="18" cy="18" r="6" fill="#212121"/></svg>'
 
 const address = 'Via del Chionso 28/a, Reggio Emilia, Italy'
 const location = { lat: 44.7089564, lng: 10.6497168 }
+const { public: { googleMapsId } } = useRuntimeConfig();
 let mapInitialized = false
 
 const initMap = () => {
@@ -38,7 +14,7 @@ const initMap = () => {
   const map = new window.google.maps.Map($map.value, {
     center: location,
     zoom: 16,
-    styles: mapStyles,
+    mapId: googleMapsId,
     disableDefaultUI: true,
     clickableIcons: false,
     gestureHandling: 'none',
