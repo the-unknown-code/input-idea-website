@@ -6,6 +6,11 @@
           <storyblok-richtext :content="blok.title[0].text"
             cleanup />
         </h2>
+        <p v-if="blok.description?.length"
+          class="--grey">
+          <storyblok-richtext :content="blok.description[0].text"
+            cleanup />
+        </p>
         <div class="counter">
           <div v-for="(item, i) in blok.list"
             :key="i"

@@ -40,6 +40,7 @@ import Form from '../common/layout/Form.vue';
 import Map from '../common/layout/Map.vue';
 import AdvancedHeader from '../common/layout/AdvancedHeader.vue';
 import ContentMarquee from '../common/layout/ContentMarquee.vue';
+import OpenPosition from '../common/layout/OpenPosition.vue';
 
 const props = defineProps({
 	bloks: {
@@ -93,7 +94,8 @@ const COMPONENT_MAP = {
 	"Form": Form,
 	"Map": Map,
 	"AdvancedHeader": AdvancedHeader,
-	"ContentMarquee": ContentMarquee
+	"ContentMarquee": ContentMarquee,
+	"OpenPositions": OpenPosition
 
 };
 

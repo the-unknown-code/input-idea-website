@@ -35,6 +35,7 @@ import Claim from '~/components/common/layout/Claim.vue'
 import Map from '~/components/common/layout/Map.vue'
 import AdvancedHeader from '~/components/common/layout/AdvancedHeader.vue'
 import ContentMarquee from '~/components/common/layout/ContentMarquee.vue'
+import OpenPosition from '~/components/common/layout/OpenPosition.vue'
 
 export default defineNuxtPlugin(nuxtApp => {
     nuxtApp.vueApp.component('a-link', ALink)
@@ -74,5 +75,6 @@ export default defineNuxtPlugin(nuxtApp => {
     nuxtApp.vueApp.component('layout-map', Map)
     nuxtApp.vueApp.component('layout-advanced-header', AdvancedHeader)
     nuxtApp.vueApp.component('layout-content-marquee', ContentMarquee)
+    nuxtApp.vueApp.component('layout-open-position', OpenPosition)
 })
 
