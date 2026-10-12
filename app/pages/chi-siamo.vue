@@ -10,14 +10,7 @@
 
 
 
-          <!--
-          <layout-claim-hero />
-          <layout-focus-text />
-          <layout-focus-item />
-          <layout-services />
-          <layout-media-marquee />
-          <layout-form />
-          -->
+
         </div>
       </main>
     </template>

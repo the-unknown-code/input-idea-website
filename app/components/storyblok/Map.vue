@@ -39,6 +39,7 @@ import WhoTitle from '../common/layout/WhoTitle.vue';
 import Form from '../common/layout/Form.vue';
 import Map from '../common/layout/Map.vue';
 import AdvancedHeader from '../common/layout/AdvancedHeader.vue';
+import ContentMarquee from '../common/layout/ContentMarquee.vue';
 
 const props = defineProps({
 	bloks: {
@@ -91,7 +92,8 @@ const COMPONENT_MAP = {
 	"WhoTitle": WhoTitle,
 	"Form": Form,
 	"Map": Map,
-	"AdvancedHeader": AdvancedHeader
+	"AdvancedHeader": AdvancedHeader,
+	"ContentMarquee": ContentMarquee
 
 };
 
