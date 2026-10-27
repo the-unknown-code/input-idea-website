@@ -14,7 +14,7 @@ const props = withDefaults(
         allowedTags?: string[]
     }>(),
     {
-        allowedTags: () => ['b', 'strong', 'br', 'pre', 'code', 'strike', 'span']
+        allowedTags: () => ['b', 'strong', 'br', 'pre', 'code', 'strike']
     },
 
 );
