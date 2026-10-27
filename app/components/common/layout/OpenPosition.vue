@@ -98,7 +98,7 @@ watch(
                 <label class="form__file-input">
                   <span class="p-small">{{
                     curriculumName || 'Curriculum'
-                    }}</span>
+                  }}</span>
                   <input type="file"
                     accept=".pdf,.doc,.docx"
                     @change="updateCurriculum" />
@@ -172,7 +172,7 @@ watch(
             <label class="form__file-input custom-form__file-input">
               <span class="p-small">{{
                 customCurriculumName || 'Curriculum'
-                }}</span>
+              }}</span>
               <input type="file"
                 accept=".pdf,.doc,.docx"
                 @change="updateCustomCurriculum" />
@@ -268,6 +268,10 @@ watch(
   .custom-form {
     width: 100%;
     margin-top: 96px;
+
+    .custom-form__panel {
+      border-color: var(--yellow) !important;
+    }
 
     @include desktop {
       margin-top: 128px;

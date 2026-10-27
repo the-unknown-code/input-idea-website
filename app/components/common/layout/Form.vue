@@ -27,6 +27,17 @@ defineProps({
         <ui-form-input placeholder="Messaggio *"
           type="textarea" />
 
+        <div class="consents">
+          <label class="checkbox p-small --grey">
+            <input type="checkbox" name="privacy" required />
+            <span>Ho preso visione dell’informativa sulla privacy*</span>
+          </label>
+          <label class="checkbox p-small --grey">
+            <input type="checkbox" name="marketing" />
+            <span>Acconsento al trattamento dei dati per finalità di marketing</span>
+          </label>
+        </div>
+
         <div class="submit p-small --yellow">
           <b>Invia</b>
           <ui-arrow />
@@ -41,6 +52,47 @@ defineProps({
   width: 100%;
   max-width: 1280px;
   margin: 0 auto;
+
+  .consents {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 12px;
+  }
+
+  .checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    cursor: pointer;
+
+    input {
+      appearance: none;
+      flex: 0 0 auto;
+      width: 20px;
+      height: 20px;
+      margin: 0;
+      border: 1px solid var(--grey-600);
+      border-radius: 5px;
+      cursor: pointer;
+
+      &:checked {
+        border-color: var(--yellow);
+        background-color: var(--yellow);
+
+        &::after {
+          display: block;
+          width: 5px;
+          height: 10px;
+          margin: 2px auto;
+          content: '';
+          border: solid var(--darkgrey);
+          border-width: 0 2px 2px 0;
+          transform: rotate(45deg);
+        }
+      }
+    }
+  }
 
   .submit {
     position: relative;
