@@ -1,7 +1,7 @@
 <template>
   <section class="layout-ordered-list">
     <div class="layout-ordered-list__content">
-      <h2 class="h3">
+      <h2 class="h3 --lightgrey">
         <storyblok-richtext :content="blok.title[0].text"
           cleanup />
       </h2>
@@ -14,7 +14,7 @@
           ref="$items"
           :key="item._uid">
           <p v-text-reveal
-            class="h2 --grey">
+            class="h3-alt --grey">
             <storyblok-richtext :content="item.text"
               cleanup />
           </p>
@@ -96,14 +96,14 @@ tryOnBeforeUnmount(() => {
       position: relative;
       width: 100%;
       text-align: center;
-      padding: 8px 0;
+      padding: 4px 0;
       text-wrap: balance;
 
       @include mobile {
         padding: 3px 0;
       }
 
-      &:deep(.h2) {
+      &:deep(.h3-alt) {
         transition: color 200ms ease;
 
         @include mobile {
@@ -112,8 +112,8 @@ tryOnBeforeUnmount(() => {
       }
 
       &.is-highlighted {
-        &:deep(.h2) {
-          color: var(--yellow);
+        &:deep(.h3-alt) {
+          color: var(--yellow) !important;
         }
       }
     }

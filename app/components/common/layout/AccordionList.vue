@@ -13,7 +13,7 @@
       :key="item._uid"
       :class="['item', { 'active': activeItem === index }]"
       @click.prevent="activeItem = activeItem === index ? -1 : Number(index)">
-      <div class="display">
+      <div class="h2-alt">
         <storyblok-richtext :content="item.title[0].text"
           cleanup />
       </div>
@@ -21,7 +21,7 @@
         <storyblok-richtext :content="item.description[0].text"
           cleanup />
       </div>
-      <ui-arrow />
+      <ui-arrow :class="{ open: activeItem === index }" />
     </div>
 
   </section>
@@ -106,6 +106,11 @@ const activeItem = ref<number>(-1);
       right: 16px;
       bottom: 16px;
       transform: rotate(135deg);
+      transition: transform 250ms var(--ease-in-out-quint);
+    }
+
+    &.active:deep(.ui-arrow) {
+      transform: rotate(-45deg);
     }
   }
 }

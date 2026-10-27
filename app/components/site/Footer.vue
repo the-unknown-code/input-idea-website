@@ -1,6 +1,5 @@
 <template>
 	<footer class="footer layout-block">
-
 		<img ref="$logo"
 			class="logo"
 			src="/svgs/logo-input-idea.svg"
@@ -9,29 +8,23 @@
 			<div>
 				<address>
 					<p class="company --yellow"><b>Input SRL</b></p>
-					<p class="p-small">Via del Chionso, 28/A - 42122 – Reggio Emilia (RE) - Italia info@inputidea.it |
-						+39 327 4237102
+					<p class="p-small">
+						Via del Chionso, 28/A - 42122 – Reggio Emilia (RE) - Italia
+						info@inputidea.it | +39 327 4237102
 					</p>
 				</address>
 				<div class="socials">
-					<a-link href="https://www.instagram.com/inputidea/">
-						<p class="p-small">
-							<span>Instagram</span>
-							<ui-arrow />
-						</p>
-					</a-link>
-					<a-link href="https://www.instagram.com/inputidea/">
-						<p class="p-small">
-							<span>Facebook</span>
-							<ui-arrow />
-						</p>
-					</a-link>
-					<a-link href="https://www.instagram.com/inputidea/">
-						<p class="p-small">
-							<span>Linkedin</span>
-							<ui-arrow />
-						</p>
-					</a-link>
+					<ui-common-cta label="INSTAGRAM"
+						href="https://www.instagram.com/inputidea/"
+						small />
+
+					<ui-common-cta label="FACEBOOK"
+						href="https://www.instagram.com/inputidea/"
+						small />
+
+					<ui-common-cta label="LINKEDIN"
+						href="https://www.instagram.com/inputidea/"
+						small />
 				</div>
 			</div>
 			<div>
@@ -47,18 +40,22 @@
 		</div>
 		<div class="footer__copyright layout-grid">
 			<div>
-				<p class="p-tiny --grey-600">© 2023 Input Srl. Tutti i diritti riservati • P.IVA 02466860356 • REA: RE -
-					284000 •
-					PEC: input.srl@legalmail.it</p>
+				<p class="p-tiny --grey-600">
+					© 2023 Input Srl. Tutti i diritti riservati • P.IVA 02466860356 • REA:
+					RE - 284000 • PEC: input.srl@legalmail.it
+				</p>
 			</div>
 			<div>
 				<div class="legals">
-					<a-link href="https://www.inputidea.it/privacy-policy">
-						<p class="p-tiny --grey-600">Privacy Policy</p>
-					</a-link>
-					<a-link href="https://www.inputidea.it/privacy-policy">
-						<p class="p-tiny --grey-600">Cookie Policy</p>
-					</a-link>
+					<ui-common-cta label="Privacy Policy"
+						href="/privacy-policy"
+						small
+						light />
+
+					<ui-common-cta label="Cookie Policy"
+						href="/cookie-policy"
+						small
+						light />
 				</div>
 			</div>
 		</div>
@@ -69,11 +66,9 @@
 import gsap from 'gsap/all';
 import { GSAPDuration, GSAPEase } from '~/libs/constants/gsap';
 
-
 const $logo = ref<HTMLImageElement | null>(null);
 
 const initialize = () => {
-
 	gsap.set($logo.value, {
 		y: '100%',
 	});
@@ -96,7 +91,6 @@ tryOnMounted(() => {
 
 <style lang="scss" scoped>
 .footer {
-
 	position: relative;
 	margin: var(--spacer-64) auto;
 	overflow: hidden;
@@ -107,7 +101,7 @@ tryOnMounted(() => {
 		&.logo {
 			width: 100%;
 			height: auto;
-			opacity: .025;
+			opacity: 0.025;
 		}
 	}
 
@@ -175,7 +169,6 @@ tryOnMounted(() => {
 			width: 64px;
 			height: auto;
 		}
-
 	}
 
 	&__content {
@@ -192,7 +185,6 @@ tryOnMounted(() => {
 			margin-top: 0;
 		}
 
-
 		>div {
 			grid-column: -1 / 1;
 
@@ -208,8 +200,8 @@ tryOnMounted(() => {
 	}
 
 	&__copyright {
-
 		margin-top: var(--spacer-32);
+		padding: 0 2px;
 
 		@include desktop {
 			margin-top: var(--spacer-16);

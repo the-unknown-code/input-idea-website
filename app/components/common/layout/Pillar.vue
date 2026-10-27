@@ -104,6 +104,12 @@ const activeIndex = ref<number>(0)
       display: flex;
       align-items: center;
       gap: 8px;
+      margin-top: 24px;
+
+      @include desktop {
+        margin-top: 48px;
+      }
+
 
       &--item {
         position: relative;

@@ -8,15 +8,15 @@
     <div class="filters"
       aria-label="Filtra i progetti per tag">
       <button class="p-small"
-        :class="{ active: selectedTag === null }"
+        :class="{ active: selectedTags.length === 0 }"
         type="button"
-        @click="selectedTag = null">Tutti</button>
+        @click="selectedTags = []">Tutti</button>
       <button v-for="tag in availableTags"
         :key="tag"
         class="p-small"
-        :class="{ active: selectedTag === tag }"
+        :class="{ active: selectedTags.includes(tag) }"
         type="button"
-        @click="selectedTag = tag">{{ tag }}</button>
+        @click="toggleTag(tag)">{{ tag }}</button>
     </div>
     <div class="list">
       <nuxt-link v-for="item in filteredItems"
@@ -27,8 +27,7 @@
         <div>
           <div v-if="item.media"
             class="media">
-            <common-media :src="storyblokFormat(item.media, 420)"
-              cover />
+            <common-media :src="storyblokFormat(item.media, 420)" />
           </div>
         </div>
         <div>
@@ -39,9 +38,11 @@
               cleanup />
           </div>
           <div class="tags">
-            <p v-for="tag in item.tags"
+
+            <ui-common-cta v-for="tag in item.tags"
               :key="tag"
-              class="p-tiny --yellow">{{ tag }}</p>
+              :label="tag"
+              :href="`/servizi/${getFilterHref(tag)}`" />
           </div>
         </div>
         <div>
@@ -57,6 +58,71 @@
 import type { StoryblokRichTextInput } from '@storyblok/richtext';
 import { PORTFOLIO } from '~/libs/data';
 import { storyblokFormat } from '~/libs/storyblok';
+
+const filters = [
+  {
+    id: 'Social Strategy',
+    href: 'social-strategy'
+  },
+  {
+    id: '3D Modeling',
+    href: '3d-modeling'
+  },
+  {
+    id: 'Custom Software',
+    href: 'custom-software'
+  },
+  {
+    id: 'SEO',
+    href: 'seo'
+  },
+  {
+    id: 'Website & E-Commerce',
+    href: 'website-e-e-commerce'
+  },
+  {
+    id: 'Website & Social Advertising',
+    href: 'website-e-social-advertising'
+  },
+  {
+    id: 'Strategic Marketing & Analysis',
+    href: 'strategic-marketing-e-analysis'
+  },
+  {
+    id: 'Brand Identity & Positioning',
+    href: 'brand-identity-e-brand-positionin'
+  },
+  {
+    id: 'Graphic Design',
+    href: 'graphic-design'
+  },
+  {
+    id: 'Copywriting, SEO & GEO',
+    href: 'copywriting-seo-e-geo'
+  },
+  {
+    id: 'CRM & Customer Data',
+    href: 'crm'
+  },
+  {
+    id: 'Social Media Marketing',
+    href: 'social-media-marketing'
+  },
+  {
+    id: 'Lead Generation',
+    href: 'lead-generation'
+  },
+  {
+    id: 'Data Governance',
+    href: 'data-governance'
+  },
+  {
+    id: 'Email Marketing',
+    href: 'email-marketing'
+  },
+
+]
+
 
 type ProjectContent = {
   _uid?: string
@@ -92,7 +158,17 @@ const props = defineProps({
   }
 })
 
-const selectedTag = ref<string | null>(null)
+const selectedTags = ref<string[]>([])
+
+const getFilterHref = (tag: string) => {
+  return filters.find(filter => filter.id === tag)?.href ?? '#'
+}
+
+const toggleTag = (tag: string) => {
+  selectedTags.value = selectedTags.value.includes(tag)
+    ? selectedTags.value.filter(selectedTag => selectedTag !== tag)
+    : [...selectedTags.value, tag]
+}
 
 const projects = computed<ProjectCard[]>(() => {
   const list = (props.blok?.list ?? []) as ResolvedProject[]
@@ -117,9 +193,9 @@ const availableTags = computed(() => {
 })
 
 const filteredItems = computed(() => {
-  return selectedTag.value === null
+  return selectedTags.value.length === 0
     ? projects.value
-    : projects.value.filter(item => item.tags.includes(selectedTag.value as string))
+    : projects.value.filter(item => item.tags.some(tag => selectedTags.value.includes(tag)))
 })
 
 </script>
@@ -157,11 +233,18 @@ const filteredItems = computed(() => {
     flex-wrap: wrap;
 
     button {
+      position: relative;
       color: inherit;
       cursor: pointer;
       transition: color .2s ease;
+      border: 1px solid var(--grey);
+      border-radius: 5px;
+      padding: 4px 8px;
+
+      font-size: 13px;
 
       &.active {
+        border: 1px solid var(--yellow);
         color: var(--yellow);
       }
     }
@@ -186,22 +269,7 @@ const filteredItems = computed(() => {
       gap: 16px;
     }
 
-    @include hover {
-      &:hover {
-        background-color: var(--yellow);
 
-        .display,
-        p {
-          color: var(--darkgrey);
-        }
-
-        &:deep(.ui-arrow) {
-          path {
-            fill: var(--darkgrey);
-          }
-        }
-      }
-    }
 
     >div {
       grid-column: -1 / 1;
@@ -209,7 +277,7 @@ const filteredItems = computed(() => {
 
 
       &:deep(.ui-arrow) {
-        width: 36px;
+        // width: 12px;
 
         svg {
           width: 100%;
@@ -247,14 +315,30 @@ const filteredItems = computed(() => {
       .media {
         position: relative;
         width: 100%;
-        aspect-ratio: 4;
+        // aspect-ratio: 4;
         border-radius: 16px;
         overflow: hidden;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        >div {
+          position: relative;
+          width: 100%;
+          height: auto;
+
+          @include mobile {
+            width: 240px;
+            margin: 24px 0;
+          }
+        }
 
         @include desktop {
           width: 100%;
           height: 100%;
           aspect-ratio: unset;
+          padding: 16px;
         }
 
       }

@@ -1,5 +1,6 @@
 <script setup lang="ts">
-const { callback } = defineProps({
+
+const { callback, light } = defineProps({
   label: {
     type: String,
     default: null
@@ -11,6 +12,14 @@ const { callback } = defineProps({
   callback: {
     type: Function,
     default: null
+  },
+  small: {
+    type: Boolean,
+    default: false
+  },
+  light: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -25,11 +34,12 @@ const handleKeydown = (event: KeyboardEvent) => {
     :href="callback ? undefined : href"
     :role="callback ? 'button' : undefined"
     :tabindex="callback ? 0 : undefined"
-    class="ui-common-cta"
+    :class="['ui-common-cta', { light }]"
     @click="handleClick"
     @keydown="handleKeydown">
-    <p class="--yellow">{{ label }}</p>
-    <ui-arrow small />
+    <p :class="['--yellow', { small, light }]">{{ label }}</p>
+    <ui-arrow small
+      :color="light ? 'rgba(255, 255, 255, 0.8)' : undefined" />
   </component>
 </template>
 
@@ -53,6 +63,28 @@ const handleKeydown = (event: KeyboardEvent) => {
 
       &:deep(.ui-arrow) {
         transform: translate(2px, -2px);
+      }
+    }
+  }
+
+  p {
+    &.light {
+      color: rgb(255 255 255 / 80%);
+    }
+
+    &.small {
+      font-size: 14px;
+
+      &.light {
+        font-size: 12px;
+      }
+    }
+  }
+
+  &.light {
+    @include hover {
+      &:hover {
+        text-decoration-color: rgb(255 255 255 / 80%);
       }
     }
   }

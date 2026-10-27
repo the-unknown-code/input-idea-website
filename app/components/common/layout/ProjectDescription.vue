@@ -2,7 +2,7 @@
   <section :class="['layout-project-description', { background: blok.background }]">
     <div class="layout-project-description__content layout-grid">
       <div v-if="blok.title?.length">
-        <div :class="['--yellow', blok.background ? 'h2 ' : 'h2']">
+        <div :class="['--yellow', blok.background ? 'h2-alt ' : 'h2-alt']">
           {{ blok.title }}
         </div>
       </div>

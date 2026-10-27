@@ -3,7 +3,14 @@
 
     <div class="layout-text-carousel__content layout-grid">
       <div>
-        <div class="h2 heavy">{{ currentItem.eyebrow }}</div>
+        <div class=" --lightgrey">
+          <span v-for="(letter, index) in currentItem.eyebrow.split('')"
+            :key="`${letter}-${index}`"
+            :class="['h2', {
+              heavy:
+                Number(index) > 0
+            }]">{{ letter === ' ' ? '\u00a0' : letter }}</span>
+        </div>
       </div>
       <div>
         <div v-text-reveal
