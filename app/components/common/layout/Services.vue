@@ -9,8 +9,7 @@
         <p v-if="blok.description"
           v-text-reveal
           class="--grey">
-          <storyblok-richtext :content="blok.description[0].text"
-            :allowed-tags="['b', 'strong', 'br']" />
+          <storyblok-richtext :content="blok.description[0].text" />
         </p>
       </div>
       <div>
@@ -71,6 +70,7 @@ const { blok } = defineProps({
   }
 })
 
+console.log(">>", blok)
 
 const list = computed(() => Array.isArray(blok.list) ? blok.list : []);
 const loopedDesktopItems = computed(() =>
