@@ -19,7 +19,7 @@
             ref="$items"
             :key="item._uid ?? item.label">
             <a-link :href="resolveLink(item.link)">
-              <p class="h2"> {{ item.label }}</p>
+              <p class="h2-alt"> {{ item.label }}</p>
               <ui-arrow />
             </a-link>
           </li>
@@ -29,7 +29,7 @@
           <li v-for="({ item, copy }, index) in loopedDesktopItems"
             :key="`${item._uid ?? item.label}-${copy}-${index}`">
             <a-link :href="resolveLink(item.link)">
-              <p class="h2"> {{ item.label }}</p>
+              <p :class="['h2-alt', { '--yellow': isCentered(index) }]"> {{ item.label }}</p>
               <ui-arrow />
             </a-link>
           </li>
@@ -40,13 +40,16 @@
             class="p-small --yellow"
             aria-label="Previous services"
             @click="previous">
-            Previous
+            <ui-arrow-button reverse />
           </button>
+          <div class="counter p">
+            {{ activeIndex + 1 }} / {{ list.length }}
+          </div>
           <button type="button"
             class="p-small --yellow"
             aria-label="Next services"
             @click="next">
-            Next
+            <ui-arrow-button />
           </button>
         </div>
       </div>
@@ -77,6 +80,8 @@ const $desktopList = ref<HTMLUListElement | null>(null);
 const activeIndex = ref(0);
 let resetTimer: ReturnType<typeof setTimeout> | undefined;
 let isScrolling = false;
+
+const isCentered = (index: number) => index === list.value.length + activeIndex.value + 2;
 
 const getItemOffset = (index: number) => {
   const viewport = $desktopList.value;
@@ -194,6 +199,21 @@ tryOnBeforeUnmount(() => {
     }
   }
 
+  .counter {
+    position: relative;
+    width: auto;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    border-radius: 5px;
+    border: 1px solid white;
+    padding: 0 12px;
+
+    font-size: 12px;
+  }
+
   &__controls {
     display: flex;
     justify-content: space-between;
@@ -251,6 +271,13 @@ tryOnBeforeUnmount(() => {
     @include desktop {
       display: none;
     }
+
+    li {
+
+      p {
+        padding-right: 16px;
+      }
+    }
   }
 
   ul.layout-services__desktop-list {
@@ -260,7 +287,7 @@ tryOnBeforeUnmount(() => {
     padding-block: 40px;
     overflow-y: auto;
     scrollbar-width: none;
-    mask-image: linear-gradient(to bottom, transparent 0%, black 10%, black 90%, transparent 100%);
+    mask-image: linear-gradient(to bottom, transparent 0%, black 45%, black 55%, transparent 100%);
 
     &::-webkit-scrollbar {
       display: none;
@@ -274,6 +301,10 @@ tryOnBeforeUnmount(() => {
       flex: none;
       opacity: 1;
       transform: none;
+
+      p {
+        padding-right: 32px;
+      }
     }
   }
 

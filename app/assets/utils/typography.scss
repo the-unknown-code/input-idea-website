@@ -151,6 +151,20 @@ h2,
 	@include h2;
 }
 
+// ------ H2 -------
+@mixin h2-alt {
+	font-weight: 300 !important;
+	@include type($sans, 24px, 28px, 32px, 100, 1, 0);
+
+	@include desktop {
+		@include type($sans, 32px, 40px, 48px, 100, 1, 0);
+	}
+}
+
+.h2-alt {
+	@include h2-alt;
+}
+
 @mixin h3 {
 	text-transform: uppercase;
 	font-optical-sizing: auto;
@@ -245,7 +259,7 @@ p-big,
 }
 
 .p-small {
-	@include p-small;
+	@include p;
 }
 
 // --- P-TINY ---
