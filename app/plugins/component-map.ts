@@ -4,6 +4,7 @@ import Ham from '~/components/common/ui/ham/Ham.vue'
 import BlogCardItem from '~/components/common/ui/blog/BlogCardItem.vue'
 import FormInput from '~/components/common/ui/form/Input.vue'
 import ArrowButton from '~/components/common/ui/arrow-button/ArrowButton.vue'
+import CommonCta from '~/components/common/ui/common-cta/CommonCta.vue'
 
 import Services from '~/components/common/layout/Services.vue'
 import Stories from '~/components/common/layout/Stories.vue'
@@ -45,6 +46,7 @@ export default defineNuxtPlugin(nuxtApp => {
     nuxtApp.vueApp.component('ui-blog-card-item', BlogCardItem)
     nuxtApp.vueApp.component('ui-form-input', FormInput)
     nuxtApp.vueApp.component('ui-arrow-button', ArrowButton)
+    nuxtApp.vueApp.component('ui-common-cta', CommonCta)
 
     nuxtApp.vueApp.component('layout-services', Services)
     nuxtApp.vueApp.component('layout-stories', Stories)

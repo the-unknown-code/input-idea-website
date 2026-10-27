@@ -13,7 +13,7 @@
       </div>
       <div class="title --yellow">
         <p class="p">
-          <span>{{ blok.image[0].title }}</span>&nbsp;
+          <span>{{ blok.image[0].title }}</span>
           <ui-arrow />
         </p>
       </div>
@@ -89,10 +89,11 @@ defineProps({
       position: relative;
 
       &.read {
-        padding: 4px;
+        padding: 4px 8px;
         border-radius: var(--spacer-4);
         border: 1px solid var(--yellow);
         white-space: nowrap;
+        font-size: 11px;
       }
     }
   }
@@ -106,15 +107,25 @@ defineProps({
     }
 
     p {
-      >* {
+      >span {
         display: inline;
+      }
+
+      &:deep(.ui-arrow) {
+        display: inline-block;
+        width: 16px;
+        margin-left: 8px;
+        vertical-align: baseline;
+        transform: translateY(2px);
       }
     }
   }
 
   .description {
     p {
-      @include line-clamp(2);
+      height: auto;
+      max-height: none;
+      overflow: visible;
     }
   }
 }

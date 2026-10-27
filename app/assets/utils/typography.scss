@@ -268,7 +268,7 @@ p-big,
 }
 
 .p-tiny {
-	@include p-tiny;
+	@include p;
 
 	&.b {
 		font-weight: bold;

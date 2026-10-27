@@ -1,11 +1,12 @@
 <script setup lang="ts">
 defineProps<{
   color?: string
+  small?: boolean
 }>()
 </script>
 
 <template>
-  <div class="ui-arrow">
+  <div :class="['ui-arrow', { small }]">
     <svg xmlns="http://www.w3.org/2000/svg"
       width="16.458"
       height="16.427"
@@ -27,6 +28,17 @@ defineProps<{
 
 <style lang="scss" scoped>
 .ui-arrow {
+  position: relative;
   display: block;
+
+  &.small {
+    width: 14px;
+  }
+
+  svg {
+    position: relative;
+    display: block;
+    width: 100%;
+  }
 }
 </style>

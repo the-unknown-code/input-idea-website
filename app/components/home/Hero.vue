@@ -43,6 +43,8 @@
           <div></div>
         </div>
       </div>
+      <ui-common-cta label="Inizia un progetto"
+        :callback="openChatBot" />
     </div>
     <div v-show="!isDesktop"
       class="home-hero__mobile">
@@ -50,12 +52,47 @@
       <div class="media">
         <div></div>
       </div>
+      <ui-common-cta label="Inizia un progetto"
+        :callback="openChatBot" />
     </div>
+    <teleport to="body">
+      <div v-if="isChatBotOpen"
+        class="home-hero__chatbot-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Chatta con Input Idea"
+        @click.self="closeChatBot">
+        <button class="home-hero__chatbot-close"
+          type="button"
+          aria-label="Chiudi chatbot"
+          @click="closeChatBot">×</button>
+        <layout-ai-form :blok="chatBotBlok" />
+      </div>
+    </teleport>
   </section>
 </template>
 
 <script setup lang="ts">
 const { isDesktop } = useBreakpoints();
+const isChatBotOpen = ref(false)
+const chatBotBlok = { title: [] }
+
+const openChatBot = () => {
+  isChatBotOpen.value = true
+}
+
+const closeChatBot = () => {
+  isChatBotOpen.value = false
+}
+
+watch(isChatBotOpen, (isOpen) => {
+  if (!import.meta.client) return
+  document.body.style.overflow = isOpen ? 'hidden' : ''
+})
+
+onBeforeUnmount(() => {
+  if (import.meta.client) document.body.style.overflow = ''
+})
 </script>
 
 
@@ -67,6 +104,57 @@ const { isDesktop } = useBreakpoints();
 
   @include desktop {
     padding: 0 var(--spacer-64);
+  }
+
+  &__chatbot-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    background: rgb(0 0 0 / 55%);
+    backdrop-filter: blur(12px);
+    overflow-y: auto;
+
+    @include mobile {
+      padding: 16px;
+    }
+  }
+
+  &__chatbot-close {
+    position: fixed;
+    top: 24px;
+    right: 32px;
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    color: var(--white);
+    font-size: 32px;
+    line-height: 1;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+
+    @include mobile {
+      top: 12px;
+      right: 12px;
+    }
+  }
+
+  &__chatbot-modal:deep(.layout-ai-form) {
+    background-color: #2F2C2C;
+
+    input,
+    textarea {
+      color: var(--white);
+
+      &::placeholder {
+        color: var(--white);
+        opacity: .7;
+      }
+    }
   }
 
   &__bg {
@@ -112,6 +200,10 @@ const { isDesktop } = useBreakpoints();
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+
+    &:deep(.ui-common-cta) {
+      margin-top: 32px;
+    }
 
     h1 {
       margin-top: var(--spacer-64);

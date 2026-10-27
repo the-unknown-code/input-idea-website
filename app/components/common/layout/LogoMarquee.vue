@@ -61,7 +61,7 @@ defineProps({
     align-items: center;
     justify-content: center;
     width: auto;
-    height: 72px;
+    height: 110px;
     aspect-ratio: 16 / 9;
     margin: 0 var(--spacer-16);
     padding: 0 var(--spacer-16);

@@ -188,7 +188,10 @@ tryOnBeforeUnmount(() => {
       }
 
       @include desktop {
+        padding-right: 48px;
+
         &:nth-child(1) {
+
           grid-column: 2 / span 4;
         }
 
@@ -302,8 +305,17 @@ tryOnBeforeUnmount(() => {
       opacity: 1;
       transform: none;
 
+      @include hover {
+        &:hover {
+          .h2-alt {
+            color: var(--yellow);
+          }
+        }
+      }
+
       p {
         padding-right: 32px;
+        text-wrap: balance;
       }
     }
   }
