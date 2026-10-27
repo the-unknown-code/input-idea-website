@@ -182,6 +182,10 @@ tryOnBeforeUnmount(() => {
       grid-column: -1 / 1;
 
       &:nth-child(1) {
+        @include desktop {
+          padding-right: 32px;
+        }
+
         p {
           margin-top: var(--spacer-16);
         }

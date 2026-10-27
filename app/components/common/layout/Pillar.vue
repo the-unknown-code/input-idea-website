@@ -1,5 +1,6 @@
 <template>
-  <section class="layout-pillar">
+  <section class="layout-pillar"
+    :class="{ 'is-fixed': fixed }">
     <div class="layout-pillar__content layout-grid">
       <div>
         <h2>
@@ -11,7 +12,8 @@
           <storyblok-richtext :content="blok.description[0].text"
             cleanup />
         </p>
-        <div class="counter">
+        <div v-if="!fixed"
+          class="counter">
           <div v-for="(item, i) in blok.list"
             :key="i"
             :class="['counter--item', { active: activeIndex === Number(i) }]">
@@ -21,8 +23,8 @@
       <div>
         <div v-for="(item, i) in blok.list"
           :key="i"
-          :class="['pillar', { active: activeIndex === Number(i) }]"
-          @click="activeIndex = Number(i)">
+          :class="['pillar', { active: !fixed && activeIndex === Number(i), 'is-fixed': fixed }]"
+          @click="selectPillar(Number(i))">
 
           <h2>0<b>{{ Number(i) + 1 }}</b></h2>
           <p class="p">{{ item.title }}</p>
@@ -39,7 +41,7 @@
 
 <script setup lang="ts">
 
-defineProps({
+const { blok } = defineProps({
   blok: {
     type: Object,
     required: true,
@@ -47,6 +49,13 @@ defineProps({
 })
 
 const activeIndex = ref<number>(0)
+
+const fixed = computed(() => { return blok.fixed === true })
+
+
+const selectPillar = (index: number) => {
+  if (!fixed.value) activeIndex.value = index
+}
 
 </script>
 
@@ -183,6 +192,33 @@ const activeIndex = ref<number>(0)
         p {
           display: block;
           padding-right: 64px;
+        }
+      }
+
+      &.is-fixed {
+        min-height: 280px;
+        cursor: default;
+
+        @include desktop {
+          width: 0;
+          flex: 1 1 0;
+          min-width: 0;
+          height: auto;
+        }
+
+        h2 {
+          top: 32px;
+          bottom: auto;
+          color: var(--yellow);
+        }
+
+        p {
+          display: block;
+          padding-right: 0;
+        }
+
+        .p {
+          margin-top: auto;
         }
       }
     }

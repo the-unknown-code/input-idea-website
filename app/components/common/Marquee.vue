@@ -12,20 +12,21 @@
 -->
 
 <template>
-	<div
-		ref="$container"
+	<div ref="$container"
 		:class="['marquee', { reverse: reverse }]"
-		v-on="
-			props.pauseOnHover
+		v-on="props.pauseOnHover
 				? {
-						mouseenter: () => (isHovered = true),
-						mouseleave: () => (isHovered = false),
-				  }
+					mouseenter: () => (isHovered = true),
+					mouseleave: () => (isHovered = false),
+				}
 				: {}
-		"
-	>
-		<div ref="$track" class="marquee--track">
-			<div v-for="i in repeat" ref="$elements" :key="i" class="inner">
+			">
+		<div ref="$track"
+			class="marquee--track">
+			<div v-for="i in repeat"
+				ref="$elements"
+				:key="i"
+				class="inner">
 				<slot />
 			</div>
 		</div>
@@ -39,10 +40,12 @@ const props = withDefaults(
 		repeat?: number;
 		speed?: number;
 		pauseOnHover?: boolean;
+		size?: 'small' | 'mid' | 'big'
 	}>(),
 	{
 		repeat: 3,
 		speed: 0.02,
+		size: 'mid'
 	}
 );
 
@@ -107,7 +110,7 @@ tryOnBeforeUnmount(() => {
 		will-change: transform;
 		pointer-events: none;
 
-		> * {
+		>* {
 			flex-shrink: 0;
 		}
 	}

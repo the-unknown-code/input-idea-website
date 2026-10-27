@@ -81,6 +81,11 @@ console.log(">>", blok)
 
 
       &:nth-child(2) {
+
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+
         /* Apply a left and right edge gradient mask */
         mask-image: linear-gradient(to right,
             transparent 0px,
@@ -92,6 +97,22 @@ console.log(">>", blok)
             black var(--size),
             black calc(100% - var(--size)),
             transparent 100%);
+
+        &:deep(.marquee) {
+          &:nth-child(1) {
+            img {
+              width: 140px;
+              flex: 0 0 140px;
+            }
+          }
+
+          &:nth-child(2) {
+            img {
+              width: 260px;
+              flex: 0 0 260px;
+            }
+          }
+        }
 
       }
 
