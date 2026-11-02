@@ -3,7 +3,7 @@
 
     <div class="layout-text-carousel__content layout-grid">
       <div>
-        <div class=" --lightgrey">
+        <div class="number --lightgrey">
           <span v-for="(letter, index) in currentItem.eyebrow.split('')"
             :key="`${letter}-${index}`"
             :class="['h2', {
@@ -14,7 +14,7 @@
       </div>
       <div>
         <div v-text-reveal
-          class="h3">
+          class="h2-alt">
           <storyblok-richtext :content="currentItem.title[0].text"
             cleanup />
         </div>
@@ -61,6 +61,8 @@ const currentItem = computed(() => {
 <style lang="scss" scoped>
 .layout-text-carousel {
   position: relative;
+  max-width: 1144px;
+  margin: 0 auto;
 
 
   &__counter {
@@ -108,11 +110,11 @@ const currentItem = computed(() => {
 
       &:nth-child(1) {
         @include desktop {
-          grid-column: span 4;
+          grid-column: span 3;
           justify-content: flex-end;
 
-          .h1 {
-            padding-right: 24px;
+          .number {
+            padding-right: 32px;
           }
         }
       }
@@ -122,7 +124,7 @@ const currentItem = computed(() => {
         gap: 16px;
 
         @include desktop {
-          grid-column: span 8;
+          grid-column: span 9;
           align-items: flex-start;
         }
       }

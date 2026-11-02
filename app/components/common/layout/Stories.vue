@@ -282,6 +282,11 @@ tryOnBeforeUnmount(() => {
       position: absolute;
       top: var(--spacer-8);
       right: var(--spacer-8);
+      width: 33px; // 2x the default 16.5px arrow
+
+      svg {
+        height: auto;
+      }
     }
   }
 

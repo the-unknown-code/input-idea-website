@@ -24,9 +24,11 @@
           </li>
         </ul>
         <ul ref="$desktopList"
-          class="layout-services__desktop-list">
+          class="layout-services__desktop-list"
+          :style="{ '--mask-start': `${maskStart}px`, '--mask-end': `${maskEnd}px` }">
           <li v-for="({ item, copy }, index) in loopedDesktopItems"
-            :key="`${item._uid ?? item.label}-${copy}-${index}`">
+            :key="`${item._uid ?? item.label}-${copy}-${index}`"
+            :class="{ 'is-active': isCentered(index) }">
             <a-link :href="resolveLink(item.link)">
               <p :class="['h2-alt', { '--yellow': isCentered(index) }]"> {{ item.label }}</p>
               <ui-arrow />
@@ -83,6 +85,24 @@ let isScrolling = false;
 
 const isCentered = (index: number) => index === list.value.length + activeIndex.value + 2;
 
+// mask band that reveals only the centered/active row (row = top row + 2)
+const maskStart = ref(0);
+const maskEnd = ref(400);
+let topIndex = 0;
+
+const updateMask = (index: number = topIndex) => {
+  topIndex = index;
+  const viewport = $desktopList.value;
+  const top = viewport?.children.item(index) as HTMLElement | null;
+  const centered = viewport?.children.item(index + 2) as HTMLElement | null;
+  const first = viewport?.firstElementChild as HTMLElement | null;
+  if (!viewport || !top || !centered || !first) return;
+  // final scroll position for this top row (clamped like the browser does)
+  const scroll = Math.min(top.offsetTop - first.offsetTop, viewport.scrollHeight - viewport.clientHeight);
+  maskStart.value = centered.offsetTop - scroll;
+  maskEnd.value = maskStart.value + centered.offsetHeight;
+};
+
 const getItemOffset = (index: number) => {
   const viewport = $desktopList.value;
   const first = viewport?.firstElementChild as HTMLElement | null;
@@ -93,6 +113,7 @@ const getItemOffset = (index: number) => {
 const centerDesktopList = () => {
   const offset = getItemOffset(list.value.length);
   if (offset !== null) $desktopList.value?.scrollTo({ top: offset, behavior: 'auto' });
+  updateMask(list.value.length);
 };
 
 const scrollToIndex = (index: number, resetIndex?: number) => {
@@ -100,6 +121,7 @@ const scrollToIndex = (index: number, resetIndex?: number) => {
   const offset = getItemOffset(index);
   if (!viewport || offset === null) return;
 
+  updateMask(index);
   viewport.scrollTo({
     top: offset,
     behavior: 'smooth',
@@ -164,7 +186,11 @@ const initialize = () => {
 tryOnMounted(() => {
   initialize();
   nextTick(centerDesktopList);
+  // row heights change once fonts load / on resize
+  document.fonts?.ready.then(() => updateMask());
 });
+
+useResizeObserver($desktopList, () => updateMask());
 
 tryOnBeforeUnmount(() => {
   clearTimeout(resetTimer);
@@ -176,6 +202,19 @@ tryOnBeforeUnmount(() => {
 
 
 <style lang="scss" scoped>
+// registered so the mask band can animate between rows of different height
+@property --mask-start {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 0px;
+}
+
+@property --mask-end {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 400px;
+}
+
 .layout-services {
   &__inner {
     >div {
@@ -294,7 +333,14 @@ tryOnBeforeUnmount(() => {
     padding-block: 40px;
     overflow-y: auto;
     scrollbar-width: none;
-    mask-image: linear-gradient(to bottom, transparent 0%, black 45%, black 55%, transparent 100%);
+    // active (centered) row fully visible, neighbours fade out softly; band follows it on navigation
+    --mask-fade: 120px;
+    mask-image: linear-gradient(to bottom,
+        transparent calc(var(--mask-start) - var(--mask-fade)),
+        black var(--mask-start),
+        black var(--mask-end),
+        transparent calc(var(--mask-end) + var(--mask-fade)));
+    transition: --mask-start 450ms ease, --mask-end 450ms ease;
 
     &::-webkit-scrollbar {
       display: none;
@@ -306,8 +352,13 @@ tryOnBeforeUnmount(() => {
 
     li {
       flex: none;
-      opacity: 1;
+      opacity: 0.25; // non-active rows are dimmed (on top of the mask fade)
       transform: none;
+      transition: opacity 450ms ease;
+
+      &.is-active {
+        opacity: 1;
+      }
 
       @include hover {
         &:hover {

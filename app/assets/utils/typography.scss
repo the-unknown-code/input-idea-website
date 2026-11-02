@@ -76,6 +76,7 @@ $max-vw-default: get('typography.maxVW');
 
 $display: 'Pathway Extreme', sans-serif;
 $sans: 'Zalando Sans';
+$sans-semi-expanded: 'Zalando Sans SemiExpanded', sans-serif;
 
 $weight-normal: 225;
 $pathway-spacing-normal: 3%;
@@ -99,7 +100,6 @@ $pathway-spacing-normal: 3%;
 	}
 }
 
-
 // ------ H2 -------
 @mixin h2 {
 	text-transform: uppercase;
@@ -113,17 +113,15 @@ $pathway-spacing-normal: 3%;
 	}
 }
 
-
 // ------ H2 -------
 @mixin h2-alt {
-	font-weight: 300 !important;
-	@include type($sans, 24px, 28px, 32px, 100, 1, 0);
+	font-weight: 200 !important; // extra light
+	@include type($sans-semi-expanded, 24px, 28px, 32px, 200, 1, 0);
 
 	@include desktop {
-		@include type($sans, 32px, 40px, 48px, 100, 1, 0);
+		@include type($sans-semi-expanded, 32px, 40px, 48px, 200, 1, 0);
 	}
 }
-
 
 @mixin h3 {
 	text-transform: uppercase;
@@ -137,7 +135,6 @@ $pathway-spacing-normal: 3%;
 	}
 }
 
-
 @mixin h3-alt {
 	text-transform: uppercase;
 	font-optical-sizing: auto;
@@ -150,7 +147,6 @@ $pathway-spacing-normal: 3%;
 	}
 }
 
-
 // ------ DISPLAY -------
 @mixin display {
 	text-transform: uppercase;
@@ -162,12 +158,10 @@ $pathway-spacing-normal: 3%;
 	}
 }
 
-
 // --- P ---
 @mixin p {
 	@include type($sans, 16px, 16px, 16px, 300, 1.45, 0);
 }
-
 
 // --- P-BIG ---
 @mixin p-big {
@@ -178,16 +172,12 @@ $pathway-spacing-normal: 3%;
 	}
 }
 
-
 // --- P-SMALL ---
 @mixin p-small {
 	@include type($sans, 13px, 13px, 13px, 300, 1.35, 0);
 }
 
-
 // --- P-TINY ---
 @mixin p-tiny {
 	@include type($sans, 11px, 11px, 11px, 300, 1.35, 0);
 }
-
-

@@ -7,6 +7,30 @@
     </h1>
     <div class="filters"
       aria-label="Filtra i progetti per tag">
+      <svg class="filters__icon"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 30 28"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="1.5"
+        aria-hidden="true">
+        <path d="M4 2v24M15 2v24M26 2v24" />
+        <rect x="1.5"
+          y="16"
+          width="5"
+          height="5"
+          class="knob" />
+        <rect x="12.5"
+          y="6"
+          width="5"
+          height="5"
+          class="knob" />
+        <rect x="23.5"
+          y="14"
+          width="5"
+          height="5"
+          class="knob" />
+      </svg>
       <button class="p-small"
         :class="{ active: selectedTags.length === 0 }"
         type="button"
@@ -19,10 +43,10 @@
         @click="toggleTag(tag)">{{ tag }}</button>
     </div>
     <div class="list">
-      <nuxt-link v-for="item in filteredItems"
+      <!-- card is a div: tag links can't live inside a link (nested <a> breaks hydration).
+           The title link is stretched over the whole card instead. -->
+      <div v-for="item in filteredItems"
         :key="item.id"
-        :to="item.href"
-        :aria-label="`Apri il progetto ${item.title}`"
         class="layout-grid">
         <div>
           <div v-if="item.media"
@@ -31,7 +55,11 @@
           </div>
         </div>
         <div>
-          <p class="h2 --yellow">{{ item.title }}</p>
+          <nuxt-link :to="item.href"
+            :aria-label="`Apri il progetto ${item.title}`"
+            class="card-link">
+            <p class="h2 --yellow">{{ item.title }}</p>
+          </nuxt-link>
           <div v-if="item.description"
             class="p-small --grey">
             <storyblok-richtext :content="item.description as StoryblokRichTextInput"
@@ -42,13 +70,14 @@
             <ui-common-cta v-for="tag in item.tags"
               :key="tag"
               :label="tag"
-              :href="getServiceHref(tag)" />
+              :href="getServiceHref(tag)"
+              plain />
           </div>
         </div>
         <div>
           <ui-arrow />
         </div>
-      </nuxt-link>
+      </div>
     </div>
   </section>
 
@@ -251,6 +280,20 @@ const filteredItems = computed(() => {
     gap: 8px;
     color: var(--grey);
     flex-wrap: wrap;
+    align-items: center;
+
+    &__icon {
+      flex: none;
+      width: 24px;
+      height: auto;
+      margin-right: 8px;
+      color: var(--yellow);
+
+      // knobs hide the line behind them, like in the design
+      .knob {
+        fill: var(--lightgrey);
+      }
+    }
 
     button {
       position: relative;
@@ -276,12 +319,24 @@ const filteredItems = computed(() => {
     gap: 16px;
   }
 
+  // whole card clickable through the title link
+  .card-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+
+  .tags {
+    position: relative;
+    z-index: 1;
+  }
+
   .layout-grid {
     position: relative;
     width: 100%;
     padding: 16px 16px;
     border-bottom: 1px solid var(--grey-600);
-    border-radius: 16px;
+    // border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
 
@@ -296,8 +351,9 @@ const filteredItems = computed(() => {
       align-items: center;
 
 
-      &:deep(.ui-arrow) {
-        // width: 12px;
+      // big arrow only in the card's last column (not the tag arrows)
+      &:nth-child(3):deep(.ui-arrow) {
+        width: 33px; // 2x the default 16.5px arrow
 
         svg {
           width: 100%;

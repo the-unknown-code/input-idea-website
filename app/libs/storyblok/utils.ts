@@ -101,3 +101,12 @@ export const storyblokFormat = (
 	const parsedUrl = `${url}/m/${w}x${h}/filters:format(avif):quality(${quality})`;
 	return parsedUrl.replace('https://a', 'https://a2');
 };
+
+/* storyblokFormatHeight
+ * Resize a Storyblok image by height only (width follows the original ratio)
+ */
+export const storyblokFormatHeight = (url: string, height: number = 172, quality: number = 90) => {
+	if (!url.startsWith('https://a')) return url;
+	const parsedUrl = `${url}/m/0x${Math.round(height)}/filters:format(avif):quality(${quality})`;
+	return parsedUrl.replace('https://a', 'https://a2');
+};

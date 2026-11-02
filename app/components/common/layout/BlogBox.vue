@@ -93,8 +93,13 @@ const previousBlog = () => {
     flex-direction: column;
     gap: var(--spacer-16);
 
+    // +32px space between the description and the blog items
+    @include mobile {
+      margin-bottom: var(--spacer-32);
+    }
+
     @include desktop {
-      padding-right: var(--spacer-32);
+      padding-right: var(--spacer-64);
     }
 
     .cta {

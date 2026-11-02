@@ -1,7 +1,7 @@
 <template>
   <section class="layout-ordered-list">
     <div class="layout-ordered-list__content">
-      <h2 class="h3 --lightgrey">
+      <h2 class="h3">
         <storyblok-richtext :content="blok.title[0].text"
           cleanup />
       </h2>
@@ -14,7 +14,7 @@
           ref="$items"
           :key="item._uid">
           <p v-text-reveal
-            class="h3-alt --grey">
+            class="h3-alt --lightgrey">
             <storyblok-richtext :content="item.text"
               cleanup />
           </p>
@@ -103,7 +103,10 @@ tryOnBeforeUnmount(() => {
         padding: 3px 0;
       }
 
-      &:deep(.h3-alt) {
+      // not active (before and after the highlight band) is always lightgrey
+      &:deep(.h3-alt),
+      &:deep(.h3-alt *) {
+        color: var(--lightgrey);
         transition: color 200ms ease;
 
         @include mobile {
@@ -112,7 +115,8 @@ tryOnBeforeUnmount(() => {
       }
 
       &.is-highlighted {
-        &:deep(.h3-alt) {
+        &:deep(.h3-alt),
+        &:deep(.h3-alt *) {
           color: var(--yellow) !important;
         }
       }

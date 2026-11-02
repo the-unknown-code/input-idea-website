@@ -62,6 +62,20 @@ const $elements = shallowRef<HTMLElement[]>([]);
 // @ts-expect-error - IntersectionObserverEntry is not typed
 const { inView } = useInView($container);
 
+// width of one copy of the content = loop length. Measured with a single ResizeObserver
+// (it used to create a new one every frame) so it also updates when images load.
+let loopWidth = 0;
+let resizeObserver: ResizeObserver | undefined;
+const getLoopWidth = () => {
+	const first = $elements.value[0];
+	if (!resizeObserver && first) {
+		loopWidth = first.offsetWidth;
+		resizeObserver = new ResizeObserver(() => (loopWidth = first.offsetWidth));
+		resizeObserver.observe(first);
+	}
+	return loopWidth;
+};
+
 const render = () => {
 	useFrame((_, delta: number) => {
 		if (!$track.value) return;
@@ -78,9 +92,9 @@ const render = () => {
 		let newTransform: number = transform.value;
 		newTransform += delta * adjSpeed * (props.reverse ? -1 : 1);
 
-		const { width } = useElementSize($elements.value[0]);
-		transform.value =
-			((newTransform % width.value) + width.value) % width.value;
+		const width = getLoopWidth();
+		if (!width) return;
+		transform.value = ((newTransform % width) + width) % width;
 
 		$track.value.style.transform = `translate3d(${-transform.value}px, 0, 0)`;
 	});
@@ -90,6 +104,7 @@ scope.run(render);
 
 tryOnBeforeUnmount(() => {
 	scope.stop();
+	resizeObserver?.disconnect();
 });
 </script>
 

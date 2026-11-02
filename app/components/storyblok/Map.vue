@@ -41,6 +41,7 @@ import Map from '../common/layout/Map.vue';
 import AdvancedHeader from '../common/layout/AdvancedHeader.vue';
 import ContentMarquee from '../common/layout/ContentMarquee.vue';
 import OpenPosition from '../common/layout/OpenPosition.vue';
+import DiscoverProjects from '../common/layout/DiscoverProjects.vue';
 
 const props = defineProps({
 	bloks: {
@@ -95,7 +96,8 @@ const COMPONENT_MAP = {
 	"Map": Map,
 	"AdvancedHeader": AdvancedHeader,
 	"ContentMarquee": ContentMarquee,
-	"OpenPositions": OpenPosition
+	"OpenPositions": OpenPosition,
+	"DiscoverProjects": DiscoverProjects
 
 };
 

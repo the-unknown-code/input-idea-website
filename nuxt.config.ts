@@ -23,7 +23,7 @@ if (app.storyblok.enabled) {
 }
 
 const FONTS_URL =
-	'https://fonts.googleapis.com/css2?family=Pathway+Extreme:ital,opsz,wdth,wght@0,8..144,75..100,100..900;1,8..144,75..100,100..900&family=Zalando+Sans:wght@300..700&display=swap';
+	'https://fonts.googleapis.com/css2?family=Pathway+Extreme:ital,opsz,wdth,wght@0,8..144,75..100,100..900;1,8..144,75..100,100..900&family=Zalando+Sans:wght@200..900&family=Zalando+Sans+SemiExpanded:wght@200..900&display=swap';
 
 // STATIC_EXPORT=true (set by scripts/export-static.mjs): plain static site for FTP hosting
 const STATIC_EXPORT = process.env.STATIC_EXPORT === 'true';

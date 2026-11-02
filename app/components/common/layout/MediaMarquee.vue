@@ -3,8 +3,8 @@
     <common-marquee>
       <span v-for="item in blok.list"
         :key="item._uid">
-        <common-media :src="storyblokFormat(getMedia(item).image.src, 420)"
-          cover />
+        <!-- 2x the display height for sharp images; width follows each image's own ratio -->
+        <common-media :src="storyblokFormatHeight(getMedia(item).image.src, 200)" />
       </span>
     </common-marquee>
   </section>
@@ -12,7 +12,8 @@
 
 <script setup lang="ts">
 import { DATA_MEDIA_MARQUEE } from '~/libs/data';
-import { getMedia, storyblokFormat } from '~/libs/storyblok';
+import { getMedia } from '~/libs/storyblok';
+import { storyblokFormatHeight } from '~/libs/storyblok/utils';
 
 
 defineProps({
@@ -34,6 +35,7 @@ defineProps({
   flex-direction: column;
   gap: 16px;
 
+
   &::after {
     content: '';
     position: absolute;
@@ -49,13 +51,34 @@ defineProps({
   }
 
 
+  // the section height drives everything: set `height` (or --media-height) on
+  // .layout-media-marquee and the marquee + images fill it, keeping each image's ratio
+  // not declared here, so a value set on a parent/page (or inline) isn't overridden
+  height: var(--media-height, 86px);
+
   &:deep(.marquee) {
     width: 100%;
+    flex: 1;
+    min-height: 0;
+    height: 100%;
+
+    .marquee--track,
+    .inner {
+      height: 100%;
+    }
+
+    .common-media {
+      height: 100%;
+      width: auto;
+    }
 
     img {
       position: relative;
-      object-fit: cover;
-      width: 100%;
+      display: block;
+      height: 100% !important;
+      width: auto !important;
+      max-width: none;
+      object-fit: contain;
       border-radius: 8px;
     }
 
@@ -72,8 +95,7 @@ defineProps({
     align-items: center;
     justify-content: center;
     width: auto;
-    height: 86px;
-    aspect-ratio: 16 / 6;
+    height: 100%;
     margin: 0 8px;
     overflow: hidden;
 

@@ -52,6 +52,9 @@
 					<template v-else-if="state === 'success'">
 						Completato in {{ elapsedLabel }}.
 					</template>
+					<template v-else-if="!steps.length">
+						GitHub non ha avviato la build (Actions disattivate o problema di fatturazione sull'account GitHub).
+					</template>
 					<template v-else>
 						Qualcosa è andato storto.
 					</template>

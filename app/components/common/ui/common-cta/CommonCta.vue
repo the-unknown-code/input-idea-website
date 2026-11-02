@@ -20,6 +20,11 @@ const { callback, light } = defineProps({
   light: {
     type: Boolean,
     default: false
+  },
+  // plain: no underline (e.g. tags)
+  plain: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -34,12 +39,11 @@ const handleKeydown = (event: KeyboardEvent) => {
     :href="callback || !href ? undefined : href"
     :role="callback ? 'button' : undefined"
     :tabindex="callback ? 0 : undefined"
-    :class="['ui-common-cta', { light }]"
+    :class="['ui-common-cta', { light, plain }]"
     @click="handleClick"
     @keydown="handleKeydown">
     <p :class="['--yellow', { small, light }]">{{ label }}</p>
-    <ui-arrow v-if="callback || href"
-      small
+    <ui-arrow small
       :color="light ? 'rgba(255, 255, 255, 0.8)' : undefined" />
   </component>
 </template>
@@ -51,6 +55,16 @@ const handleKeydown = (event: KeyboardEvent) => {
   align-items: center;
   gap: 8px;
   white-space: nowrap;
+  color: inherit;
+  // always underlined (same style as hover)
+  text-decoration: underline;
+  text-decoration-color: var(--yellow);
+  text-underline-offset: 4px;
+
+  &.plain,
+  &.plain:hover {
+    text-decoration: none;
+  }
 
   &:deep(.ui-arrow) {
     transition: transform 320ms var(--ease-out-circ);
