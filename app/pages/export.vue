@@ -147,7 +147,9 @@ const errorMessage = (e: any) =>
 		? 'Password errata.'
 		: e?.statusCode === 503
 			? 'Esportazione non configurata sul server.'
-			: 'Errore di connessione, riprova.';
+			: e?.statusCode === 502
+				? `Errore GitHub — ${e?.statusMessage ?? e?.data?.statusMessage ?? ''}`
+				: `Errore di connessione (${e?.statusCode ?? 'rete'}), riprova.`;
 
 const displaySteps = computed(() =>
 	EXPECTED_STEPS.map((name) => {

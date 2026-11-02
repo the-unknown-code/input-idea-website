@@ -34,9 +34,26 @@ const githubConfig = () => {
 	};
 };
 
-export const githubApi = <T = any>(path: string, options: { method?: 'GET' | 'POST'; body?: any } = {}) => {
+const GITHUB_HINTS: Record<number, string> = {
+	401: 'token non valido o scaduto (GITHUB_EXPORT_TOKEN)',
+	403: 'il token non ha i permessi Actions read/write su questo repo',
+	404: 'repo non trovato o workflow static-export.yml non presente sul branch principale',
+	422: 'branch EXPORT_GIT_REF non valido o workflow senza workflow_dispatch',
+};
+
+export const githubApi = async <T = any>(path: string, options: { method?: 'GET' | 'POST'; body?: any } = {}) => {
 	const { repo, headers } = githubConfig();
-	return $fetch<T>(`https://api.github.com/repos/${repo}${path}`, { ...options, headers });
+	try {
+		return await $fetch<T>(`https://api.github.com/repos/${repo}${path}`, { ...options, headers });
+	} catch (e: any) {
+		// never forward GitHub's status as-is (a GitHub 401 would look like a wrong export password)
+		const status = e?.response?.status ?? e?.statusCode;
+		console.error('[static-export] GitHub API error', status, path, e?.data?.message);
+		throw createError({
+			statusCode: 502,
+			statusMessage: `GitHub ${status ?? '?'}: ${GITHUB_HINTS[status] ?? e?.data?.message ?? 'errore sconosciuto'}`,
+		});
+	}
 };
 
 // Artifact downloads answer with a 302 to a short-lived signed URL that needs no auth
