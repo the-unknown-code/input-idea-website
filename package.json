@@ -1,11 +1,15 @@
 {
 	"name": "nuxt-app",
 	"type": "module",
+	"engines": {
+		"node": "22.x"
+	},
 	"private": true,
 	"scripts": {
 		"build": "nuxt build --dotenv .env.local",
 		"dev": "nuxt dev --dotenv .env.local",
 		"generate": "nuxt generate --dotenv .env.local",
+		"export:static": "node scripts/export-static.mjs",
 		"preview": "nuxt preview --dotenv .env.local",
 		"postinstall": "nuxt prepare"
 	},
@@ -17,6 +21,7 @@
 		"@nuxtjs/robots": "^5.5.6",
 		"@nuxtjs/sitemap": "^7.4.7",
 		"@storyblok/nuxt": "8.0.4",
+		"@storyblok/richtext": "^5.3.0",
 		"bowser": "^2.13.1",
 		"eslint": "^9.0.0",
 		"gsap": "^3.13.0",
@@ -26,6 +31,7 @@
 		"nuxt": "^4.1.0",
 		"pinia": "^3.0.3",
 		"postprocessing": "^6.37.8",
+		"sanitize-html": "2.13.1",
 		"tempus": "^1.0.0-dev.12",
 		"three": "^0.179.1",
 		"tweakpane": "^4.0.5",
@@ -37,6 +43,7 @@
 		"@types/gsap": "^3.0.0",
 		"@types/lodash": "^4.17.20",
 		"@types/node": "^25.3.0",
+		"@types/sanitize-html": "^2.16.1",
 		"@types/three": "^0.179.0",
 		"@vitest/browser-playwright": "^4.0.16",
 		"@vitest/coverage-v8": "^4.0.16",

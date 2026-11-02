@@ -1,7 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+defineProps<{
+  color?: string
+  small?: boolean
+}>()
+</script>
 
 <template>
-  <div class="ui-arrow">
+  <div :class="['ui-arrow', { small }]">
     <svg xmlns="http://www.w3.org/2000/svg"
       width="16.458"
       height="16.427"
@@ -13,7 +18,8 @@
           data-name="Tracciato 74771"
           d="M2.253,21.147.92,19.876l13.3-13.358H4.949V4.72H17.378V17.18H15.549V7.85Z"
           transform="translate(-0.92 -4.72)"
-          fill="#fff615" />
+          :fill="color || '#fff615'" />
+
       </g>
     </svg>
 
@@ -22,6 +28,17 @@
 
 <style lang="scss" scoped>
 .ui-arrow {
+  position: relative;
   display: block;
+
+  &.small {
+    width: 14px;
+  }
+
+  svg {
+    position: relative;
+    display: block;
+    width: 100%;
+  }
 }
 </style>

@@ -1,16 +1,87 @@
+import { defineAsyncComponent } from 'vue'
+
 import ALink from '~/components/common/ui/link/ALink.vue'
 import Arrow from '~/components/common/ui/arrow/Arrow.vue'
 import Ham from '~/components/common/ui/ham/Ham.vue'
+import BlogCardItem from '~/components/common/ui/blog/BlogCardItem.vue'
+import FormInput from '~/components/common/ui/form/Input.vue'
+import ArrowButton from '~/components/common/ui/arrow-button/ArrowButton.vue'
+import CommonCta from '~/components/common/ui/common-cta/CommonCta.vue'
 
-import Services from '~/components/common/layout/Services.vue'
-import Stories from '~/components/common/layout/Stories.vue'
+// layout blocks are code-split: each loads only on pages that use it
+const Services = defineAsyncComponent(() => import('~/components/common/layout/Services.vue'))
+const Stories = defineAsyncComponent(() => import('~/components/common/layout/Stories.vue'))
+const LogoMarquee = defineAsyncComponent(() => import('~/components/common/layout/LogoMarquee.vue'))
+const BlogBox = defineAsyncComponent(() => import('~/components/common/layout/BlogBox.vue'))
+const ProjectHero = defineAsyncComponent(() => import('~/components/common/layout/ProjectHero.vue'))
+const ProjectGridBlock = defineAsyncComponent(() => import('~/components/common/layout/ProjectGridBlock.vue'))
+const TextList = defineAsyncComponent(() => import('~/components/common/layout/TextList.vue'))
+const MediaCarousel = defineAsyncComponent(() => import('~/components/common/layout/MediaCarousel.vue'))
+const LinkList = defineAsyncComponent(() => import('~/components/common/layout/LinkList.vue'))
+const AccordionList = defineAsyncComponent(() => import('~/components/common/layout/AccordionList.vue'))
+const OrderedList = defineAsyncComponent(() => import('~/components/common/layout/OrderedList.vue'))
+const TextHero = defineAsyncComponent(() => import('~/components/common/layout/TextHero.vue'))
+const ClaimHero = defineAsyncComponent(() => import('~/components/common/layout/ClaimHero.vue'))
+const FocusText = defineAsyncComponent(() => import('~/components/common/layout/FocusText.vue'))
+const FocusItem = defineAsyncComponent(() => import('~/components/common/layout/FocusItem.vue'))
+const Form = defineAsyncComponent(() => import('~/components/common/layout/Form.vue'))
+const ThreeColumns = defineAsyncComponent(() => import('~/components/common/layout/ThreeColumns.vue'))
+const LargeText = defineAsyncComponent(() => import('~/components/common/layout/LargeText.vue'))
+const MediaMarquee = defineAsyncComponent(() => import('~/components/common/layout/MediaMarquee.vue'))
+const CaseHistory = defineAsyncComponent(() => import('~/components/common/layout/CaseHistory.vue'))
+const TextCarousel = defineAsyncComponent(() => import('~/components/common/layout/TextCarousel.vue'))
+const StoryHighlight = defineAsyncComponent(() => import('~/components/common/layout/StoryHighlight.vue'))
+const ProjectDetails = defineAsyncComponent(() => import('~/components/common/layout/ProjectDetails.vue'))
+const ProjectFocus = defineAsyncComponent(() => import('~/components/common/layout/ProjectFocus.vue'))
+const AIForm = defineAsyncComponent(() => import('~/components/common/layout/AiForm.vue'))
+const WhoTitle = defineAsyncComponent(() => import('~/components/common/layout/WhoTitle.vue'))
+const Pillar = defineAsyncComponent(() => import('~/components/common/layout/Pillar.vue'))
+const Claim = defineAsyncComponent(() => import('~/components/common/layout/Claim.vue'))
+const Map = defineAsyncComponent(() => import('~/components/common/layout/Map.vue'))
+const AdvancedHeader = defineAsyncComponent(() => import('~/components/common/layout/AdvancedHeader.vue'))
+const ContentMarquee = defineAsyncComponent(() => import('~/components/common/layout/ContentMarquee.vue'))
+const OpenPosition = defineAsyncComponent(() => import('~/components/common/layout/OpenPosition.vue'))
 
 export default defineNuxtPlugin(nuxtApp => {
     nuxtApp.vueApp.component('a-link', ALink)
     nuxtApp.vueApp.component('ui-arrow', Arrow)
     nuxtApp.vueApp.component('ui-ham', Ham)
+    nuxtApp.vueApp.component('ui-blog-card-item', BlogCardItem)
+    nuxtApp.vueApp.component('ui-form-input', FormInput)
+    nuxtApp.vueApp.component('ui-arrow-button', ArrowButton)
+    nuxtApp.vueApp.component('ui-common-cta', CommonCta)
 
     nuxtApp.vueApp.component('layout-services', Services)
     nuxtApp.vueApp.component('layout-stories', Stories)
+    nuxtApp.vueApp.component('layout-logo-marquee', LogoMarquee)
+    nuxtApp.vueApp.component('layout-blog-box', BlogBox)
+    nuxtApp.vueApp.component('layout-project-hero', ProjectHero)
+    nuxtApp.vueApp.component('layout-project-grid-block', ProjectGridBlock)
+    nuxtApp.vueApp.component('layout-text-list', TextList)
+    nuxtApp.vueApp.component('layout-media-carousel', MediaCarousel)
+    nuxtApp.vueApp.component('layout-link-list', LinkList)
+    nuxtApp.vueApp.component('layout-accordion-list', AccordionList)
+    nuxtApp.vueApp.component('layout-ordered-list', OrderedList)
+    nuxtApp.vueApp.component('layout-text-hero', TextHero)
+    nuxtApp.vueApp.component('layout-claim-hero', ClaimHero)
+    nuxtApp.vueApp.component('layout-focus-text', FocusText)
+    nuxtApp.vueApp.component('layout-focus-item', FocusItem)
+    nuxtApp.vueApp.component('layout-form', Form)
+    nuxtApp.vueApp.component('layout-three-columns', ThreeColumns)
+    nuxtApp.vueApp.component('layout-large-text', LargeText)
+    nuxtApp.vueApp.component('layout-media-marquee', MediaMarquee)
+    nuxtApp.vueApp.component('layout-case-history', CaseHistory)
+    nuxtApp.vueApp.component('layout-text-carousel', TextCarousel)
+    nuxtApp.vueApp.component('layout-story-highlight', StoryHighlight)
+    nuxtApp.vueApp.component('layout-project-details', ProjectDetails)
+    nuxtApp.vueApp.component('layout-project-focus', ProjectFocus)
+    nuxtApp.vueApp.component('layout-ai-form', AIForm)
+    nuxtApp.vueApp.component('layout-who-title', WhoTitle)
+    nuxtApp.vueApp.component('layout-pillar', Pillar)
+    nuxtApp.vueApp.component('layout-claim', Claim)
+    nuxtApp.vueApp.component('layout-map', Map)
+    nuxtApp.vueApp.component('layout-advanced-header', AdvancedHeader)
+    nuxtApp.vueApp.component('layout-content-marquee', ContentMarquee)
+    nuxtApp.vueApp.component('layout-open-position', OpenPosition)
 })
 

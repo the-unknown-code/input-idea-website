@@ -2,8 +2,10 @@
 @use './utils/colors.scss' as *;
 @use './utils/reset.scss' as *;
 @use './utils/typography.scss' as *;
+@use './utils/typography-classes.scss';
 @use './layout/grid.scss' as *;
 @use './layout/themes.scss' as *;
 @use './layout/spacers.scss' as *;
 @use './vendors/lenis.scss' as *;
 @use './animation/easings.scss' as *;
+@use './animation/transitions.scss' as *;

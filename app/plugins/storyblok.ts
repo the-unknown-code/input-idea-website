@@ -14,11 +14,17 @@ export default defineNuxtPlugin({
 			const nuxtApp = useNuxtApp();
 			const config = useRuntimeConfig();
 
-			// Handle Preview Mode - set preview token if preview is active
-			if (nuxtApp.$preview && config.public.storyblokPreviewKey) {
+			// Handle Preview Mode - the preview token is private config; it is only
+			// forwarded to the client (via payload) when preview is active.
+			const previewToken = useState<string | null>('sb-preview-token', () =>
+				import.meta.server && nuxtApp.$preview
+					? ((config.storyblokPreviewKey as string) || null)
+					: null
+			);
+			if (nuxtApp.$preview && previewToken.value) {
 				const storyblokApi = useStoryblokApi();
 				// @ts-expect-error - Storyblok API not typed
-				storyblokApi.accessToken = config.public.storyblokPreviewKey;
+				storyblokApi.accessToken = previewToken.value;
 			}
 
 			// Load settings if enabled

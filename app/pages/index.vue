@@ -1,11 +1,16 @@
 <template>
-	<main class="page-index">
-		<div class="layout-block">
-			<home-hero />
-			<layout-services />
-			<layout-stories />
-		</div>
-	</main>
+	<storyblok-wrapper url="home">
+		<template #default="{ story, refreshKey }">
+			<main :key="refreshKey"
+				class="page-index">
+				<div class="layout-block">
+					<home-hero />
+					<storyblok-map :bloks="story.content.body"
+						:refresh-key="refreshKey" />
+				</div>
+			</main>
+		</template>
+	</storyblok-wrapper>
 </template>
 
 <script setup lang="ts">

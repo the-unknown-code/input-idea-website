@@ -38,7 +38,7 @@ const scope = effectScope();
 const enabled = computed(() => $store.isEnabled);
 
 const preloadFonts = async () => {
-	await nextTick();
+	await document.fonts?.ready;
 	fontsLoaded.value = true;
 };
 
@@ -63,7 +63,6 @@ tryOnBeforeMount(async () => {
 	width: 100vw;
 	min-height: 100vh;
 	overflow-x: clip;
-	opacity: 0;
 
 	background-color: var(--theme-bg);
 	color: var(--theme-fg);
@@ -71,10 +70,6 @@ tryOnBeforeMount(async () => {
 	&.is-loading,
 	&.is-not-focused {
 		pointer-events: none;
-	}
-
-	&.fonts-loaded {
-		opacity: unset;
 	}
 }
 </style>

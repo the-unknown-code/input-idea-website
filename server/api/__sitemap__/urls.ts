@@ -1,4 +1,3 @@
-import { defineSitemapEventHandler } from '#imports';
 import type { SitemapUrlInput } from '#sitemap/types';
 
 type StoryblokStory = {
@@ -12,15 +11,17 @@ type StoryblokResponse = {
 	stories: StoryblokStory[];
 };
 
-export default defineSitemapEventHandler(
+// plain handler (defineSitemapEventHandler is only a typing helper and is
+// unavailable when the sitemap module is disabled for the static export)
+export default defineEventHandler(
 	async (): Promise<SitemapUrlInput[]> => {
 		const config = useRuntimeConfig();
 
 		const isPreview = import.meta.dev || config.public.app.storyblok.forceDraft;
 
 		const token = isPreview
-			? config.public.storyblokPreviewKey
-			: config.public.storyblokApiKey;
+			? config.storyblokPreviewKey
+			: config.storyblokApiKey;
 
 		const version = isPreview ? 'draft' : 'published';
 
@@ -32,7 +33,7 @@ export default defineSitemapEventHandler(
 				params: {
 					token,
 					version,
-					exclude_fields: 'body',
+					excluding_fields: 'body',
 					per_page: 100,
 				},
 			}

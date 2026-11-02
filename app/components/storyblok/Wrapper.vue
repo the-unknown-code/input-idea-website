@@ -1,12 +1,12 @@
 <template>
 	<div>
-		<slot :story="story" :refresh-key="refreshKey" />
+		<slot :story="story"
+			:refresh-key="refreshKey" />
 
 		<client-only>
-			<storyblok-bridge
-				:story-id="story?.id"
-				@story-updated="handleStoryUpdate"
-			/>
+			<storyblok-bridge :story-id="story?.id"
+				:resolve-relations="resolveRelations"
+				@story-updated="handleStoryUpdate" />
 		</client-only>
 	</div>
 </template>
@@ -18,9 +18,11 @@ import type { ISbStoryData } from '@storyblok/js';
 const props = defineProps<{
 	url: string;
 	apiOptions?: any;
+	resolveRelations?: string[];
 }>();
 
 const { story, refreshKey } = await useAsyncStory(props.url, props.apiOptions);
+
 
 const handleStoryUpdate = ({
 	story: updatedStory,

@@ -269,15 +269,18 @@ const logDebugInfo = () => {
 	console.groupEnd();
 };
 
+const onKeydown = (e: KeyboardEvent) => {
+	if (e.key === 'g') {
+		appStore.setDebug('orchestra', !appStore.debug.orchestra);
+	}
+};
+
 tryOnMounted(() => {
-	window.addEventListener('keydown', (e) => {
-		if (e.key === 'g') {
-			appStore.setDebug('orchestra', !appStore.debug.orchestra);
-		}
-	});
+	window.addEventListener('keydown', onKeydown);
 });
 
 tryOnBeforeUnmount(() => {
+	window.removeEventListener('keydown', onKeydown);
 	scope.stop();
 	pane?.dispose();
 });

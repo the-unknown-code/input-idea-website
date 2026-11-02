@@ -59,7 +59,9 @@ interface AppConfig {
 // Define base colors and generate their shades
 const colors: any = generateShades({
 	black: '#080808',
+	'grey-600': '#606060',
 	grey: '#909090',
+	lightgrey: '#3b3a3a',
 	darkgrey: '#2F2C2C',
 	white: '#fffef4',
 	yellow: '#fff615',
@@ -94,7 +96,7 @@ const typography: any = {
 // Define grid system with columns, gap, and margin settings
 const grid: any = {
 	columns: [4, 12],
-	gap: [8, 8],
+	gap: [8, 16],
 	margin: [16, 48],
 };
 
@@ -107,7 +109,7 @@ export const app: AppConfig = {
 	title: 'Input Idea',
 	ssr: false,
 	storyblok: {
-		enabled: false,
+		enabled: true,
 		forceDraft: process.env.STORYBLOK_FORCE_DRAFT === 'true',
 		settings: false, // true if global settings must be loaded before the app is mounted
 		apiOptions: {
@@ -127,11 +129,11 @@ export const app: AppConfig = {
 	},
 	fonts: {
 		defaults: {
-			weights: [300, 400, 500, 600, 700, 800, 900],
+			weights: [],
 		},
 		families: [
 			{
-				name: 'Zalando Sans',
+				name: 'Zalando+Sans',
 				provider: 'google',
 			}
 		],

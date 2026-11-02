@@ -20,6 +20,14 @@ $wide-breakpoint: map.get($breakpoints, wide);
 	}
 }
 
+@mixin hover {
+	@include desktop {
+		@media (hover: hover) and (pointer: fine) {
+			@content;
+		}
+	}
+}
+
 @mixin fill($position: absolute) {
 	position: #{$position};
 	bottom: 0;

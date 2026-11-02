@@ -8,6 +8,7 @@ import { useStoryblokBridge, type ISbStoryData } from '@storyblok/js';
 
 const props = defineProps<{
 	storyId: number;
+	resolveRelations?: string[];
 }>();
 
 // v-model:story
@@ -29,7 +30,7 @@ const emit = defineEmits<{
 // Initialize Storyblok bridge
 
 useStoryblokBridge(props.storyId, (updatedStory: ISbStoryData<any>) => {
-	console.log('Story updated via bridge:', updatedStory);
+	// console.log('Story updated via bridge:', updatedStory);
 
 	story.value = updatedStory;
 	refreshKey.value = `story-${props.storyId}-${Math.random()
@@ -37,5 +38,5 @@ useStoryblokBridge(props.storyId, (updatedStory: ISbStoryData<any>) => {
 		.substring(2, 7)}`;
 
 	emit('story-updated', { story: updatedStory, refreshKey: refreshKey.value });
-});
+}, { resolveRelations: props.resolveRelations });
 </script>

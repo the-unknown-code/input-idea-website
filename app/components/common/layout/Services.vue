@@ -2,65 +2,149 @@
   <section class="layout-services">
     <div class="layout-services__inner layout-grid">
       <div>
-        <h3 v-text-reveal
-          class="h1">I nostri <b>Servizi</b></h3>
-        <p v-text-reveal
-          class="--grey"><b>Ogni azienda arriva da noi con un bagaglio unico: un’esigenza, un dato, un sogno nel
-            cassetto
-            o una sfida
-            critica. </b>Per noi, questo è l’input. Siamo l’agenzia di comunicazione di Reggio Emilia che lavora come un
-          sistema intelligente che ascolta, analizza e rielabora. In base a ciò che ci affidi, attiviamo le competenze
-          necessarie per restituirti l’output più efficace: quel risultato concreto — che sia un’identità visiva, una
-          strategia social o una campagna pubblicitaria — capace di parlare la lingua del tuo pubblico e generare
-          valore.</p>
+        <h3 v-if="blok.title"
+          v-text-reveal>
+          <storyblok-richtext :content="blok.title[0].text" />
+        </h3>
+        <p v-if="blok.description"
+          v-text-reveal
+          class="--grey">
+          <storyblok-richtext :content="blok.description[0].text" />
+        </p>
       </div>
       <div>
-        <ul>
-          <li v-for="service in SERVICES"
+        <ul class="layout-services__mobile-list">
+          <li v-for="item in list"
             ref="$items"
-            :key="service.title">
-            <a-link :href="service.link">
-              <p class="p-big"> {{ service.title }}</p>
+            :key="item._uid ?? item.label">
+            <a-link :href="resolveLink(item.link)">
+              <p class="h2-alt"> {{ item.label }}</p>
               <ui-arrow />
             </a-link>
           </li>
         </ul>
+        <ul ref="$desktopList"
+          class="layout-services__desktop-list">
+          <li v-for="({ item, copy }, index) in loopedDesktopItems"
+            :key="`${item._uid ?? item.label}-${copy}-${index}`">
+            <a-link :href="resolveLink(item.link)">
+              <p :class="['h2-alt', { '--yellow': isCentered(index) }]"> {{ item.label }}</p>
+              <ui-arrow />
+            </a-link>
+          </li>
+        </ul>
+        <div v-if="list.length > 1"
+          class="layout-services__controls">
+          <button type="button"
+            class="p-small --yellow"
+            aria-label="Previous services"
+            @click="previous">
+            <ui-arrow-button reverse />
+          </button>
+          <div class="counter p">
+            {{ activeIndex + 1 }} / {{ list.length }}
+          </div>
+          <button type="button"
+            class="p-small --yellow"
+            aria-label="Next services"
+            @click="next">
+            <ui-arrow-button />
+          </button>
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import gsap from 'gsap/all';
+import gsap from 'gsap';
+import { resolveLink } from '~/libs/storyblok/utils';
 import { GSAPEase } from '~/libs/constants/gsap';
+import { DATA_CONTENT_LIST } from '~/libs/data';
 
-const SERVICES = [
-  {
-    title: 'Copywriting & SEO',
-    link: 'https://www.google.com'
-  },
-  {
-    title: 'Brand Identity',
-    link: 'https://www.google.com'
-  },
-  {
-    title: 'Marketing Automation',
-    link: 'https://www.google.com'
-  },
-  {
-    title: 'Customer Software',
-    link: 'https://www.google.com'
-  },
-  {
-    title: 'Website & E-commerce',
-    link: 'https://www.google.com'
-  },
+const { blok } = defineProps({
+  blok: {
+    type: Object,
+    required: false,
+    default: DATA_CONTENT_LIST
+  }
+})
 
-]
+console.log(">>", blok)
+
+const list = computed(() => Array.isArray(blok.list) ? blok.list : []);
+const loopedDesktopItems = computed(() =>
+  [0, 1, 2].flatMap((copy) => list.value.map((item) => ({ item, copy })))
+);
+const $desktopList = ref<HTMLUListElement | null>(null);
+const activeIndex = ref(0);
+let resetTimer: ReturnType<typeof setTimeout> | undefined;
+let isScrolling = false;
+
+const isCentered = (index: number) => index === list.value.length + activeIndex.value + 2;
+
+const getItemOffset = (index: number) => {
+  const viewport = $desktopList.value;
+  const first = viewport?.firstElementChild as HTMLElement | null;
+  const item = viewport?.children.item(index) as HTMLElement | null;
+  return viewport && first && item ? item.offsetTop - first.offsetTop : null;
+};
+
+const centerDesktopList = () => {
+  const offset = getItemOffset(list.value.length);
+  if (offset !== null) $desktopList.value?.scrollTo({ top: offset, behavior: 'auto' });
+};
+
+const scrollToIndex = (index: number, resetIndex?: number) => {
+  const viewport = $desktopList.value;
+  const offset = getItemOffset(index);
+  if (!viewport || offset === null) return;
+
+  viewport.scrollTo({
+    top: offset,
+    behavior: 'smooth',
+  });
+
+  if (resetIndex === undefined) return;
+
+  isScrolling = true;
+  clearTimeout(resetTimer);
+  resetTimer = setTimeout(() => {
+    const resetOffset = getItemOffset(resetIndex);
+    if (resetOffset !== null) viewport.scrollTo({ top: resetOffset, behavior: 'auto' });
+    isScrolling = false;
+  }, 450);
+};
+
+const previous = () => {
+  const itemCount = list.value.length;
+  if (!itemCount || isScrolling) return;
+  const wrapped = activeIndex.value === 0;
+  activeIndex.value = (activeIndex.value - 1 + list.value.length) % list.value.length;
+  scrollToIndex(
+    itemCount + activeIndex.value - (wrapped ? itemCount : 0),
+    wrapped ? itemCount + activeIndex.value : undefined,
+  );
+};
+
+const next = () => {
+  const itemCount = list.value.length;
+  if (!itemCount || isScrolling) return;
+  const wrapped = activeIndex.value === itemCount - 1;
+  activeIndex.value = (activeIndex.value + 1) % list.value.length;
+  scrollToIndex(
+    itemCount + activeIndex.value + (wrapped ? itemCount : 0),
+    wrapped ? itemCount + activeIndex.value : undefined,
+  );
+};
+
+watch(list, async () => {
+  activeIndex.value = 0;
+  await nextTick();
+  centerDesktopList();
+});
 
 const $items = ref<HTMLLIElement[]>([]);
-
-
 const initialize = () => {
   $items.value.forEach((item) => {
     gsap.to(item, {
@@ -79,9 +163,11 @@ const initialize = () => {
 
 tryOnMounted(() => {
   initialize();
+  nextTick(centerDesktopList);
 });
 
 tryOnBeforeUnmount(() => {
+  clearTimeout(resetTimer);
   $items.value.forEach((item) => {
     gsap.killTweensOf(item);
   });
@@ -96,20 +182,58 @@ tryOnBeforeUnmount(() => {
       grid-column: -1 / 1;
 
       &:nth-child(1) {
+        @include desktop {
+          padding-right: 32px;
+        }
+
         p {
           margin-top: var(--spacer-16);
         }
       }
 
       @include desktop {
+        padding-right: 48px;
+
         &:nth-child(1) {
+
           grid-column: 2 / span 4;
         }
 
         &:nth-child(2) {
-          grid-column: 7 / span 5;
+          grid-column: 6 / span 6;
         }
       }
+    }
+  }
+
+  .counter {
+    position: relative;
+    width: auto;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+    border-radius: 5px;
+    border: 1px solid white;
+    padding: 0 12px;
+
+    font-size: 12px;
+  }
+
+  &__controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 32px;
+
+    button {
+      cursor: pointer;
+      text-transform: uppercase;
+    }
+
+    @include mobile {
+      display: none;
     }
   }
 
@@ -134,6 +258,68 @@ tryOnBeforeUnmount(() => {
         justify-content: space-between;
         align-items: center;
         gap: var(--spacer-16);
+      }
+
+      &:deep(.h2) {
+        transition: color 200ms ease;
+      }
+
+      @include hover {
+        &:hover {
+          &:deep(.h2) {
+            color: var(--yellow);
+          }
+        }
+      }
+    }
+  }
+
+  ul.layout-services__mobile-list {
+    @include desktop {
+      display: none;
+    }
+
+    li {
+
+      p {
+        padding-right: 16px;
+      }
+    }
+  }
+
+  ul.layout-services__desktop-list {
+    position: relative;
+    height: 400px;
+    box-sizing: border-box;
+    padding-block: 40px;
+    overflow-y: auto;
+    scrollbar-width: none;
+    mask-image: linear-gradient(to bottom, transparent 0%, black 45%, black 55%, transparent 100%);
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    @include mobile {
+      display: none;
+    }
+
+    li {
+      flex: none;
+      opacity: 1;
+      transform: none;
+
+      @include hover {
+        &:hover {
+          .h2-alt {
+            color: var(--yellow);
+          }
+        }
+      }
+
+      p {
+        padding-right: 32px;
+        text-wrap: balance;
       }
     }
   }

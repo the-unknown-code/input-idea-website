@@ -1,8 +1,10 @@
 <template>
   <div :class="['common-media', { 'common-media--cover': cover }]">
     <video v-if="type === MEDIA_TYPES.VIDEO"
+      ref="$video"
       :src="src"
-      autoplay
+      :autoplay="loading === 'eager'"
+      :preload="loading === 'eager' ? 'auto' : 'none'"
       muted
       loop
       playsinline />
@@ -12,6 +14,7 @@
       draggable="false"
       alt="Media Mask"
       :width="size"
+      :sizes="sizes || undefined"
       :quality="quality" />
 
   </div>
@@ -20,7 +23,7 @@
 <script setup lang="ts">
 import { MEDIA_TYPES } from '~/libs/constants/const';
 
-defineProps({
+const props = defineProps({
   type: {
     type: String,
     required: false,
@@ -51,7 +54,21 @@ defineProps({
     required: false,
     default: 80,
   },
+  sizes: {
+    type: String,
+    required: false,
+    default: '',
+  },
 });
+
+// lazy videos only download/play while on screen
+const $video = ref<HTMLVideoElement | null>(null);
+useIntersectionObserver($video, ([entry]) => {
+  const video = $video.value;
+  if (!video || props.loading === 'eager') return;
+  if (entry?.isIntersecting) video.play().catch(() => {});
+  else video.pause();
+}, { rootMargin: '200px' });
 </script>
 
 

@@ -1,5 +1,5 @@
 {
 	"buildCommand": "yarn run build",
 	"devCommand": "yarn dev",
-	"installCommand": "yarn install"
+	"installCommand": "yarn install --frozen-lockfile"
 }

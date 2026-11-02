@@ -32,7 +32,7 @@
           <span class="h1">with one</span>
         </div>
         <div class="media empty">
-          <div></div>
+          <span class="p --yellow">Costruiamo l'infrastruttura digitale che guida il tuo successo</span>
         </div>
       </div>
       <div class="row row-2">
@@ -43,6 +43,8 @@
           <div></div>
         </div>
       </div>
+      <ui-common-cta label="Inizia un progetto"
+        :callback="openChatBot" />
     </div>
     <div v-show="!isDesktop"
       class="home-hero__mobile">
@@ -50,12 +52,47 @@
       <div class="media">
         <div></div>
       </div>
+      <ui-common-cta label="Inizia un progetto"
+        :callback="openChatBot" />
     </div>
+    <teleport to="body">
+      <div v-if="isChatBotOpen"
+        class="home-hero__chatbot-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Chatta con Input Idea"
+        @click.self="closeChatBot">
+        <button class="home-hero__chatbot-close"
+          type="button"
+          aria-label="Chiudi chatbot"
+          @click="closeChatBot">×</button>
+        <layout-ai-form :blok="chatBotBlok" />
+      </div>
+    </teleport>
   </section>
 </template>
 
 <script setup lang="ts">
 const { isDesktop } = useBreakpoints();
+const isChatBotOpen = ref(false)
+const chatBotBlok = { title: [] }
+
+const openChatBot = () => {
+  isChatBotOpen.value = true
+}
+
+const closeChatBot = () => {
+  isChatBotOpen.value = false
+}
+
+watch(isChatBotOpen, (isOpen) => {
+  if (!import.meta.client) return
+  document.body.style.overflow = isOpen ? 'hidden' : ''
+})
+
+onBeforeUnmount(() => {
+  if (import.meta.client) document.body.style.overflow = ''
+})
 </script>
 
 
@@ -67,6 +104,60 @@ const { isDesktop } = useBreakpoints();
 
   @include desktop {
     padding: 0 var(--spacer-64);
+  }
+
+  &__chatbot-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
+    background: rgb(0 0 0 / 55%);
+    backdrop-filter: blur(12px);
+    overflow-y: auto;
+
+    @include mobile {
+      padding: 16px;
+      // blur is costly on mobile GPUs: use a denser solid backdrop instead
+      backdrop-filter: none;
+      background: rgb(0 0 0 / 85%);
+    }
+  }
+
+  &__chatbot-close {
+    position: fixed;
+    top: 24px;
+    right: 32px;
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    color: var(--white);
+    font-size: 32px;
+    line-height: 1;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+
+    @include mobile {
+      top: 12px;
+      right: 12px;
+    }
+  }
+
+  &__chatbot-modal:deep(.layout-ai-form) {
+    background-color: #2F2C2C;
+
+    input,
+    textarea {
+      color: var(--white);
+
+      &::placeholder {
+        color: var(--white);
+        opacity: .7;
+      }
+    }
   }
 
   &__bg {
@@ -94,7 +185,7 @@ const { isDesktop } = useBreakpoints();
             left: 0;
             width: calc(90% / 8 * #{$i});
             height: 100%;
-            background: linear-gradient(180deg, var(--darkgrey) 0%, var(--theme-contrast) 100%);
+            background: linear-gradient(180deg, var(--darkgrey) 0%, var(--grey-30) 100%);
           }
 
         }
@@ -112,6 +203,10 @@ const { isDesktop } = useBreakpoints();
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+
+    &:deep(.ui-common-cta) {
+      margin-top: 32px;
+    }
 
     h1 {
       margin-top: var(--spacer-64);
@@ -176,6 +271,22 @@ const { isDesktop } = useBreakpoints();
       max-width: 360px;
       aspect-ratio: 4;
       margin-top: var(--spacer-16);
+    }
+
+    &.empty {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+
+      .p {
+        position: relative;
+        max-width: 400px;
+        white-space: initial;
+        text-wrap: balance;
+        padding: 0 32px;
+      }
     }
 
     &:not(.empty) {

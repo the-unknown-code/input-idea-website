@@ -12,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import gsap from 'gsap/all';
+import gsap from 'gsap';
 import { GSAPDuration, GSAPEase } from '~/libs/constants/gsap';
 import useAppStore from '~/store/useAppStore';
 
