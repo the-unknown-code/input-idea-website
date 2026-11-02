@@ -32,13 +32,6 @@
               :alt="getMedia(item).image.alt" />
           </span>
         </common-marquee>
-        <common-marquee>
-          <span v-for="item in blok.marquee_3"
-            :key="item._uid">
-            <img :src="getMedia(item).image.src"
-              :alt="getMedia(item).image.alt" />
-          </span>
-        </common-marquee>
       </div>
     </div>
   </section>
@@ -53,8 +46,6 @@ const { blok } = defineProps({
     required: true,
   }
 })
-
-console.log(">>", blok)
 </script>
 
 <style lang="scss" scoped>
@@ -98,19 +89,14 @@ console.log(">>", blok)
             black calc(100% - var(--size)),
             transparent 100%);
 
+        // row heights; images keep their own ratio (width follows height)
         &:deep(.marquee) {
-          &:nth-child(1) {
-            img {
-              width: 140px;
-              flex: 0 0 140px;
-            }
+          &:nth-child(1) img {
+            height: 200px;
           }
 
-          &:nth-child(2) {
-            img {
-              width: 260px;
-              flex: 0 0 260px;
-            }
+          &:nth-child(2) img {
+            height: 120px;
           }
         }
 
@@ -138,6 +124,8 @@ console.log(">>", blok)
   &:deep(.marquee) {
     span {
       position: relative;
+      display: block;
+      flex: none;
       margin: 0 var(--spacer-4);
       padding: 0 var(--spacer-4);
       overflow: hidden;
@@ -147,10 +135,9 @@ console.log(">>", blok)
 
   img {
     position: relative;
-    width: 200px;
-    flex: 0 0 200px;
-    aspect-ratio: 202 / 100;
-    object-fit: cover;
+    display: block;
+    width: auto;
+    max-width: none;
     border-radius: 12px;
   }
 }

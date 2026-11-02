@@ -129,5 +129,16 @@ tryOnBeforeUnmount(() => {
 			flex-shrink: 0;
 		}
 	}
+
+	// each copy of the slot is one non-wrapping row, whatever the slot items are
+	.inner {
+		display: flex;
+		flex-wrap: nowrap;
+		align-items: center;
+	}
+
+	:slotted(*) {
+		flex-shrink: 0;
+	}
 }
 </style>

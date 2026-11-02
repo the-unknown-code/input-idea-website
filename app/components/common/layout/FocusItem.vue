@@ -16,7 +16,8 @@
         class="focus-slot"
         :class="{ 'is-active': entry.slot === 'current' || (!isDesktop && activeIndex === entry.index), 'is-neighbor': isDesktop && entry.slot !== 'current' }">
         <Transition :name="isDesktop ? (scrollDirection > 0 ? 'wheel-forward' : 'wheel-backward') : undefined">
-          <div :key="entry.index"
+          <div v-if="entry.item"
+            :key="entry.index"
             class="layout-grid">
             <div>
               <h2 class="display --yellow">
@@ -64,9 +65,12 @@ const visibleItems = computed(() => {
     return items.value.map((item: any, index: number) => ({ item, index, slot: `mobile-${index}` }))
   }
 
+  // no wrap-around: before the first / after the last item the neighbour slot stays empty
+  // (kept in the layout so the current item doesn't shift)
   return ([-1, 0, 1] as const).map((offset) => {
-    const index = (activeIndex.value + offset + length) % length
-    return { item: items.value[index], index, slot: offset === 0 ? 'current' : offset < 0 ? 'previous' : 'next' }
+    const index = activeIndex.value + offset
+    const item = index >= 0 && index < length ? items.value[index] : null
+    return { item, index, slot: offset === 0 ? 'current' : offset < 0 ? 'previous' : 'next' }
   })
 })
 

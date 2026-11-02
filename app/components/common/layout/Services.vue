@@ -72,7 +72,6 @@ const { blok } = defineProps({
   }
 })
 
-console.log(">>", blok)
 
 const list = computed(() => Array.isArray(blok.list) ? blok.list : []);
 const loopedDesktopItems = computed(() =>

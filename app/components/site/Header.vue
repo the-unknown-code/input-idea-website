@@ -5,11 +5,15 @@
 			<div class="circle">
 				<ui-arrow :color="isScrolled || menuVisible ? 'var(--darkgrey)' : 'var(--yellow)'" />
 			</div>
-			<div class="logo">
-				<img ref="$logo"
-					src="/svgs/logo-input-idea.svg"
-					alt="Input Idea" />
-			</div>
+			<nuxt-link to="/"
+				class="logo"
+				aria-label="Input Idea — Home">
+				<!-- logo drawn via CSS mask so its colour can change (white -> yellow on hover) -->
+				<span ref="$logo"
+					class="logo__mark"
+					role="img"
+					aria-hidden="true" />
+			</nuxt-link>
 			<div class="circle">
 				<button ref="$menuToggle"
 					class="menu-toggle"
@@ -53,7 +57,7 @@
 import gsap from 'gsap';
 import { GSAPDuration, GSAPEase } from '~/libs/constants/gsap';
 
-const $logo = ref<HTMLImageElement | null>(null);
+const $logo = ref<HTMLElement | null>(null);
 const $header = ref<HTMLElement | null>(null);
 const $menu = ref<HTMLElement | null>(null);
 const $menuToggle = ref<HTMLButtonElement | null>(null);
@@ -211,10 +215,10 @@ tryOnBeforeUnmount(() => {
 			}
 		}
 
-		.logo img {
+		.logo__mark {
 			opacity: 1 !important;
 			transform: none !important;
-			filter: brightness(0);
+			background-color: #000 !important; // was filter: brightness(0)
 		}
 	}
 
@@ -367,12 +371,21 @@ tryOnBeforeUnmount(() => {
 			flex: 0 0 210px;
 		}
 
-		img {
+		&__mark {
+			display: block;
 			width: 100%;
-			height: auto;
+			aspect-ratio: 214.086 / 32.743;
+			background-color: var(--white);
+			-webkit-mask: url('/svgs/logo-input-idea.svg') center / contain no-repeat;
+			mask: url('/svgs/logo-input-idea.svg') center / contain no-repeat;
+			transition: background-color 250ms ease;
 		}
 
-
+		@include hover {
+			&:hover .logo__mark {
+				background-color: var(--yellow);
+			}
+		}
 	}
 }
 </style>
