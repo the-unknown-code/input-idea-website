@@ -237,12 +237,14 @@ export default defineNuxtConfig({
 	},
 
 	nitro: {
-		prerender: {
-			crawlLinks: true,
-			// static export: keep going on broken links; scripts/export-static.mjs
-			// then prints one clean list of every missing page
-			failOnError: !STATIC_EXPORT,
-		},
+		// crawling/prerendering only for the static export; Vercel builds stay SSR
+		prerender: STATIC_EXPORT
+			? {
+				crawlLinks: true,
+				// keep going on broken links; scripts/export-static.mjs prints the missing list
+				failOnError: false,
+			}
+			: {},
 		// .br/.gz siblings are useless on plain FTP hosting
 		compressPublicAssets: STATIC_EXPORT
 			? false
