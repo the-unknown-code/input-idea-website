@@ -11,8 +11,7 @@
             cleanup />
         </div>
         <a-link :href="resolveLink(blok.global_link[0].link)">
-          <ui-common-cta :label="blok.global_link[0].label"
-            href="/blog" />
+          <ui-common-cta :label="blok.global_link[0].label" />
         </a-link>
       </div>
       <div v-if="articles.length"

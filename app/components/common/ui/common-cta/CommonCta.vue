@@ -30,15 +30,16 @@ const handleKeydown = (event: KeyboardEvent) => {
 </script>
 
 <template>
-  <component :is="callback ? 'div' : 'a-link'"
-    :href="callback ? undefined : href"
+  <component :is="callback || !href ? 'div' : 'a-link'"
+    :href="callback || !href ? undefined : href"
     :role="callback ? 'button' : undefined"
     :tabindex="callback ? 0 : undefined"
     :class="['ui-common-cta', { light }]"
     @click="handleClick"
     @keydown="handleKeydown">
     <p :class="['--yellow', { small, light }]">{{ label }}</p>
-    <ui-arrow small
+    <ui-arrow v-if="callback || href"
+      small
       :color="light ? 'rgba(255, 255, 255, 0.8)' : undefined" />
   </component>
 </template>

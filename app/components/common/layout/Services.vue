@@ -57,7 +57,7 @@
 </template>
 
 <script setup lang="ts">
-import gsap from 'gsap/all';
+import gsap from 'gsap';
 import { resolveLink } from '~/libs/storyblok/utils';
 import { GSAPEase } from '~/libs/constants/gsap';
 import { DATA_CONTENT_LIST } from '~/libs/data';

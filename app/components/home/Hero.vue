@@ -120,6 +120,9 @@ onBeforeUnmount(() => {
 
     @include mobile {
       padding: 16px;
+      // blur is costly on mobile GPUs: use a denser solid backdrop instead
+      backdrop-filter: none;
+      background: rgb(0 0 0 / 85%);
     }
   }
 

@@ -99,27 +99,6 @@ $pathway-spacing-normal: 3%;
 	}
 }
 
-h1,
-.h1 {
-	font-optical-sizing: auto;
-	font-variation-settings: 'wdth' 79;
-
-	&.heavy {
-		letter-spacing: 2%;
-		// font-variation-settings: 'wght' 900 'wdth' 75;
-		font-variation-settings: 'wdth' 94;
-		font-weight: 900;
-	}
-
-	b,
-	strong {
-		//font-variation-settings: 'wght' 900;
-		font-variation-settings: 'wdth' 94;
-		font-weight: 900;
-	}
-
-	@include h1;
-}
 
 // ------ H2 -------
 @mixin h2 {
@@ -134,22 +113,6 @@ h1,
 	}
 }
 
-h2,
-.h2 {
-	&.heavy {
-		// letter-spacing: 2%;
-		font-variation-settings: 'wdth' 94;
-		font-weight: 900;
-	}
-
-	b,
-	strong {
-		font-variation-settings: 'wdth' 94;
-		font-weight: 900;
-	}
-
-	@include h2;
-}
 
 // ------ H2 -------
 @mixin h2-alt {
@@ -161,9 +124,6 @@ h2,
 	}
 }
 
-.h2-alt {
-	@include h2-alt;
-}
 
 @mixin h3 {
 	text-transform: uppercase;
@@ -177,22 +137,6 @@ h2,
 	}
 }
 
-h3,
-.h3 {
-	&.heavy {
-		// letter-spacing: 2%;
-		font-variation-settings: 'wdth' 94;
-		font-weight: 900;
-	}
-
-	b,
-	strong {
-		font-variation-settings: 'wdth' 94;
-		font-weight: 900;
-	}
-
-	@include h3;
-}
 
 @mixin h3-alt {
 	text-transform: uppercase;
@@ -206,21 +150,6 @@ h3,
 	}
 }
 
-.h3-alt {
-	&.heavy {
-		// letter-spacing: 2%;
-		font-variation-settings: 'wdth' 94;
-		font-weight: 900;
-	}
-
-	b,
-	strong {
-		font-variation-settings: 'wdth' 94;
-		font-weight: 900;
-	}
-
-	@include h3-alt;
-}
 
 // ------ DISPLAY -------
 @mixin display {
@@ -233,39 +162,12 @@ h3,
 	}
 }
 
-.display {
-	font-optical-sizing: auto;
-	font-variation-settings: 'wdth' 79;
-
-	&.heavy {
-		letter-spacing: 2%;
-		font-variation-settings: 'wdth' 94;
-		font-weight: 900;
-	}
-
-	b,
-	strong {
-		font-variation-settings: 'wdth' 94;
-		font-weight: 900;
-	}
-
-	@include display;
-}
 
 // --- P ---
 @mixin p {
 	@include type($sans, 16px, 16px, 16px, 300, 1.45, 0);
 }
 
-p,
-.p {
-	@include p;
-
-	b,
-	strong {
-		font-weight: 700;
-	}
-}
 
 // --- P-BIG ---
 @mixin p-big {
@@ -276,33 +178,16 @@ p,
 	}
 }
 
-p-big,
-.p-big {
-	@include p-big;
-}
 
 // --- P-SMALL ---
 @mixin p-small {
 	@include type($sans, 13px, 13px, 13px, 300, 1.35, 0);
 }
 
-.p-small {
-	@include p;
-}
 
 // --- P-TINY ---
 @mixin p-tiny {
 	@include type($sans, 11px, 11px, 11px, 300, 1.35, 0);
 }
 
-.p-tiny {
-	@include p;
 
-	&.b {
-		font-weight: bold;
-	}
-}
-
-code {
-	color: var(--yellow);
-}

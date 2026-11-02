@@ -26,7 +26,7 @@
 
 
 <script setup lang="ts">
-import { ScrollTrigger } from 'gsap/all';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 defineProps({
   blok: {

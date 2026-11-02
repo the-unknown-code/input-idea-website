@@ -1,0 +1,45 @@
+# Builds the static (FTP) version of the site. Started from the /export page,
+# or manually from the GitHub "Actions" tab. The zip is attached as an artifact.
+name: Static export
+run-name: Static export ${{ inputs.export_id }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      export_id:
+        description: Export id (set automatically by the /export page)
+        required: false
+        default: manual
+
+jobs:
+  export:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Scarico il codice
+        uses: actions/checkout@v4
+
+      - name: Preparo l'ambiente
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: yarn
+
+      - name: Installo le dipendenze
+        run: yarn install --frozen-lockfile
+
+      - name: Genero le pagine del sito
+        run: node scripts/export-static.mjs --no-zip --allow-missing
+        env:
+          STORYBLOK_KEY: ${{ secrets.STORYBLOK_KEY }}
+          SITE_URL: ${{ vars.SITE_URL }}
+          GOOGLE_MAPS_API_KEY: ${{ secrets.GOOGLE_MAPS_API_KEY }}
+          GOOGLE_MAPS_ID: ${{ vars.GOOGLE_MAPS_ID }}
+
+      - name: Creo il file zip
+        uses: actions/upload-artifact@v4
+        with:
+          name: input-idea-sito-statico-${{ github.run_number }}
+          path: .output/public
+          include-hidden-files: true
+          retention-days: 7

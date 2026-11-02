@@ -27,7 +27,7 @@
 
 
 <script setup lang="ts">
-import gsap from 'gsap/all';
+import gsap from 'gsap';
 import { DATA_POINT_LIST } from '~/libs/data';
 
 defineProps({
@@ -41,20 +41,24 @@ defineProps({
 
 const $content = ref<HTMLElement | null>(null);
 
+let ctx: gsap.Context | undefined;
+
 const initialize = () => {
   if ($content.value) {
-    const $items = $content.value.querySelectorAll('.item');
+    ctx = gsap.context(() => {
+      const $items = $content.value!.querySelectorAll('.item');
 
-    $items.forEach((item) => {
-      gsap.to(item, {
-        y: 0,
-        opacity: 1,
-        duration: 1,
-        ease: 'power2.inOut',
-        scrollTrigger: {
-          trigger: item,
-          start: 'top 90%',
-        },
+      $items.forEach((item) => {
+        gsap.to(item, {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: 'power2.inOut',
+          scrollTrigger: {
+            trigger: item,
+            start: 'top 90%',
+          },
+        });
       });
     });
 
@@ -63,6 +67,10 @@ const initialize = () => {
 
 tryOnMounted(() => {
   initialize()
+});
+
+tryOnBeforeUnmount(() => {
+  ctx?.revert()
 });
 </script>
 

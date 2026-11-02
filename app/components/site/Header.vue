@@ -50,7 +50,7 @@
 </template>
 
 <script setup lang="ts">
-import gsap from 'gsap/all';
+import gsap from 'gsap';
 import { GSAPDuration, GSAPEase } from '~/libs/constants/gsap';
 
 const $logo = ref<HTMLImageElement | null>(null);

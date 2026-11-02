@@ -42,7 +42,7 @@
             <ui-common-cta v-for="tag in item.tags"
               :key="tag"
               :label="tag"
-              :href="`/servizi/${getFilterHref(tag)}`" />
+              :href="getServiceHref(tag)" />
           </div>
         </div>
         <div>
@@ -160,8 +160,28 @@ const props = defineProps({
 
 const selectedTags = ref<string[]>([])
 
-const getFilterHref = (tag: string) => {
-  return filters.find(filter => filter.id === tag)?.href ?? '#'
+// published service pages, so tags only link to pages that actually exist
+const { $preview } = useNuxtApp()
+const storyblokApi = useStoryblokApi()
+const { data: serviceSlugs } = useAsyncData('servizi-slugs', async () => {
+  const slugs: string[] = []
+  for (let page = 1; ; page++) {
+    const { data } = await storyblokApi.get('cdn/stories', {
+      version: $preview ? 'draft' : 'published',
+      starts_with: 'servizi/',
+      excluding_fields: 'body',
+      per_page: 100,
+      page,
+    })
+    slugs.push(...data.stories.map((story: { full_slug: string }) => story.full_slug))
+    if (data.stories.length < 100) break
+  }
+  return slugs
+}, { default: () => [] as string[] })
+
+const getServiceHref = (tag: string) => {
+  const slug = filters.find(filter => filter.id === tag)?.href
+  return slug && serviceSlugs.value.includes(`servizi/${slug}`) ? `/servizi/${slug}` : undefined
 }
 
 const toggleTag = (tag: string) => {

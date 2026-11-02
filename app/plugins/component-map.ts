@@ -1,3 +1,5 @@
+import { defineAsyncComponent } from 'vue'
+
 import ALink from '~/components/common/ui/link/ALink.vue'
 import Arrow from '~/components/common/ui/arrow/Arrow.vue'
 import Ham from '~/components/common/ui/ham/Ham.vue'
@@ -6,38 +8,39 @@ import FormInput from '~/components/common/ui/form/Input.vue'
 import ArrowButton from '~/components/common/ui/arrow-button/ArrowButton.vue'
 import CommonCta from '~/components/common/ui/common-cta/CommonCta.vue'
 
-import Services from '~/components/common/layout/Services.vue'
-import Stories from '~/components/common/layout/Stories.vue'
-import LogoMarquee from '~/components/common/layout/LogoMarquee.vue'
-import BlogBox from '~/components/common/layout/BlogBox.vue'
-import ProjectHero from '~/components/common/layout/ProjectHero.vue'
-import ProjectGridBlock from '~/components/common/layout/ProjectGridBlock.vue'
-import TextList from '~/components/common/layout/TextList.vue'
-import MediaCarousel from '~/components/common/layout/MediaCarousel.vue'
-import LinkList from '~/components/common/layout/LinkList.vue'
-import AccordionList from '~/components/common/layout/AccordionList.vue'
-import OrderedList from '~/components/common/layout/OrderedList.vue'
-import TextHero from '~/components/common/layout/TextHero.vue'
-import ClaimHero from '~/components/common/layout/ClaimHero.vue'
-import FocusText from '~/components/common/layout/FocusText.vue'
-import FocusItem from '~/components/common/layout/FocusItem.vue'
-import Form from '~/components/common/layout/Form.vue'
-import ThreeColumns from '~/components/common/layout/ThreeColumns.vue'
-import LargeText from '~/components/common/layout/LargeText.vue'
-import MediaMarquee from '~/components/common/layout/MediaMarquee.vue'
-import CaseHistory from '~/components/common/layout/CaseHistory.vue'
-import TextCarousel from '~/components/common/layout/TextCarousel.vue'
-import StoryHighlight from '~/components/common/layout/StoryHighlight.vue'
-import ProjectDetails from '~/components/common/layout/ProjectDetails.vue'
-import ProjectFocus from '~/components/common/layout/ProjectFocus.vue'
-import AIForm from '~/components/common/layout/AiForm.vue'
-import WhoTitle from '~/components/common/layout/WhoTitle.vue'
-import Pillar from '~/components/common/layout/Pillar.vue'
-import Claim from '~/components/common/layout/Claim.vue'
-import Map from '~/components/common/layout/Map.vue'
-import AdvancedHeader from '~/components/common/layout/AdvancedHeader.vue'
-import ContentMarquee from '~/components/common/layout/ContentMarquee.vue'
-import OpenPosition from '~/components/common/layout/OpenPosition.vue'
+// layout blocks are code-split: each loads only on pages that use it
+const Services = defineAsyncComponent(() => import('~/components/common/layout/Services.vue'))
+const Stories = defineAsyncComponent(() => import('~/components/common/layout/Stories.vue'))
+const LogoMarquee = defineAsyncComponent(() => import('~/components/common/layout/LogoMarquee.vue'))
+const BlogBox = defineAsyncComponent(() => import('~/components/common/layout/BlogBox.vue'))
+const ProjectHero = defineAsyncComponent(() => import('~/components/common/layout/ProjectHero.vue'))
+const ProjectGridBlock = defineAsyncComponent(() => import('~/components/common/layout/ProjectGridBlock.vue'))
+const TextList = defineAsyncComponent(() => import('~/components/common/layout/TextList.vue'))
+const MediaCarousel = defineAsyncComponent(() => import('~/components/common/layout/MediaCarousel.vue'))
+const LinkList = defineAsyncComponent(() => import('~/components/common/layout/LinkList.vue'))
+const AccordionList = defineAsyncComponent(() => import('~/components/common/layout/AccordionList.vue'))
+const OrderedList = defineAsyncComponent(() => import('~/components/common/layout/OrderedList.vue'))
+const TextHero = defineAsyncComponent(() => import('~/components/common/layout/TextHero.vue'))
+const ClaimHero = defineAsyncComponent(() => import('~/components/common/layout/ClaimHero.vue'))
+const FocusText = defineAsyncComponent(() => import('~/components/common/layout/FocusText.vue'))
+const FocusItem = defineAsyncComponent(() => import('~/components/common/layout/FocusItem.vue'))
+const Form = defineAsyncComponent(() => import('~/components/common/layout/Form.vue'))
+const ThreeColumns = defineAsyncComponent(() => import('~/components/common/layout/ThreeColumns.vue'))
+const LargeText = defineAsyncComponent(() => import('~/components/common/layout/LargeText.vue'))
+const MediaMarquee = defineAsyncComponent(() => import('~/components/common/layout/MediaMarquee.vue'))
+const CaseHistory = defineAsyncComponent(() => import('~/components/common/layout/CaseHistory.vue'))
+const TextCarousel = defineAsyncComponent(() => import('~/components/common/layout/TextCarousel.vue'))
+const StoryHighlight = defineAsyncComponent(() => import('~/components/common/layout/StoryHighlight.vue'))
+const ProjectDetails = defineAsyncComponent(() => import('~/components/common/layout/ProjectDetails.vue'))
+const ProjectFocus = defineAsyncComponent(() => import('~/components/common/layout/ProjectFocus.vue'))
+const AIForm = defineAsyncComponent(() => import('~/components/common/layout/AiForm.vue'))
+const WhoTitle = defineAsyncComponent(() => import('~/components/common/layout/WhoTitle.vue'))
+const Pillar = defineAsyncComponent(() => import('~/components/common/layout/Pillar.vue'))
+const Claim = defineAsyncComponent(() => import('~/components/common/layout/Claim.vue'))
+const Map = defineAsyncComponent(() => import('~/components/common/layout/Map.vue'))
+const AdvancedHeader = defineAsyncComponent(() => import('~/components/common/layout/AdvancedHeader.vue'))
+const ContentMarquee = defineAsyncComponent(() => import('~/components/common/layout/ContentMarquee.vue'))
+const OpenPosition = defineAsyncComponent(() => import('~/components/common/layout/OpenPosition.vue'))
 
 export default defineNuxtPlugin(nuxtApp => {
     nuxtApp.vueApp.component('a-link', ALink)

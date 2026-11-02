@@ -39,7 +39,7 @@
 </template>
 
 <script setup lang="ts">
-import { ScrollTrigger } from 'gsap/all'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { DATA_FOCUS_LIST } from '~/libs/data'
 
 const props = defineProps({

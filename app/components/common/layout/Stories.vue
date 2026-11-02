@@ -18,7 +18,7 @@
       </div>
       <ui-arrow />
     </a-link>
-    <a-link href="/portoflio"
+    <a-link href="/portfolio"
       role="article"
       class="item item--title">
       <h3 class="display">
@@ -102,7 +102,7 @@
 
 
 <script setup lang="ts">
-import gsap from 'gsap/all';
+import gsap from 'gsap';
 import { GSAPEase } from '~/libs/constants/gsap';
 import { DATA_STORIES } from '~/libs/data';
 import { getMedia, storyblokFormat } from '~/libs/storyblok';

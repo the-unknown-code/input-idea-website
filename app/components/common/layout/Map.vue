@@ -5,7 +5,18 @@ const pinSvg = '<svg xmlns="http://www.w3.org/2000/svg" width="36" height="48" v
 
 const address = 'Via del Chionso 28/a, Reggio Emilia, Italy'
 const location = { lat: 44.7089564, lng: 10.6497168 }
-const { public: { googleMapsId } } = useRuntimeConfig();
+const { public: { googleMapsId, googleMapsApiKey } } = useRuntimeConfig();
+
+// load the Maps SDK only on pages that render the map (once per session)
+const loadMapsScript = () => {
+  if (!googleMapsApiKey || window.google?.maps || document.getElementById('google-maps-sdk')) return
+  ;(window as any).initMap = () => window.dispatchEvent(new Event('google-maps-ready'))
+  const script = document.createElement('script')
+  script.id = 'google-maps-sdk'
+  script.async = true
+  script.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(googleMapsApiKey as string)}&loading=async&libraries=maps&callback=initMap`
+  document.head.appendChild(script)
+}
 let mapInitialized = false
 
 const initMap = () => {
@@ -36,6 +47,7 @@ const initMap = () => {
 
 onMounted(() => {
   window.addEventListener('google-maps-ready', initMap)
+  loadMapsScript()
   initMap()
 })
 

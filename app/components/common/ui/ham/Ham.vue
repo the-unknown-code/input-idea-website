@@ -31,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-import gsap from 'gsap/all';
+import gsap from 'gsap';
 import { GSAPDuration, GSAPEase } from '~/libs/constants/gsap';
 
 const $rect1 = ref<SVGRectElement | null>(null);
