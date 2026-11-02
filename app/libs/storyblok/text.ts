@@ -7,7 +7,10 @@ export const renderHTML = (
 ) => {
     if (!doc) return '';
 
-    return sanitizeHtml(renderRichText(doc), {
+    // plain strings (e.g. component defaults) aren't richtext docs: renderRichText would throw
+    const html = typeof doc === 'string' ? doc : renderRichText(doc);
+
+    return sanitizeHtml(html, {
         allowedTags,
         allowedAttributes: {
             a: ['href', 'title', 'target', 'rel'],

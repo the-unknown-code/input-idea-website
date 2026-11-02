@@ -42,6 +42,7 @@ const AdvancedHeader = defineAsyncComponent(() => import('~/components/common/la
 const ContentMarquee = defineAsyncComponent(() => import('~/components/common/layout/ContentMarquee.vue'))
 const OpenPosition = defineAsyncComponent(() => import('~/components/common/layout/OpenPosition.vue'))
 const DiscoverProjects = defineAsyncComponent(() => import('~/components/common/layout/DiscoverProjects.vue'))
+const Results = defineAsyncComponent(() => import('~/components/common/layout/Results.vue'))
 
 export default defineNuxtPlugin(nuxtApp => {
     nuxtApp.vueApp.component('a-link', ALink)
@@ -85,5 +86,6 @@ export default defineNuxtPlugin(nuxtApp => {
     nuxtApp.vueApp.component('layout-content-marquee', ContentMarquee)
     nuxtApp.vueApp.component('layout-open-position', OpenPosition)
     nuxtApp.vueApp.component('layout-discover-projects', DiscoverProjects)
+    nuxtApp.vueApp.component('layout-results', Results)
 })
 

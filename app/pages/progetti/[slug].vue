@@ -9,13 +9,7 @@
                     <storyblok-map :bloks="story.content.body"
                         :refresh-key="refreshKey" />
 
-                    <!--
-                    <layout-project-hero />
-                    <layout-project-grid-block />
-                    <layout-text-list />
-                    <layout-media-carousel />
-                    <layout-link-list />
-                    -->
+
                 </div>
             </main>
         </template>
