@@ -11,6 +11,7 @@
 
 		<client-only>
 			<lazy-debug v-if="showDebug" />
+			<site-cookie-consent position="right" />
 		</client-only>
 		</div>
 	</lenis>
